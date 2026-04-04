@@ -9,7 +9,7 @@ import ScrollReveal from "./ScrollReveal";
 const items = [
   {
     q: "C'est compliqué à installer ?",
-    a: "Pas du tout. Nous configurons tout pour vous en moins de 24 heures. Vous n'avez rien à faire techniquement.",
+    a: "Pas du tout. Nous configurons tout pour vous en 48 à 72 heures. Vous n'avez rien à faire techniquement.",
   },
   {
     q: "Combien ça coûte ?",
@@ -25,7 +25,15 @@ const items = [
   },
   {
     q: "Puis-je garder le contrôle sur mon agenda ?",
-    a: "Absolument. Vous définissez vos créneaux, vos pauses et vos indisponibilités. L'IA respecte vos règles à la lettre.",
+    a: "Absolument. Vous définissez vos créneaux, vos pauses et vos indisponibilités. L'IA répond 24h/24 et 7j/7, mais elle respecte strictement vos horaires d'ouverture pour la prise de rendez-vous.",
+  },
+  {
+    q: "Peut-on personnaliser la voix de l'IA ?",
+    a: "Oui, vous pouvez choisir parmi plusieurs voix et ajuster le ton pour qu'il corresponde parfaitement à l'image de votre établissement.",
+  },
+  {
+    q: "Est-ce facile à utiliser au quotidien ?",
+    a: "Très simple. Une fois configuré, tout est automatique. Vous pouvez consulter vos rendez-vous et ajuster vos disponibilités depuis une interface intuitive.",
   },
 ];
 

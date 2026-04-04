@@ -1,0 +1,62 @@
+import { Sparkles, Globe, Check } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
+
+const PackCombo = () => (
+  <section className="py-24">
+    <div className="container mx-auto px-4">
+      <ScrollReveal>
+        <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
+          Pack <span className="text-primary">Digital Premium</span>
+        </h2>
+        <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
+          Combinez la puissance d'un agent vocal IA avec un site web professionnel clé en main.
+        </p>
+      </ScrollReveal>
+
+      <ScrollReveal delay={100}>
+        <div className="max-w-3xl mx-auto card-soft bg-gradient-to-br from-primary/[0.04] to-accent/[0.04] p-0 overflow-hidden">
+          <div className="grid md:grid-cols-2">
+            {/* Agent IA */}
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border/30">
+              <div className="w-12 h-12 rounded-2xl bg-primary/[0.08] flex items-center justify-center mb-5">
+                <Sparkles className="text-primary" size={22} />
+              </div>
+              <h3 className="text-lg font-semibold mb-3 text-foreground">Agent Vocal IA</h3>
+              <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Réponse automatique 24/7</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Gestion des rendez-vous</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Voix naturelle personnalisée</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Synchronisation agenda</li>
+              </ul>
+            </div>
+
+            {/* Site web */}
+            <div className="p-8">
+              <div className="w-12 h-12 rounded-2xl bg-accent/[0.08] flex items-center justify-center mb-5">
+                <Globe className="text-accent" size={22} />
+              </div>
+              <h3 className="text-lg font-semibold mb-3 text-foreground">Site Web Professionnel</h3>
+              <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Design moderne et responsive</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Optimisé pour le référencement</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Réservation en ligne intégrée</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Hébergement et maintenance inclus</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-border/30 px-8 py-6 text-center bg-primary/[0.02]">
+            <p className="text-sm text-muted-foreground mb-4">
+              Un seul interlocuteur, une solution complète pour votre visibilité digitale.
+            </p>
+            <a href="#contact" className="btn-primary-neu text-sm px-8 py-3 rounded-xl inline-block">
+              Demander un devis combo
+            </a>
+          </div>
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+);
+
+export default PackCombo;

@@ -27,7 +27,7 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <a href="#demo" className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl">
+          <a href="#contact" className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl">
             Essayer l'IA
           </a>
         </div>
@@ -55,7 +55,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="#demo"
+              href="#contact"
               onClick={() => setOpen(false)}
               className="btn-primary-neu text-sm text-center px-6 py-2.5 rounded-xl"
             >
