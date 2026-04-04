@@ -11,7 +11,7 @@ const FinalCTA = () => (
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
             Rejoignez les commerçants qui ne manquent plus aucun appel. Démo gratuite, sans engagement.
           </p>
-          <a href="#demo" className="btn-primary-neu text-base px-10 py-4 rounded-2xl inline-block">
+          <a href="#contact" className="btn-primary-neu text-base px-10 py-4 rounded-2xl inline-block">
             Réserver ma démo gratuite
           </a>
         </div>

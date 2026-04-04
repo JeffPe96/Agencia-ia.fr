@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Scissors, PawPrint, Heart, Sparkles } from "lucide-react";
+import { Scissors, PawPrint, UtensilsCrossed, Sparkles } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const sectors = [
@@ -16,10 +16,10 @@ const sectors = [
     text: "L'IA prend les rendez-vous et pose les bonnes questions : race, taille, type de soin. Vous vous occupez des poils, pas du téléphone.",
   },
   {
-    id: "sante",
-    icon: Heart,
-    label: "Santé",
-    text: "Cabinets médicaux, kinés, ostéos : l'IA filtre les urgences et gère les créneaux avec précision.",
+    id: "restauration",
+    icon: UtensilsCrossed,
+    label: "Restauration",
+    text: "L'IA gère les réservations de tables et les commandes à emporter selon vos horaires d'ouverture. Plus un seul appel manqué en plein rush.",
   },
   {
     id: "bien-etre",
@@ -47,7 +47,6 @@ const Sectors = () => {
 
         <ScrollReveal delay={100}>
           <div className="max-w-2xl mx-auto">
-            {/* Tabs */}
             <div className="flex justify-center gap-2 mb-10 flex-wrap">
               {sectors.map((s) => (
                 <button
@@ -65,7 +64,6 @@ const Sectors = () => {
               ))}
             </div>
 
-            {/* Content */}
             <div className="card-soft text-center animate-fade-in-up" key={current.id}>
               <div className="w-14 h-14 rounded-2xl bg-primary/[0.08] flex items-center justify-center mx-auto mb-5">
                 <current.icon className="text-primary" size={24} />

@@ -1,9 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Play, Pause, Phone } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 import ScrollReveal from "./ScrollReveal";
+
+const subtitles = [
+  { time: 0, text: "« Bonjour, Salon Élégance, comment puis-je vous aider ? »" },
+  { time: 3, text: "« Oui bien sûr, vous souhaitez un rendez-vous pour quelle prestation ? »" },
+  { time: 7, text: "« Parfait, une coupe et un brushing. Je regarde les disponibilités… »" },
+  { time: 11, text: "« Je vous propose jeudi à 14h ou vendredi à 10h, qu'est-ce qui vous arrange ? »" },
+  { time: 15, text: "« Jeudi à 14h, c'est noté ! À quel nom, s'il vous plaît ? »" },
+  { time: 19, text: "« Merci Madame Dupont, votre rendez-vous est confirmé. À jeudi ! »" },
+];
+
+const TOTAL_DURATION = 24;
 
 const DemoSection = () => {
   const [playing, setPlaying] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (playing) {
+      intervalRef.current = setInterval(() => {
+        setElapsed((prev) => {
+          if (prev >= TOTAL_DURATION) {
+            setPlaying(false);
+            return 0;
+          }
+          return prev + 0.1;
+        });
+      }, 100);
+    } else if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [playing]);
+
+  const currentSubtitle = [...subtitles].reverse().find((s) => elapsed >= s.time);
+  const progress = (elapsed / TOTAL_DURATION) * 100;
 
   return (
     <section id="demo" className="py-24 bg-secondary/30">
@@ -33,33 +69,34 @@ const DemoSection = () => {
 
               {/* Player body */}
               <div className="px-8 py-8 flex flex-col items-center gap-6">
-                {/* Waveform placeholder */}
-                <div className="w-full flex items-center gap-1 h-10 justify-center">
-                  {Array.from({ length: 32 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="rounded-full bg-primary/20 transition-all duration-300"
-                      style={{
-                        width: 3,
-                        height: playing
-                          ? `${8 + Math.sin(i * 0.5) * 16 + Math.random() * 8}px`
-                          : `${4 + Math.sin(i * 0.3) * 4}px`,
-                      }}
-                    />
-                  ))}
+                {/* Progress bar */}
+                <div className="w-full space-y-2">
+                  <Progress value={progress} className="h-2 rounded-full" />
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>{Math.floor(elapsed)}s</span>
+                    <span>{TOTAL_DURATION}s</span>
+                  </div>
+                </div>
+
+                {/* Subtitle */}
+                <div className="min-h-[3rem] flex items-center justify-center">
+                  <p className="text-sm text-foreground text-center italic transition-opacity duration-300" key={currentSubtitle?.time}>
+                    {playing || elapsed > 0
+                      ? currentSubtitle?.text
+                      : "Appuyez sur lecture pour démarrer la simulation"}
+                  </p>
                 </div>
 
                 <button
-                  onClick={() => setPlaying(!playing)}
+                  onClick={() => {
+                    if (!playing && elapsed >= TOTAL_DURATION) setElapsed(0);
+                    setPlaying(!playing);
+                  }}
                   className="btn-primary-neu flex items-center gap-3 text-sm px-8 py-3 rounded-xl"
                 >
                   {playing ? <Pause size={18} /> : <Play size={18} />}
                   {playing ? "Mettre en pause" : "Écouter la simulation"}
                 </button>
-
-                <p className="text-xs text-muted-foreground text-center">
-                  « Bonjour, Salon Élégance, comment puis-je vous aider ? … Parfait, je vous propose un créneau jeudi à 14h. »
-                </p>
               </div>
             </div>
           </div>

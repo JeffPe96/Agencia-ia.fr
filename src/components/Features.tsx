@@ -10,7 +10,7 @@ const features = [
   {
     icon: Moon,
     title: "Disponible 24/7",
-    desc: "Prise de rendez-vous même la nuit, le week-end et les jours fériés.",
+    desc: "L'IA répond jour et nuit, mais respecte vos horaires d'ouverture pour la prise de rendez-vous.",
   },
   {
     icon: CalendarSync,
