@@ -9,14 +9,13 @@ const PackCombo = () => (
           Pack <span className="text-primary">Digital Premium</span>
         </h2>
         <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
-          Combinez la puissance d'un agent vocal IA avec un site web professionnel clé en main.
+          Une visibilité totale : Site Web Pro + Agent IA. L'alliance parfaite pour ne plus jamais perdre d'opportunité.
         </p>
       </ScrollReveal>
 
       <ScrollReveal delay={100}>
         <div className="max-w-3xl mx-auto card-soft bg-gradient-to-br from-primary/[0.04] to-accent/[0.04] p-0 overflow-hidden">
           <div className="grid md:grid-cols-2">
-            {/* Agent IA */}
             <div className="p-8 border-b md:border-b-0 md:border-r border-border/30">
               <div className="w-12 h-12 rounded-2xl bg-primary/[0.08] flex items-center justify-center mb-5">
                 <Sparkles className="text-primary" size={22} />
@@ -30,7 +29,6 @@ const PackCombo = () => (
               </ul>
             </div>
 
-            {/* Site web */}
             <div className="p-8">
               <div className="w-12 h-12 rounded-2xl bg-accent/[0.08] flex items-center justify-center mb-5">
                 <Globe className="text-accent" size={22} />

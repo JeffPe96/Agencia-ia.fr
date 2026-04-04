@@ -10,7 +10,7 @@ const features = [
   {
     icon: Moon,
     title: "Disponible 24/7",
-    desc: "L'IA répond jour et nuit, mais respecte vos horaires d'ouverture pour la prise de rendez-vous.",
+    desc: "L'Agent IA répond jour et nuit, mais respecte vos horaires d'ouverture pour la prise de rendez-vous.",
   },
   {
     icon: CalendarSync,
@@ -29,7 +29,7 @@ const Features = () => (
     <div className="container mx-auto px-4">
       <ScrollReveal>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Pourquoi choisir <span className="text-primary">vocalAI</span> ?
+          Pourquoi choisir <span className="text-primary">AgencIA</span> ?
         </h2>
         <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
           Quatre fonctionnalités clés qui transforment la gestion de vos appels.

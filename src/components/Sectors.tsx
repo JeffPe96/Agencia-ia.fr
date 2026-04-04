@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Scissors, PawPrint, UtensilsCrossed, Sparkles } from "lucide-react";
+import { Scissors, PawPrint, UtensilsCrossed, Sparkles, HelpCircle } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const sectors = [
@@ -7,25 +7,32 @@ const sectors = [
     id: "coiffure",
     icon: Scissors,
     label: "Coiffure",
-    text: "Vos clients réservent en 30 secondes, même pendant que vous coiffez. Fini les appels entre deux coupes.",
+    text: "Vos clients réservent en 30 secondes, même pendant que vous coiffez. Vous sublimez les cheveux, laissez-nous gérer le téléphone.",
   },
   {
     id: "toilettage",
     icon: PawPrint,
     label: "Toilettage",
-    text: "L'IA prend les rendez-vous et pose les bonnes questions : race, taille, type de soin. Vous vous occupez des poils, pas du téléphone.",
+    text: "L'Agent IA prend les rendez-vous et pose les bonnes questions : race, taille, type de soin. Vous vous occupez des poils, pas du téléphone.",
   },
   {
     id: "restauration",
     icon: UtensilsCrossed,
     label: "Restauration",
-    text: "L'IA gère les réservations de tables et les commandes à emporter selon vos horaires d'ouverture. Plus un seul appel manqué en plein rush.",
+    text: "L'Agent IA gère les réservations de tables et les demandes d'horaires selon vos disponibilités. Plus un seul appel manqué en plein rush.",
   },
   {
     id: "bien-etre",
     icon: Sparkles,
     label: "Bien-être",
-    text: "Spas, instituts de beauté, coachs : offrez une expérience premium dès le premier appel.",
+    text: "Spas, instituts de beauté, salles de sport & studios : une expérience premium dès le premier appel.",
+  },
+  {
+    id: "autre",
+    icon: HelpCircle,
+    label: "Votre secteur ?",
+    text: "Votre métier n'est pas listé ? Nous créons des agents sur-mesure pour tout type d'activité. Contactez-nous pour en discuter.",
+    cta: true,
   },
 ];
 
@@ -41,7 +48,7 @@ const Sectors = () => {
             Adapté à votre secteur
           </h2>
           <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
-            Une IA entraînée pour les besoins spécifiques de chaque métier.
+            Un Agent IA entraîné pour les besoins spécifiques de chaque métier.
           </p>
         </ScrollReveal>
 
@@ -70,6 +77,11 @@ const Sectors = () => {
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">{current.label}</h3>
               <p className="text-muted-foreground leading-relaxed">{current.text}</p>
+              {"cta" in current && current.cta && (
+                <a href="#contact" className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl inline-block mt-5">
+                  Nous contacter
+                </a>
+              )}
             </div>
           </div>
         </ScrollReveal>

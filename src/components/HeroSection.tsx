@@ -14,7 +14,7 @@ const HeroSection = () => (
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
             Ne manquez plus jamais un client.{" "}
-            <span className="text-primary">Laissez votre IA répondre.</span>
+            <span className="text-primary">Laissez votre Agent IA répondre.</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -33,9 +33,11 @@ const HeroSection = () => (
             </a>
           </div>
 
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-muted-foreground/60 text-sm">
-            <span>✓ Mise en service rapide (48h-72h)</span>
+          <div className="mt-16 flex flex-wrap items-center justify-center gap-x-2 gap-y-3 text-muted-foreground/60 text-sm">
+            <span>✓ Mise en service rapide</span>
+            <span className="hidden sm:inline text-muted-foreground/30">·</span>
             <span>✓ Sans engagement</span>
+            <span className="hidden sm:inline text-muted-foreground/30">·</span>
             <span>✓ Support dédié</span>
           </div>
         </div>

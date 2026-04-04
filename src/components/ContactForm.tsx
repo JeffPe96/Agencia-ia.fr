@@ -13,6 +13,7 @@ import ScrollReveal from "./ScrollReveal";
 
 const ContactForm = () => {
   const [type, setType] = useState("");
+  const [interest, setInterest] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -83,6 +84,20 @@ const ContactForm = () => {
                     <Textarea placeholder="Décrivez votre activité…" required className="rounded-xl" />
                   </div>
                 )}
+
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Je suis intéressé par</label>
+                  <Select value={interest} onValueChange={setInterest} required>
+                    <SelectTrigger className="rounded-xl">
+                      <SelectValue placeholder="Choisissez une option" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="agent-ia">Agent IA uniquement</SelectItem>
+                      <SelectItem value="site-web">Site Web uniquement</SelectItem>
+                      <SelectItem value="pack-complet">Pack Complet (Agent + Site)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
                 <button type="submit" className="btn-primary-neu w-full text-base px-8 py-4 rounded-2xl flex items-center justify-center gap-2">
                   <Send size={18} />
