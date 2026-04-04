@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import AgencIALogo from "./AgencIALogo";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <a href="#" className="text-xl font-bold tracking-tight text-foreground">
-          vocal<span className="text-primary">AI</span>
+          <AgencIALogo />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -28,7 +29,7 @@ const Navbar = () => {
             </a>
           ))}
           <a href="#contact" className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl">
-            Essayer l'IA
+            Essayer l'Agent IA
           </a>
         </div>
 
@@ -59,7 +60,7 @@ const Navbar = () => {
               onClick={() => setOpen(false)}
               className="btn-primary-neu text-sm text-center px-6 py-2.5 rounded-xl"
             >
-              Essayer l'IA
+              Essayer l'Agent IA
             </a>
           </div>
         </div>

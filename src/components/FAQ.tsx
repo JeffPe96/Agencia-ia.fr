@@ -9,31 +9,31 @@ import ScrollReveal from "./ScrollReveal";
 const items = [
   {
     q: "C'est compliqué à installer ?",
-    a: "Pas du tout. Nous configurons tout pour vous en 48 à 72 heures. Vous n'avez rien à faire techniquement.",
+    a: "C'est nous qui gérons tout. Après un court échange pour comprendre vos besoins, nous configurons votre agent de A à Z. Aucun équipement spécial n'est requis.",
   },
   {
     q: "Combien ça coûte ?",
     a: "Nous proposons des forfaits adaptés aux petits commerces, à partir de 49 €/mois. Réservez une démo pour obtenir un devis personnalisé.",
   },
   {
-    q: "L'IA comprend-elle bien les demandes ?",
-    a: "Oui. Notre IA est entraînée sur les conversations réelles de votre secteur. Elle comprend les accents, les hésitations et les demandes complexes.",
+    q: "L'Agent Vocal comprend-il bien les demandes ?",
+    a: "Oui. Notre Agent Vocal est entraîné sur les conversations réelles de votre secteur. Il comprend les accents, les hésitations et les demandes complexes.",
   },
   {
     q: "Mes clients vont-ils savoir que c'est un robot ?",
-    a: "La voix est très naturelle et chaleureuse. La plupart des clients ne font pas la différence avec un humain.",
+    a: "La voix est si naturelle que la majorité des clients ne voient pas la différence. Possibilité de cloner votre propre voix (Option Premium).",
   },
   {
     q: "Puis-je garder le contrôle sur mon agenda ?",
-    a: "Absolument. Vous définissez vos créneaux, vos pauses et vos indisponibilités. L'IA répond 24h/24 et 7j/7, mais elle respecte strictement vos horaires d'ouverture pour la prise de rendez-vous.",
+    a: "Absolument. Vous définissez vos créneaux, vos pauses et vos indisponibilités. L'Agent IA répond 24h/24 et 7j/7, mais respecte strictement vos horaires d'ouverture. Option de validation manuelle : l'agent propose le créneau, et vous recevez une notification pour accepter ou refuser.",
   },
   {
-    q: "Peut-on personnaliser la voix de l'IA ?",
+    q: "Peut-on personnaliser la voix de l'Agent IA ?",
     a: "Oui, vous pouvez choisir parmi plusieurs voix et ajuster le ton pour qu'il corresponde parfaitement à l'image de votre établissement.",
   },
   {
     q: "Est-ce facile à utiliser au quotidien ?",
-    a: "Très simple. Une fois configuré, tout est automatique. Vous pouvez consulter vos rendez-vous et ajuster vos disponibilités depuis une interface intuitive.",
+    a: "Très simple. Une fois configuré, tout est automatique. Vous suivez vos rendez-vous via une interface simple et intuitive (compatible Google Calendar, Calendly, etc.).",
   },
 ];
 
