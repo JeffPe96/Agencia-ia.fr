@@ -12,7 +12,7 @@ const HeroSection = () => (
             Agent Vocal IA pour commerces locaux
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
             Ne manquez plus jamais un client.{" "}
             <span className="text-primary">Laissez votre Agent IA répondre.</span>
           </h1>

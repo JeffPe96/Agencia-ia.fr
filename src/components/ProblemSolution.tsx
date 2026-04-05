@@ -14,6 +14,10 @@ const steps = [
     problem: "Interruptions permanentes",
     solution: "Concentration totale sur votre métier",
   },
+  {
+    problem: "Planning vide à cause des oublis de rendez-vous",
+    solution: "Relances automatiques par SMS pour confirmer chaque présence",
+  },
 ];
 
 const STEP_DELAY = 1800;
