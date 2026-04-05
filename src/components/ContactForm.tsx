@@ -93,7 +93,6 @@ const ContactForm = () => {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="agent-ia">Agent IA uniquement</SelectItem>
-                      <SelectItem value="site-web">Site Web uniquement</SelectItem>
                       <SelectItem value="pack-complet">Pack Complet (Agent + Site)</SelectItem>
                     </SelectContent>
                   </Select>

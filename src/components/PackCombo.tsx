@@ -35,9 +35,9 @@ const PackCombo = () => (
               </div>
               <h3 className="text-lg font-semibold mb-3 text-foreground">Site Web Professionnel</h3>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Design moderne et responsive</li>
-                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Optimisé pour le référencement</li>
-                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Réservation en ligne intégrée</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Design sur-mesure</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Optimisé mobile</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Prêt pour Google (SEO)</li>
                 <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Hébergement et maintenance inclus</li>
               </ul>
             </div>

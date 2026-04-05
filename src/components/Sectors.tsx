@@ -7,7 +7,7 @@ const sectors = [
     id: "coiffure",
     icon: Scissors,
     label: "Coiffure",
-    text: "Vos clients réservent en 30 secondes, même pendant que vous coiffez. Vous sublimez les cheveux, laissez-nous gérer le téléphone.",
+    text: "Gérez vos clients en toute sérénité. L'Agent IA s'occupe des réservations pendant que vous créez. Vous sublimez les cheveux, laissez-nous gérer le téléphone.",
   },
   {
     id: "toilettage",
@@ -25,7 +25,7 @@ const sectors = [
     id: "bien-etre",
     icon: Sparkles,
     label: "Bien-être",
-    text: "Spas, instituts de beauté, salles de sport & studios : une expérience premium dès le premier appel.",
+    text: "Spas, instituts de beauté, salles de sport & studios : accueil VIP immédiat. Offrez à vos clients la réactivité d'un grand spa, même si vous travaillez seul.",
   },
   {
     id: "autre",
