@@ -51,6 +51,13 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217 91% 53%;
   }
+
+  /* Force light mode even when system prefers dark */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: light;
+    }
+  }
 }
 
 @layer base {
@@ -65,13 +72,90 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', sans-serif;
-    background-image:
-      radial-gradient(circle at 20% 20%, hsl(217 91% 53% / 0.04) 0%, transparent 50%),
-      radial-gradient(circle at 80% 60%, hsl(260 60% 60% / 0.03) 0%, transparent 50%),
-      radial-gradient(circle at 50% 90%, hsl(160 84% 39% / 0.02) 0%, transparent 40%),
-      radial-gradient(circle 1px at center, hsl(220 13% 80% / 0.3) 1px, transparent 1px);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
+    position: relative;
+    overflow-x: hidden;
   }
+}
+
+/* Animated gradient blobs background */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.animated-bg .blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.18;
+  animation: blob-float 20s ease-in-out infinite;
+}
+
+.animated-bg .blob:nth-child(1) {
+  width: 600px;
+  height: 600px;
+  background: hsl(217 91% 53% / 0.4);
+  top: -10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.animated-bg .blob:nth-child(2) {
+  width: 500px;
+  height: 500px;
+  background: hsl(260 60% 60% / 0.35);
+  top: 30%;
+  right: -10%;
+  animation-delay: -7s;
+  animation-duration: 25s;
+}
+
+.animated-bg .blob:nth-child(3) {
+  width: 400px;
+  height: 400px;
+  background: hsl(160 84% 39% / 0.25);
+  bottom: 5%;
+  left: 20%;
+  animation-delay: -14s;
+  animation-duration: 30s;
+}
+
+.animated-bg .blob:nth-child(4) {
+  width: 350px;
+  height: 350px;
+  background: hsl(217 91% 53% / 0.3);
+  bottom: 30%;
+  right: 20%;
+  animation-delay: -3s;
+  animation-duration: 22s;
+}
+
+@keyframes blob-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(60px, -40px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 50px) scale(0.95);
+  }
+  75% {
+    transform: translate(40px, 20px) scale(1.05);
+  }
+}
+
+/* Dot pattern overlay */
+.dot-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle 1px at center, hsl(220 13% 80% / 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 @layer components {
@@ -115,7 +199,7 @@
   }
 
   .card-soft {
-    @apply bg-card rounded-3xl p-8 transition-all duration-300;
+    @apply bg-card/90 backdrop-blur-sm rounded-3xl p-8 transition-all duration-300;
     box-shadow: var(--shadow-soft);
   }
 

@@ -12,7 +12,7 @@ const FinalCTA = () => (
             Rejoignez les commerçants qui ne manquent plus aucun appel. Démo gratuite, sans engagement.
           </p>
           <a href="#contact" className="btn-primary-neu text-base px-10 py-4 rounded-2xl inline-block">
-            Réserver ma démo gratuite
+            Passez votre commerce à l'ère de l'Agent IA
           </a>
         </div>
       </ScrollReveal>
