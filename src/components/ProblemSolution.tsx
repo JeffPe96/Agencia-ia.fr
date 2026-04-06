@@ -7,16 +7,12 @@ const steps = [
     solution: "Chaque appel est pris, sans exception",
   },
   {
-    problem: "Clients qui partent à la concurrence",
-    solution: "Clients satisfaits dès le premier contact",
+    problem: "Planning complexe à gérer",
+    solution: "Organisation fluide et automatique de vos rendez-vous",
   },
   {
     problem: "Interruptions permanentes",
     solution: "Concentration totale sur votre métier",
-  },
-  {
-    problem: "Planning vide à cause des oublis de rendez-vous",
-    solution: "Relances automatiques par SMS pour confirmer chaque présence",
   },
 ];
 
@@ -78,16 +74,13 @@ const ProblemSolution = () => {
               }`}
             >
               <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 sm:gap-4 items-center">
-                {/* Problem */}
                 <div className="card-soft border border-destructive/10 bg-destructive/[0.02] px-5 py-4 flex items-center gap-3">
                   <span className="text-destructive text-lg shrink-0">✗</span>
                   <p className="text-sm text-muted-foreground">{step.problem}</p>
                 </div>
 
-                {/* Arrow */}
                 <span className="hidden sm:block text-muted-foreground/40 text-xl">→</span>
 
-                {/* Solution */}
                 <div
                   className={`card-soft border border-accent/10 bg-accent/[0.02] px-5 py-4 flex items-center gap-3 transition-all duration-500 ${
                     i <= showSolution ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"

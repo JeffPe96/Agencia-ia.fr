@@ -7,7 +7,7 @@ const sectors = [
     id: "coiffure",
     icon: Scissors,
     label: "Coiffure",
-    text: "Gérez vos clients en toute sérénité. L'Agent IA s'occupe des réservations pendant que vous créez. Vous sublimez les cheveux, laissez-nous gérer le téléphone.",
+    text: "L'Agent IA identifie le type de soin et réserve le créneau idéal. Sublimez vos clients, l'IA gère le temps.",
   },
   {
     id: "toilettage",
@@ -19,13 +19,13 @@ const sectors = [
     id: "restauration",
     icon: UtensilsCrossed,
     label: "Restauration",
-    text: "L'Agent IA gère les réservations de tables et les demandes d'horaires selon vos disponibilités. Plus un seul appel manqué en plein rush.",
+    text: "Gestion des réservations de tables et réponses immédiates aux questions de vos clients (carte, horaires, accès).",
   },
   {
     id: "bien-etre",
     icon: Sparkles,
     label: "Bien-être",
-    text: "Spas, instituts de beauté, salles de sport & studios : accueil VIP immédiat. Offrez à vos clients la réactivité d'un grand spa, même si vous travaillez seul.",
+    text: "Offrez un accueil VIP immédiat pour vos centres de soin, spas ou salles de sport.",
   },
   {
     id: "autre",

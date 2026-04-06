@@ -29,7 +29,7 @@ const ContactForm = () => {
             Réservez votre <span className="text-primary">démo gratuite</span>
           </h2>
           <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
-            Remplissez le formulaire et nous vous recontactons sous 24h pour une démonstration personnalisée.
+            Chaque entreprise est unique. Parlons de vos besoins pour créer votre Agent IA sur-mesure.
           </p>
         </ScrollReveal>
 
