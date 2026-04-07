@@ -62,7 +62,7 @@ const Footer = () => {
             </Dialog>
 
             <a
-              href="https://wa.me/"
+              href="https://wa.me/33651626514"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-accent/10 text-accent font-medium px-4 py-2 rounded-xl hover:bg-accent/20 transition-colors"
