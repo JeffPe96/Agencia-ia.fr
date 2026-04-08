@@ -2,22 +2,23 @@ import { Sparkles, Globe, Check } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const PackCombo = () => (
-  <section className="py-24">
+  <section className="py-28">
     <div className="container mx-auto px-4">
       <ScrollReveal>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Offre</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Pack <span className="text-primary">Digital Premium</span>
+          Pack <span className="text-gradient">Digital Premium</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
-          Une visibilité totale : Site Web Pro + Agent IA. L'alliance parfaite pour ne plus jamais perdre d'opportunité.
+        <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
+          Site Web Pro + Agent IA. L'alliance parfaite pour ne plus jamais perdre d'opportunité.
         </p>
       </ScrollReveal>
 
       <ScrollReveal delay={100}>
-        <div className="max-w-3xl mx-auto card-soft bg-gradient-to-br from-primary/[0.04] to-accent/[0.04] p-0 overflow-hidden">
+        <div className="max-w-3xl mx-auto card-glass p-0 overflow-hidden">
           <div className="grid md:grid-cols-2">
-            <div className="p-8 border-b md:border-b-0 md:border-r border-border/30">
-              <div className="w-12 h-12 rounded-2xl bg-primary/[0.08] flex items-center justify-center mb-5">
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border/20">
+              <div className="w-12 h-12 rounded-2xl bg-primary/[0.06] flex items-center justify-center mb-5">
                 <Sparkles className="text-primary" size={22} />
               </div>
               <h3 className="text-lg font-semibold mb-3 text-foreground">Agent Vocal IA</h3>
@@ -30,7 +31,7 @@ const PackCombo = () => (
             </div>
 
             <div className="p-8">
-              <div className="w-12 h-12 rounded-2xl bg-accent/[0.08] flex items-center justify-center mb-5">
+              <div className="w-12 h-12 rounded-2xl bg-accent/[0.06] flex items-center justify-center mb-5">
                 <Globe className="text-accent" size={22} />
               </div>
               <h3 className="text-lg font-semibold mb-3 text-foreground">Site Web Professionnel</h3>
@@ -43,7 +44,7 @@ const PackCombo = () => (
             </div>
           </div>
 
-          <div className="border-t border-border/30 px-8 py-6 text-center bg-primary/[0.02]">
+          <div className="border-t border-border/20 px-8 py-6 text-center">
             <p className="text-sm text-muted-foreground mb-4">
               Un seul interlocuteur, une solution complète pour votre visibilité digitale.
             </p>

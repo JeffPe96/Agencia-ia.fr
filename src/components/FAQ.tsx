@@ -25,7 +25,7 @@ const items = [
   },
   {
     q: "Puis-je garder le contrôle sur mon agenda ?",
-    a: "Absolument. Vous définissez vos créneaux, vos pauses et vos indisponibilités. L'Agent IA répond 24h/24 et 7j/7, mais respecte strictement vos horaires d'ouverture. Option de validation manuelle : l'agent propose le créneau, et vous recevez une notification pour accepter ou refuser.",
+    a: "Absolument. Vous définissez vos créneaux, vos pauses et vos indisponibilités. L'Agent IA respecte strictement vos horaires d'ouverture.",
   },
   {
     q: "Peut-on personnaliser la voix de l'Agent IA ?",
@@ -33,18 +33,19 @@ const items = [
   },
   {
     q: "Est-ce facile à utiliser au quotidien ?",
-    a: "Très simple. Une fois configuré, tout est automatique. Vous suivez vos rendez-vous via une interface simple et intuitive (compatible Google Calendar, Calendly, etc.).",
+    a: "Très simple. Une fois configuré, tout est automatique. Vous suivez vos rendez-vous via une interface simple et intuitive.",
   },
 ];
 
 const FAQ = () => (
-  <section id="faq" className="py-24 bg-secondary/30">
+  <section id="faq" className="py-28">
     <div className="container mx-auto px-4">
       <ScrollReveal>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">FAQ</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Questions fréquentes
+          Questions <span className="text-gradient">fréquentes</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
+        <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
           Tout ce que vous devez savoir avant de démarrer.
         </p>
       </ScrollReveal>
@@ -56,7 +57,7 @@ const FAQ = () => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                className="card-soft border-none px-6 py-1"
+                className="card-glass border-border/30 px-6 py-1"
               >
                 <AccordionTrigger className="text-left text-sm font-semibold hover:no-underline text-foreground">
                   {item.q}
