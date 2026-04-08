@@ -41,13 +41,14 @@ const Sectors = () => {
   const current = sectors.find((s) => s.id === active)!;
 
   return (
-    <section id="secteurs" className="py-24">
+    <section id="secteurs" className="py-28">
       <div className="container mx-auto px-4">
         <ScrollReveal>
+          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Secteurs</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-            Adapté à votre secteur
+            Adapté à <span className="text-gradient">votre secteur</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
+          <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
             Un Agent IA entraîné pour les besoins spécifiques de chaque métier.
           </p>
         </ScrollReveal>
@@ -59,10 +60,10 @@ const Sectors = () => {
                 <button
                   key={s.id}
                   onClick={() => setActive(s.id)}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 border ${
                     active === s.id
-                      ? "bg-primary text-primary-foreground shadow-glow"
-                      : "bg-secondary text-muted-foreground hover:text-foreground"
+                      ? "bg-primary text-primary-foreground border-primary shadow-glow"
+                      : "bg-card/60 text-muted-foreground border-border/50 hover:text-foreground hover:border-border"
                   }`}
                 >
                   <s.icon size={16} />
@@ -71,8 +72,8 @@ const Sectors = () => {
               ))}
             </div>
 
-            <div className="card-soft text-center animate-fade-in-up" key={current.id}>
-              <div className="w-14 h-14 rounded-2xl bg-primary/[0.08] flex items-center justify-center mx-auto mb-5">
+            <div className="card-glass text-center animate-fade-in-up" key={current.id}>
+              <div className="w-14 h-14 rounded-2xl bg-primary/[0.06] flex items-center justify-center mx-auto mb-5">
                 <current.icon className="text-primary" size={24} />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">{current.label}</h3>

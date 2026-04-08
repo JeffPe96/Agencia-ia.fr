@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +7,7 @@
 @layer base {
   :root, .light, [data-theme="light"] {
     color-scheme: light;
-    --background: 0 0% 100%;
+    --background: 220 20% 98%;
     --foreground: 220 13% 18%;
     --card: 0 0% 100%;
     --card-foreground: 220 13% 18%;
@@ -36,11 +36,11 @@
 
     --radius: 1.5rem;
 
-    --shadow-soft: 0 4px 24px -4px hsl(220 13% 18% / 0.06);
-    --shadow-medium: 0 8px 32px -8px hsl(220 13% 18% / 0.1);
-    --shadow-glow: 0 0 24px -4px hsl(217 91% 53% / 0.2);
-    --shadow-neu: 6px 6px 12px hsl(220 14% 90%), -6px -6px 12px hsl(0 0% 100%);
-    --shadow-neu-inset: inset 4px 4px 8px hsl(220 14% 90%), inset -4px -4px 8px hsl(0 0% 100%);
+    --shadow-soft: 0 1px 3px 0 hsl(220 13% 18% / 0.04), 0 1px 2px -1px hsl(220 13% 18% / 0.04);
+    --shadow-medium: 0 4px 16px -4px hsl(220 13% 18% / 0.08), 0 2px 4px -2px hsl(220 13% 18% / 0.04);
+    --shadow-glow: 0 0 24px -4px hsl(217 91% 53% / 0.15);
+    --shadow-neu: 0 1px 3px hsl(220 14% 90%), 0 -1px 2px hsl(0 0% 100%);
+    --shadow-neu-inset: inset 0 2px 4px hsl(220 14% 90%), inset 0 -2px 4px hsl(0 0% 100%);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -89,36 +89,36 @@
 .animated-bg .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.18;
+  filter: blur(120px);
+  opacity: 0.12;
   animation: blob-float 20s ease-in-out infinite;
 }
 
 .animated-bg .blob:nth-child(1) {
-  width: 600px;
-  height: 600px;
-  background: hsl(217 91% 53% / 0.4);
-  top: -10%;
-  left: -5%;
+  width: 700px;
+  height: 700px;
+  background: hsl(217 91% 60% / 0.5);
+  top: -15%;
+  left: -10%;
   animation-delay: 0s;
 }
 
 .animated-bg .blob:nth-child(2) {
   width: 500px;
   height: 500px;
-  background: hsl(260 60% 60% / 0.35);
-  top: 30%;
+  background: hsl(190 80% 50% / 0.3);
+  top: 25%;
   right: -10%;
   animation-delay: -7s;
   animation-duration: 25s;
 }
 
 .animated-bg .blob:nth-child(3) {
-  width: 400px;
-  height: 400px;
-  background: hsl(160 84% 39% / 0.25);
+  width: 450px;
+  height: 450px;
+  background: hsl(260 60% 65% / 0.2);
   bottom: 5%;
-  left: 20%;
+  left: 15%;
   animation-delay: -14s;
   animation-duration: 30s;
 }
@@ -126,9 +126,9 @@
 .animated-bg .blob:nth-child(4) {
   width: 350px;
   height: 350px;
-  background: hsl(217 91% 53% / 0.3);
+  background: hsl(190 90% 55% / 0.25);
   bottom: 30%;
-  right: 20%;
+  right: 15%;
   animation-delay: -3s;
   animation-duration: 22s;
 }
@@ -154,13 +154,13 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle 1px at center, hsl(220 13% 80% / 0.25) 1px, transparent 1px);
-  background-size: 24px 24px;
+  background-image: radial-gradient(circle 1px at center, hsl(220 13% 80% / 0.15) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 @layer components {
   .glass {
-    @apply bg-background/80 backdrop-blur-xl border-b border-border/50;
+    @apply bg-background/70 backdrop-blur-2xl border-b border-border/30;
   }
 
   .shadow-soft {
@@ -183,23 +183,41 @@
     box-shadow: var(--shadow-neu-inset);
   }
 
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(217 91% 53%), hsl(190 80% 50%));
+  }
+
   .btn-primary-neu {
-    @apply bg-primary text-primary-foreground font-semibold rounded-2xl px-8 py-4 transition-all duration-300;
-    box-shadow: 0 4px 16px -2px hsl(217 91% 53% / 0.35);
+    @apply bg-primary text-primary-foreground font-semibold rounded-2xl px-8 py-4 transition-all duration-300 relative overflow-hidden;
+    box-shadow: 0 2px 8px -2px hsl(217 91% 53% / 0.3);
   }
 
   .btn-primary-neu:hover {
-    box-shadow: 0 6px 24px -2px hsl(217 91% 53% / 0.45);
+    box-shadow: 0 4px 20px -2px hsl(217 91% 53% / 0.45), 0 0 40px -8px hsl(190 80% 50% / 0.2);
     transform: translateY(-1px);
   }
 
   .btn-primary-neu:active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px -2px hsl(217 91% 53% / 0.3);
+    box-shadow: 0 1px 4px -2px hsl(217 91% 53% / 0.3);
+  }
+
+  .card-glass {
+    @apply bg-card/60 backdrop-blur-xl rounded-3xl p-8 transition-all duration-300;
+    border: 1px solid hsl(220 13% 91% / 0.6);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .card-glass:hover {
+    box-shadow: var(--shadow-medium);
+    border-color: hsl(217 91% 53% / 0.15);
+    transform: translateY(-2px);
   }
 
   .card-soft {
-    @apply bg-card/90 backdrop-blur-sm rounded-3xl p-8 transition-all duration-300;
+    @apply bg-card/80 backdrop-blur-sm rounded-3xl p-8 transition-all duration-300;
+    border: 1px solid hsl(220 13% 91% / 0.5);
     box-shadow: var(--shadow-soft);
   }
 

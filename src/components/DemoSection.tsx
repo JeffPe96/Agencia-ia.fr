@@ -41,34 +41,55 @@ const DemoSection = () => {
   const currentSubtitle = [...subtitles].reverse().find((s) => elapsed >= s.time);
   const progress = (elapsed / TOTAL_DURATION) * 100;
 
+  // Generate wave bars
+  const bars = Array.from({ length: 40 }, (_, i) => i);
+
   return (
-    <section id="demo" className="py-24 bg-secondary/30">
+    <section id="demo" className="py-28">
       <div className="container mx-auto px-4">
         <ScrollReveal>
+          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Démo live</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-            L'Agent IA en action
+            Écoutez la <span className="text-gradient">différence</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
-            Découvrez comment l'Agent IA gère une prise de rendez-vous réelle dans un salon de coiffure.
+          <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
+            Une voix humaine, pas un robot. Découvrez comment l'Agent IA gère un appel.
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={150}>
           <div className="max-w-lg mx-auto">
-            <div className="card-soft shadow-neu p-0 overflow-hidden">
-              <div className="bg-primary/[0.04] px-8 py-5 flex items-center gap-4 border-b border-border/50">
-                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
-                  <Phone className="text-accent" size={18} />
+            <div className="card-glass p-0 overflow-hidden">
+              <div className="px-8 py-5 flex items-center gap-4 border-b border-border/30">
+                <div className="w-10 h-10 rounded-full bg-primary/[0.06] flex items-center justify-center">
+                  <Phone className="text-primary" size={18} />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-foreground">Salon Élégance — Appel entrant</p>
-                  <p className="text-xs text-muted-foreground">Simulation Agent IA • Coiffeur</p>
+                  <p className="text-xs text-muted-foreground">Simulation Agent IA</p>
                 </div>
               </div>
 
               <div className="px-8 py-8 flex flex-col items-center gap-6">
+                {/* Sound wave visualization */}
+                <div className="w-full h-12 flex items-center justify-center gap-[2px]">
+                  {bars.map((i) => (
+                    <div
+                      key={i}
+                      className="w-[3px] rounded-full transition-all duration-150"
+                      style={{
+                        height: playing
+                          ? `${Math.max(8, Math.random() * 40)}px`
+                          : '8px',
+                        backgroundColor: `hsl(217 91% ${50 + Math.sin(i * 0.3) * 15}%)`,
+                        opacity: playing ? 0.7 : 0.2,
+                      }}
+                    />
+                  ))}
+                </div>
+
                 <div className="w-full space-y-2">
-                  <Progress value={progress} className="h-2 rounded-full" />
+                  <Progress value={progress} className="h-1.5 rounded-full" />
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <span>{Math.floor(elapsed)}s</span>
                     <span>{TOTAL_DURATION}s</span>
@@ -96,8 +117,8 @@ const DemoSection = () => {
               </div>
             </div>
 
-            <p className="text-xs text-muted-foreground/60 text-center mt-4 max-w-sm mx-auto">
-              Ceci est un exemple. Chaque agent est unique et configuré sur-mesure selon les valeurs et les besoins de votre entreprise.
+            <p className="text-xs text-muted-foreground/50 text-center mt-6 max-w-sm mx-auto">
+              Ceci est un exemple. Chaque agent est configuré sur-mesure pour votre entreprise.
             </p>
           </div>
         </ScrollReveal>
