@@ -5,8 +5,9 @@ const Portfolio = () => (
   <section className="py-24">
     <div className="container mx-auto px-4">
       <ScrollReveal>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Expertise Digitale</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Nos <span className="text-primary">Réalisations Web</span>
+          Nos <span className="text-gradient">Réalisations Web</span>
         </h2>
         <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
           Expertise Web : Nous concevons des plateformes modernes et performantes pour nos clients.

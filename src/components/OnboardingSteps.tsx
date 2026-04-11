@@ -34,7 +34,7 @@ const OnboardingSteps = () => (
       <ScrollReveal>
         <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Processus</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Comment ça <span className="text-gradient">marche</span> ?
+          Votre transformation en <span className="text-gradient">4 étapes</span>
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
           Un processus simple et transparent, de l'échange initial au lancement.
@@ -59,6 +59,12 @@ const OnboardingSteps = () => (
           ))}
         </div>
       </div>
+
+      <ScrollReveal delay={500}>
+        <p className="text-xs text-muted-foreground/60 text-center mt-10 max-w-lg mx-auto italic">
+          *Le processus pour la création de site web suit une méthodologie similaire, centrée sur votre image de marque.
+        </p>
+      </ScrollReveal>
     </div>
   </section>
 );

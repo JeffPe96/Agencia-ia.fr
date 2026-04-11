@@ -28,8 +28,8 @@ const Index = () => (
       <FAQ />
       <Portfolio />
       <PackCombo />
-      <ContactForm />
       <OnboardingSteps />
+      <ContactForm />
       <Footer />
     </div>
     <ScrollToTop />
