@@ -62,7 +62,7 @@ const OnboardingSteps = () => (
 
       <ScrollReveal delay={500}>
         <p className="text-xs text-muted-foreground/60 text-center mt-10 max-w-lg mx-auto italic">
-          *Le processus pour la création de site web suit une méthodologie similaire, centrée sur votre image de marque.
+          *Notre approche s'adapte aussi bien à l'IA qu'à vos projets Web.
         </p>
       </ScrollReveal>
     </div>

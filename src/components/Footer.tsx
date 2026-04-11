@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
 
         <p className="text-center text-xs text-muted-foreground/40 mt-8">
-          © 2024 AgencIA — Solutions Digitales & Vocales Innovantes. Tous droits réservés.
+          © 2024 AgencIA — Solutions Digitales & Vocales Innovantes pour les commerçants visionnaires. Tous droits réservés.
         </p>
       </div>
     </footer>
