@@ -1,39 +1,41 @@
-import { PhoneForwarded, Languages, Brain, CalendarSync } from "lucide-react";
+import { MessageSquareText, CalendarCheck, PhoneForwarded, FileText } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const features = [
   {
+    icon: MessageSquareText,
+    title: "ChatBot IA (Web)",
+    desc: "Bien plus qu'un chatbot classique. Un vendeur expert 24/7 qui guide vos clients et booste vos conversions e-commerce.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Prise de RDV Intelligente",
+    desc: "Synchronisation native avec Google Calendar, Cal.com, et vos outils métier via Zapier & Make.",
+  },
+  {
     icon: PhoneForwarded,
-    title: "Transfert Intelligent",
-    desc: "L'IA vous passe la main si une intervention humaine est requise. Zéro appel perdu.",
+    title: "Transfert d'Appel Instantané",
+    desc: "Redirection fluide vers un humain si l'IA détecte un besoin spécifique. Compatible Aircall, Ringover.",
   },
   {
-    icon: Languages,
-    title: "Support Multilingue",
-    desc: "Capacité de répondre en plusieurs langues naturellement, sans configuration supplémentaire.",
-  },
-  {
-    icon: Brain,
-    title: "Analyse de Sentiment",
-    desc: "L'IA détecte l'urgence ou l'humeur du client pour adapter son ton en temps réel.",
-  },
-  {
-    icon: CalendarSync,
-    title: "Synchro Temps Réel",
-    desc: "Mise à jour automatique de vos agendas (Google Calendar, Calendly, etc.).",
+    icon: FileText,
+    title: "Intelligence Post-Appel",
+    desc: "Résumés automatiques et retranscriptions envoyés directement par email après chaque échange.",
   },
 ];
+
+const integrations = ["Google Calendar", "Zapier", "Make", "Aircall", "Cal.com"];
 
 const Features = () => (
   <section id="avantages" className="py-28">
     <div className="container mx-auto px-4">
       <ScrollReveal>
-        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Fonctionnalités avancées</p>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Nos Solutions</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Pourquoi choisir <span className="text-gradient">AgencIA</span> ?
+          Des outils <span className="text-gradient">d'automatisation d'élite</span>
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
-          Une technologie de pointe au service de votre commerce.
+          Une suite complète pour ne plus jamais perdre une opportunité.
         </p>
       </ScrollReveal>
 
@@ -50,6 +52,17 @@ const Features = () => (
           </ScrollReveal>
         ))}
       </div>
+
+      <ScrollReveal delay={500}>
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-3">
+          <span className="text-xs text-muted-foreground/60 mr-2">Compatible avec</span>
+          {integrations.map((name) => (
+            <span key={name} className="text-xs bg-secondary/80 text-muted-foreground px-3 py-1.5 rounded-full border border-border/30 font-medium">
+              {name}
+            </span>
+          ))}
+        </div>
+      </ScrollReveal>
     </div>
   </section>
 );

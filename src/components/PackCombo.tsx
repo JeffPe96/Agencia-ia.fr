@@ -27,7 +27,7 @@ const PackCombo = () => (
                 <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Gestion des rendez-vous</li>
                 <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Voix naturelle personnalisée</li>
                 <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Synchronisation agenda</li>
-                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Intégration native de votre Agent IA</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> ChatBot Web IA intégré nativement</li>
               </ul>
             </div>
 

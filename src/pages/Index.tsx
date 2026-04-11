@@ -12,6 +12,7 @@ import Portfolio from "@/components/Portfolio";
 import PackCombo from "@/components/PackCombo";
 import ContactForm from "@/components/ContactForm";
 import OnboardingSteps from "@/components/OnboardingSteps";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import Footer from "@/components/Footer";
 
 const Index = () => (
@@ -28,6 +29,7 @@ const Index = () => (
       <FAQ />
       <Portfolio />
       <PackCombo />
+      <WhyChooseUs />
       <OnboardingSteps />
       <ContactForm />
       <Footer />
