@@ -27,6 +27,7 @@ const PackCombo = () => (
                 <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Gestion des rendez-vous</li>
                 <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Voix naturelle personnalisée</li>
                 <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Synchronisation agenda</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Intégration native de votre Agent IA</li>
               </ul>
             </div>
 
@@ -36,9 +37,10 @@ const PackCombo = () => (
               </div>
               <h3 className="text-lg font-semibold mb-3 text-foreground">Site Web Professionnel</h3>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Design sur-mesure</li>
-                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Optimisé mobile</li>
-                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Prêt pour Google (SEO)</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Site Haute Performance (Vitesse optimisée)</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Référencement SEO (Visible sur Google)</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Design Responsive (Mobile & Tablette)</li>
+                <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Interface d'administration autonome</li>
                 <li className="flex items-start gap-2"><Check size={16} className="text-accent mt-0.5 shrink-0" /> Hébergement et maintenance inclus</li>
               </ul>
             </div>

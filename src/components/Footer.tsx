@@ -16,7 +16,7 @@ const Footer = () => {
               <AgencIALogo />
             </a>
             <p className="text-xs text-muted-foreground mt-1">
-              Solutions Vocales Innovantes
+              L'alliance de la performance web et de l'intelligence vocale.
             </p>
           </div>
 
@@ -65,7 +65,7 @@ const Footer = () => {
               href="https://wa.me/33651626514"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-primary/[0.06] text-primary font-medium px-4 py-2 rounded-xl hover:bg-primary/[0.12] transition-colors"
+              className="inline-flex items-center gap-2 bg-accent/[0.08] text-accent font-medium px-4 py-2 rounded-xl hover:bg-accent/[0.15] transition-colors border border-accent/20"
             >
               <MessageCircle size={18} />
               WhatsApp
@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
 
         <p className="text-center text-xs text-muted-foreground/40 mt-8">
-          © 2024 AgencIA — Solutions Vocales Innovantes. Tous droits réservés.
+          © 2024 AgencIA — Solutions Digitales & Vocales Innovantes. Tous droits réservés.
         </p>
       </div>
     </footer>
