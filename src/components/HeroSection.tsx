@@ -6,7 +6,7 @@ import ScrollReveal from "./ScrollReveal";
 const HeroSection = () => {
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLSectionElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [scrollScale, setScrollScale] = useState(1);
   const navigate = useNavigate();
 
