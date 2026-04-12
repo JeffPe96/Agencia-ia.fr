@@ -6,8 +6,9 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { label: "Avantages", href: "#avantages" },
-    { label: "Secteurs", href: "#secteurs" },
+    { label: "Vocal IA", href: "#avantages" },
+    { label: "Expertise Web", href: "#portfolio" },
+    { label: "Notre Processus", href: "#processus" },
     { label: "FAQ", href: "#faq" },
   ];
 
@@ -28,8 +29,8 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl">
-            Essayer l'Agent IA
+          <a href="#contact" className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl animate-[pulse-glow_3s_ease-in-out_infinite]">
+            Contactez-nous
           </a>
         </div>
 
@@ -60,7 +61,7 @@ const Navbar = () => {
               onClick={() => setOpen(false)}
               className="btn-primary-neu text-sm text-center px-6 py-2.5 rounded-xl"
             >
-              Essayer l'Agent IA
+              Contactez-nous
             </a>
           </div>
         </div>
