@@ -1,109 +1,189 @@
-import { useEffect, useRef, useState } from "react";
-import { Mic, Code } from "lucide-react";
+import { useEffect, useRef, useState, useMemo } from "react";
+import { Mic, Code, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import ScrollReveal from "./ScrollReveal";
+import Sparkles from "./Sparkles";
+
+const TITLE = "AgencIA";
 
 const HeroSection = () => {
-  const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const [scrollScale, setScrollScale] = useState(1);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [visibleLetters, setVisibleLetters] = useState(0);
+  const [showSubtitle, setShowSubtitle] = useState(false);
   const navigate = useNavigate();
 
+  // Typewriter effect
   useEffect(() => {
-    const timer = setTimeout(() => {
-      leftRef.current?.classList.add("hero-card-visible");
-      rightRef.current?.classList.add("hero-card-visible");
-    }, 400);
-    return () => clearTimeout(timer);
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setVisibleLetters(i);
+      if (i >= TITLE.length) {
+        clearInterval(interval);
+        setTimeout(() => setShowSubtitle(true), 300);
+      }
+    }, 120);
+    return () => clearInterval(interval);
   }, []);
 
+  // Scroll-based media expansion
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, -rect.top / (rect.height * 0.4)));
-      setScrollScale(1 + progress * 0.15);
+      const sectionHeight = rect.height;
+      const scrolled = -rect.top;
+      // Start expanding after 10vh, complete at 60vh
+      const start = sectionHeight * 0.1;
+      const end = sectionHeight * 0.55;
+      const progress = Math.max(0, Math.min(1, (scrolled - start) / (end - start)));
+      setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Derived values from scroll progress
+  const containerWidth = useMemo(() => {
+    // From 40% width to 92% width
+    return 40 + scrollProgress * 52;
+  }, [scrollProgress]);
+
+  const containerOpacity = useMemo(() => {
+    // Fade in from 0 to 1 in first 30% of scroll
+    return Math.min(1, scrollProgress / 0.3);
+  }, [scrollProgress]);
+
+  const containerScale = useMemo(() => {
+    return 0.85 + scrollProgress * 0.15;
+  }, [scrollProgress]);
+
+  const borderRadius = useMemo(() => {
+    // From 2rem to 1rem
+    return 2 - scrollProgress * 1;
+  }, [scrollProgress]);
+
   return (
-    <section ref={sectionRef} className="relative min-h-[92vh] flex items-center pt-24 overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
-        <ScrollReveal>
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/[0.06] border border-primary/[0.1] text-primary text-sm font-medium mb-8">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse-soft" />
-              Solutions IA &amp; Web pour commerces locaux
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.08] mb-6">
-              Ne manquez plus jamais un client.{" "}
-              <span className="text-gradient">Laissez l'IA travailler pour vous.</span>
+    <section
+      ref={sectionRef}
+      className="relative min-h-[180vh] pt-24"
+    >
+      {/* Sticky viewport */}
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* Sparkles + Typewriter title */}
+        <div className="text-center mb-12 px-4">
+          <Sparkles className="px-6 py-4">
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
+              {TITLE.split("").map((letter, i) => (
+                <span
+                  key={i}
+                  className={`inline-block transition-all duration-500 ${
+                    i < visibleLetters
+                      ? "opacity-100 translate-y-0 blur-0"
+                      : "opacity-0 translate-y-4 blur-sm"
+                  } ${
+                    // "IA" part gets gradient
+                    i >= TITLE.length - 2
+                      ? "bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(260,60%,58%)]"
+                      : "text-foreground"
+                  }`}
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                >
+                  {letter}
+                </span>
+              ))}
             </h1>
+          </Sparkles>
 
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-16 leading-relaxed font-light">
-              Automatisez vos appels et créez votre vitrine digitale —&nbsp;tout-en-un, sur-mesure.
-            </p>
-          </div>
-        </ScrollReveal>
+          {/* Subtitle */}
+          <p
+            className={`mt-6 text-lg sm:text-xl text-muted-foreground font-light max-w-xl mx-auto transition-all duration-700 ${
+              showSubtitle
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-3"
+            }`}
+          >
+            Solutions IA &amp; Web pour commerces locaux
+          </p>
 
-        {/* Dual Action Cards with scroll zoom */}
-        <div
-          className="flex flex-col sm:flex-row items-stretch justify-center gap-6 max-w-3xl mx-auto transition-transform duration-100 ease-out"
-          style={{ transform: `scale(${scrollScale})` }}
-        >
-          {/* VocalAgencIA */}
-          <div ref={leftRef} className="hero-card-left flex-1">
-            <button
-              onClick={() => navigate("/vocal")}
-              className="card-glass group flex flex-col items-center text-center h-full p-8 hover:border-primary/30 relative overflow-hidden w-full cursor-pointer"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-primary/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-glow transition-shadow duration-500">
-                  <Mic className="text-primary" size={28} />
-                </div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-primary/70 mb-2">VocalAgencIA</p>
-                <h3 className="text-lg font-bold text-foreground mb-3">Automatiser mes appels</h3>
-                <ul className="text-sm text-muted-foreground leading-relaxed space-y-1">
-                  <li>IA Vocale 24h/7</li>
-                  <li>Réservation Automatique</li>
-                  <li>Transfert Intelligent</li>
-                </ul>
-              </div>
-            </button>
-          </div>
-
-          {/* WebAgencIA */}
-          <div ref={rightRef} className="hero-card-right flex-1">
-            <button
-              onClick={() => navigate("/web")}
-              className="card-glass group flex flex-col items-center text-center h-full p-8 hover:border-accent/30 relative overflow-hidden w-full cursor-pointer"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-accent/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-[0_0_24px_-4px_hsl(160_84%_39%/0.25)] transition-shadow duration-500">
-                  <Code className="text-accent" size={28} />
-                </div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-accent/70 mb-2">WebAgencIA</p>
-                <h3 className="text-lg font-bold text-foreground mb-3">Créer mon site web</h3>
-                <ul className="text-sm text-muted-foreground leading-relaxed space-y-1">
-                  <li>Sites Haute Performance</li>
-                  <li>SEO Optimisé</li>
-                  <li>Design Sur-Mesure</li>
-                </ul>
-              </div>
-            </button>
+          {/* Scroll hint */}
+          <div
+            className={`mt-10 flex flex-col items-center gap-2 transition-all duration-500 ${
+              scrollProgress > 0.1 ? "opacity-0" : "opacity-60"
+            }`}
+          >
+            <span className="text-xs text-muted-foreground/60 uppercase tracking-widest">Scrollez pour découvrir</span>
+            <div className="w-5 h-8 rounded-full border border-border/50 flex items-start justify-center p-1.5">
+              <div className="w-1 h-2 rounded-full bg-primary/40 animate-bounce" />
+            </div>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-muted-foreground/50 text-sm">
-          <span>✓ Mise en service rapide</span>
-          <span>✓ Sans engagement</span>
-          <span>✓ Support dédié</span>
+        {/* Expanding media container */}
+        <div
+          className="absolute transition-none"
+          style={{
+            width: `${containerWidth}%`,
+            maxWidth: "1200px",
+            opacity: containerOpacity,
+            transform: `scale(${containerScale})`,
+            borderRadius: `${borderRadius}rem`,
+            bottom: `${8 - scrollProgress * 3}%`,
+          }}
+        >
+          <div
+            className="bg-card/50 backdrop-blur-xl border border-border/40 overflow-hidden"
+            style={{ borderRadius: `${borderRadius}rem` }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20">
+              {/* VocalAgencIA Card */}
+              <button
+                onClick={() => navigate("/vocal")}
+                className="group relative flex flex-col items-center text-center p-8 sm:p-10 bg-card/60 hover:bg-card/80 transition-all duration-500 cursor-pointer"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-primary/[0.06] border border-primary/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-[0_0_20px_-4px_hsl(217_91%_53%/0.2)] transition-all duration-500">
+                    <Mic className="text-primary" size={24} />
+                  </div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/60 mb-2">VocalAgencIA</p>
+                  <h3 className="text-lg font-bold text-foreground mb-3">Automatiser mes appels</h3>
+                  <ul className="text-sm text-muted-foreground space-y-1.5 mb-5">
+                    <li>IA Vocale 24h/7</li>
+                    <li>Réservation Automatique</li>
+                    <li>Transfert Intelligent</li>
+                  </ul>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary/70 group-hover:text-primary transition-colors">
+                    Découvrir <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </div>
+              </button>
+
+              {/* WebAgencIA Card */}
+              <button
+                onClick={() => navigate("/web")}
+                className="group relative flex flex-col items-center text-center p-8 sm:p-10 bg-card/60 hover:bg-card/80 transition-all duration-500 cursor-pointer"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-accent/[0.06] border border-accent/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-[0_0_20px_-4px_hsl(160_84%_39%/0.2)] transition-all duration-500">
+                    <Code className="text-accent" size={24} />
+                  </div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent/60 mb-2">WebAgencIA</p>
+                  <h3 className="text-lg font-bold text-foreground mb-3">Créer mon site web</h3>
+                  <ul className="text-sm text-muted-foreground space-y-1.5 mb-5">
+                    <li>Sites Haute Performance</li>
+                    <li>SEO Optimisé</li>
+                    <li>Design Sur-Mesure</li>
+                  </ul>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent/70 group-hover:text-accent transition-colors">
+                    Découvrir <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
