@@ -2,6 +2,7 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import ScrollToTop from "@/components/ScrollToTop";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import SectionBanner from "@/components/SectionBanner";
 import ProblemSolution from "@/components/ProblemSolution";
 import Features from "@/components/Features";
 import DemoSection from "@/components/DemoSection";
@@ -21,15 +22,23 @@ const Index = () => (
     <div className="relative z-10">
       <Navbar />
       <HeroSection />
+
+      {/* ── VocalAgencIA pillar ── */}
+      <SectionBanner text="VocalAgencIA : Ne manquez plus aucun client." variant="primary" />
       <ProblemSolution />
       <Features />
       <DemoSection />
       <Sectors />
+
       <FinalCTA />
-      <FAQ />
+
+      {/* ── WebAgencIA pillar ── */}
+      <SectionBanner text="WebAgencIA : Votre vitrine digitale sur-mesure." variant="accent" />
       <Portfolio />
       <PackCombo />
+
       <WhyChooseUs />
+      <FAQ />
       <OnboardingSteps />
       <ContactForm />
       <Footer />
