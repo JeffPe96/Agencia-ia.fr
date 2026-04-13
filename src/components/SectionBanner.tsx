@@ -1,17 +1,19 @@
+import Sparkles from "./Sparkles";
+
 interface Props {
   text: string;
   variant?: "primary" | "accent";
 }
 
-const SectionBanner = ({ text, variant = "primary" }: Props) => (
-  <div
-    className={`py-5 text-center text-sm sm:text-base font-semibold uppercase tracking-widest ${
-      variant === "primary"
-        ? "bg-primary/[0.04] text-primary border-y border-primary/[0.08]"
-        : "bg-accent/[0.04] text-accent border-y border-accent/[0.08]"
-    }`}
-  >
-    {text}
+const SectionBanner = ({ text }: Props) => (
+  <div className="py-16 text-center">
+    <Sparkles className="px-8 py-4 mx-auto">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(260,60%,58%)]">
+          {text}
+        </span>
+      </h2>
+    </Sparkles>
   </div>
 );
 
