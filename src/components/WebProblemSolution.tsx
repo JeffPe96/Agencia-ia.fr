@@ -50,9 +50,9 @@ const WebProblemSolution = () => {
     <section className="py-28" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <ScrollReveal>
-          <p className="text-sm font-medium text-accent text-center mb-3 tracking-wide uppercase">Avant / Après</p>
+          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Avant / Après</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-            Le changement avec <span className="text-gradient">WebAgencIA</span>
+            Le changement avec <span className="text-gradient">Web AgencIA</span>
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
             Passez d'un site invisible à une vitrine digitale qui convertit.
@@ -74,11 +74,11 @@ const WebProblemSolution = () => {
                 </div>
                 <span className="hidden sm:block text-muted-foreground/30 text-xl">→</span>
                 <div
-                  className={`card-glass border-accent/10 bg-accent/[0.02] px-5 py-4 flex items-center gap-3 transition-all duration-500 ${
+                  className={`card-glass border-primary/10 bg-primary/[0.02] px-5 py-4 flex items-center gap-3 transition-all duration-500 ${
                     i <= showSolution ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
                   }`}
                 >
-                  <span className="text-accent text-lg shrink-0">✓</span>
+                  <span className="text-primary text-lg shrink-0">✓</span>
                   <p className="text-sm text-muted-foreground">{step.solution}</p>
                 </div>
               </div>

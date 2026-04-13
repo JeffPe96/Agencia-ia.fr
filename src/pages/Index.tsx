@@ -1,5 +1,6 @@
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ScrollToTop from "@/components/ScrollToTop";
+import GlobalSparkles from "@/components/GlobalSparkles";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -10,6 +11,7 @@ import Footer from "@/components/Footer";
 const Index = () => (
   <>
     <AnimatedBackground />
+    <GlobalSparkles />
     <div className="relative z-10">
       <Navbar />
       <HeroSection />

@@ -1,5 +1,6 @@
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ScrollToTop from "@/components/ScrollToTop";
+import GlobalSparkles from "@/components/GlobalSparkles";
 import Navbar from "@/components/Navbar";
 import SectionBanner from "@/components/SectionBanner";
 import ProblemSolution from "@/components/ProblemSolution";
@@ -14,17 +15,18 @@ import Footer from "@/components/Footer";
 const VocalPage = () => (
   <>
     <AnimatedBackground />
+    <GlobalSparkles />
     <div className="relative z-10">
       <Navbar />
       <div className="pt-20" />
-      <SectionBanner text="VocalAgencIA : Ne manquez plus aucun client." variant="primary" />
+      <SectionBanner text="Vocal AgencIA : Ne manquez plus aucun client." variant="primary" />
       <ProblemSolution />
       <Features />
       <DemoSection />
       <Sectors />
       <FAQ />
       <OnboardingSteps />
-      <ContactForm />
+      <ContactForm formContext="vocal" />
       <Footer />
     </div>
     <ScrollToTop />
