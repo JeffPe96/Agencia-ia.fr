@@ -8,8 +8,8 @@ const Navbar = () => {
   const location = useLocation();
 
   const links = [
-    { label: "Vocal IA", href: "/vocal" },
-    { label: "Expertise Web", href: "/web" },
+    { label: "Vocal AgencIA", href: "/vocal" },
+    { label: "Web AgencIA", href: "/web" },
     { label: "Tarifs", href: "/tarifs" },
     { label: "Notre Processus", href: "/#processus" },
   ];
@@ -46,9 +46,7 @@ const Navbar = () => {
             )
           )}
           <a
-            href="https://wa.me/33651626514"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl animate-[pulse-glow_3s_ease-in-out_infinite]"
           >
             Contactez-nous
@@ -89,9 +87,7 @@ const Navbar = () => {
               )
             )}
             <a
-              href="https://wa.me/33651626514"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               onClick={() => setOpen(false)}
               className="btn-primary-neu text-sm text-center px-6 py-2.5 rounded-xl"
             >

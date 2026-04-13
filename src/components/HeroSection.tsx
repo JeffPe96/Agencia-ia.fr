@@ -47,9 +47,9 @@ const HeroSection = () => {
   const borderRadius = useMemo(() => 2 - scrollProgress * 1, [scrollProgress]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[180vh] pt-24">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-        <div className="text-center mb-12 px-4">
+    <section ref={sectionRef} className="relative min-h-[200vh] pt-20">
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden px-4">
+        <div className="text-center mb-12">
           <Sparkles className="px-6 py-4">
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
               {TITLE.split("").map((letter, i) => (
@@ -95,7 +95,7 @@ const HeroSection = () => {
         <div
           className="absolute transition-none"
           style={{
-            width: `${containerWidth}%`,
+            width: `min(${containerWidth}%, calc(100% - 2rem))`,
             maxWidth: "1200px",
             opacity: containerOpacity,
             transform: `scale(${containerScale})`,

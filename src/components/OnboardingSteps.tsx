@@ -11,8 +11,8 @@ const steps = [
   {
     icon: Settings,
     number: "02",
-    title: "Configuration",
-    desc: "Entraînement et personnalisation de votre Agent IA avec vos scripts et votre ton de voix.",
+    title: "Mise en place",
+    desc: "Nous définissons ensemble vos attentes et configurons les bases de votre solution sur-mesure.",
   },
   {
     icon: TestTube,

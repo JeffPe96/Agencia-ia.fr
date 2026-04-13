@@ -24,6 +24,16 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef<{ x: number; y: number }>({ x: -1000, y: -1000 });
 
+  // Global mouse tracking for fullScreen mode
+  useEffect(() => {
+    if (!fullScreen) return;
+    const handleGlobalMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+    window.addEventListener("mousemove", handleGlobalMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleGlobalMove);
+  }, [fullScreen]);
+
   const createSparkle = useCallback((width: number, height: number): Sparkle => {
     return {
       x: Math.random() * width,
@@ -65,12 +75,14 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
       sparklesRef.current.push(createSparkle(rect.width, rect.height));
     }
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const r = container.getBoundingClientRect();
-      mouseRef.current = { x: e.clientX - r.left, y: e.clientY - r.top };
-    };
+    const handleMouseMove = fullScreen
+      ? null
+      : (e: MouseEvent) => {
+          const r = container.getBoundingClientRect();
+          mouseRef.current = { x: e.clientX - r.left, y: e.clientY - r.top };
+        };
 
-    container.addEventListener("mousemove", handleMouseMove);
+    if (handleMouseMove) container.addEventListener("mousemove", handleMouseMove);
 
     const REPEL_RADIUS = 120;
     const REPEL_FORCE = 2.5;
@@ -145,7 +157,7 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
     return () => {
       cancelAnimationFrame(animFrameRef.current);
       window.removeEventListener("resize", resize);
-      container.removeEventListener("mousemove", handleMouseMove);
+      if (handleMouseMove) container.removeEventListener("mousemove", handleMouseMove);
       sparklesRef.current = [];
     };
   }, [createSparkle, fullScreen]);
