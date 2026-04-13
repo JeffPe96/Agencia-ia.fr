@@ -11,8 +11,8 @@ const steps = [
   {
     icon: Settings,
     number: "02",
-    title: "Configuration",
-    desc: "Entraînement et personnalisation de votre Agent IA avec vos scripts et votre ton de voix.",
+    title: "Mise en place",
+    desc: "Nous définissons ensemble vos attentes et configurons les bases de votre solution sur-mesure.",
   },
   {
     icon: TestTube,
@@ -29,7 +29,7 @@ const steps = [
 ];
 
 const OnboardingSteps = () => (
-  <section className="py-28">
+  <section id="processus" className="py-28 scroll-mt-20">
     <div className="container mx-auto px-4">
       <ScrollReveal>
         <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Processus</p>

@@ -8,6 +8,7 @@ import VocalPage from "./pages/VocalPage.tsx";
 import WebPage from "./pages/WebPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ScrollToTopOnNav from "./components/ScrollToTopOnNav.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTopOnNav />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/vocal" element={<VocalPage />} />
