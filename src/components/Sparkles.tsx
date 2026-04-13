@@ -11,11 +11,18 @@ interface Sparkle {
   maxLife: number;
 }
 
-const Sparkles = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+interface SparklesProps {
+  children?: React.ReactNode;
+  className?: string;
+  fullScreen?: boolean;
+}
+
+const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sparklesRef = useRef<Sparkle[]>([]);
   const animFrameRef = useRef<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const mouseRef = useRef<{ x: number; y: number }>({ x: -1000, y: -1000 });
 
   const createSparkle = useCallback((width: number, height: number): Sparkle => {
     return {
@@ -38,33 +45,62 @@ const Sparkles = ({ children, className = "" }: { children: React.ReactNode; cla
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    let dpr = window.devicePixelRatio || 1;
+
     const resize = () => {
+      dpr = window.devicePixelRatio || 1;
       const rect = container.getBoundingClientRect();
-      canvas.width = rect.width * window.devicePixelRatio;
-      canvas.height = rect.height * window.devicePixelRatio;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
       canvas.style.width = `${rect.width}px`;
       canvas.style.height = `${rect.height}px`;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     resize();
 
-    // Initialize sparkles
     const rect = container.getBoundingClientRect();
-    for (let i = 0; i < 28; i++) {
+    const count = fullScreen ? 60 : 28;
+    for (let i = 0; i < count; i++) {
       sparklesRef.current.push(createSparkle(rect.width, rect.height));
     }
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const r = container.getBoundingClientRect();
+      mouseRef.current = { x: e.clientX - r.left, y: e.clientY - r.top };
+    };
+
+    container.addEventListener("mousemove", handleMouseMove);
+
+    const REPEL_RADIUS = 120;
+    const REPEL_FORCE = 2.5;
 
     const animate = () => {
       const r = container.getBoundingClientRect();
       ctx.clearRect(0, 0, r.width, r.height);
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
 
       sparklesRef.current.forEach((s, i) => {
         s.life++;
+        
+        // Mouse repel
+        const dx = s.x - mx;
+        const dy = s.y - my;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < REPEL_RADIUS && dist > 0) {
+          const force = (1 - dist / REPEL_RADIUS) * REPEL_FORCE;
+          s.speedX += (dx / dist) * force * 0.1;
+          s.speedY += (dy / dist) * force * 0.1;
+        }
+
+        // Damping
+        s.speedX *= 0.98;
+        s.speedY *= 0.98;
+
         s.x += s.speedX;
         s.y += s.speedY;
 
-        // Fade in then out
         const progress = s.life / s.maxLife;
         if (progress < 0.2) {
           s.opacity = progress / 0.2;
@@ -79,7 +115,6 @@ const Sparkles = ({ children, className = "" }: { children: React.ReactNode; cla
           return;
         }
 
-        // Draw sparkle with glow
         ctx.save();
         ctx.globalAlpha = s.opacity * 0.9;
         ctx.fillStyle = `hsl(217, 91%, ${65 + Math.random() * 20}%)`;
@@ -89,7 +124,6 @@ const Sparkles = ({ children, className = "" }: { children: React.ReactNode; cla
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Cross sparkle
         ctx.strokeStyle = `hsl(217, 91%, ${70 + Math.random() * 15}%)`;
         ctx.lineWidth = 0.5;
         ctx.globalAlpha = s.opacity * 0.5;
@@ -111,8 +145,18 @@ const Sparkles = ({ children, className = "" }: { children: React.ReactNode; cla
     return () => {
       cancelAnimationFrame(animFrameRef.current);
       window.removeEventListener("resize", resize);
+      container.removeEventListener("mousemove", handleMouseMove);
+      sparklesRef.current = [];
     };
-  }, [createSparkle]);
+  }, [createSparkle, fullScreen]);
+
+  if (fullScreen) {
+    return (
+      <div ref={containerRef} className="fixed inset-0 pointer-events-none z-0">
+        <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className={`relative inline-block ${className}`}>

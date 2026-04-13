@@ -28,8 +28,8 @@ const items = [
     a: "Hébergement, mises à jour de sécurité, sauvegardes régulières et support technique. Vous n'avez à vous soucier de rien.",
   },
   {
-    q: "Peut-on intégrer l'Agent IA sur mon site ?",
-    a: "Bien sûr ! C'est même notre spécialité. Le ChatBot IA et l'Agent Vocal peuvent être intégrés nativement à votre site web.",
+    q: "Peut-on intégrer un ChatBot IA sur mon site ?",
+    a: "Bien sûr ! Notre ChatBot IA Web agit comme un vendeur expert 24/7, guidant vos visiteurs et boostant vos conversions. En complément, l'Agent Vocal AgencIA gère vos appels téléphoniques pour une automatisation à 360°.",
   },
 ];
 
@@ -37,7 +37,7 @@ const WebFAQ = () => (
   <section id="faq" className="py-28">
     <div className="container mx-auto px-4">
       <ScrollReveal>
-        <p className="text-sm font-medium text-accent text-center mb-3 tracking-wide uppercase">FAQ</p>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">FAQ</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
           Questions <span className="text-gradient">fréquentes — Web</span>
         </h2>

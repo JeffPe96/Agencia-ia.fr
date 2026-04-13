@@ -12,7 +12,6 @@ const HeroSection = () => {
   const [showSubtitle, setShowSubtitle] = useState(false);
   const navigate = useNavigate();
 
-  // Typewriter effect
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
@@ -26,14 +25,12 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Scroll-based media expansion
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const sectionHeight = rect.height;
       const scrolled = -rect.top;
-      // Start expanding after 10vh, complete at 60vh
       const start = sectionHeight * 0.1;
       const end = sectionHeight * 0.55;
       const progress = Math.max(0, Math.min(1, (scrolled - start) / (end - start)));
@@ -44,34 +41,14 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Derived values from scroll progress
-  const containerWidth = useMemo(() => {
-    // From 40% width to 92% width
-    return 40 + scrollProgress * 52;
-  }, [scrollProgress]);
-
-  const containerOpacity = useMemo(() => {
-    // Fade in from 0 to 1 in first 30% of scroll
-    return Math.min(1, scrollProgress / 0.3);
-  }, [scrollProgress]);
-
-  const containerScale = useMemo(() => {
-    return 0.85 + scrollProgress * 0.15;
-  }, [scrollProgress]);
-
-  const borderRadius = useMemo(() => {
-    // From 2rem to 1rem
-    return 2 - scrollProgress * 1;
-  }, [scrollProgress]);
+  const containerWidth = useMemo(() => 40 + scrollProgress * 52, [scrollProgress]);
+  const containerOpacity = useMemo(() => Math.min(1, scrollProgress / 0.3), [scrollProgress]);
+  const containerScale = useMemo(() => 0.85 + scrollProgress * 0.15, [scrollProgress]);
+  const borderRadius = useMemo(() => 2 - scrollProgress * 1, [scrollProgress]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-[180vh] pt-24"
-    >
-      {/* Sticky viewport */}
+    <section ref={sectionRef} className="relative min-h-[180vh] pt-24">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Sparkles + Typewriter title */}
         <div className="text-center mb-12 px-4">
           <Sparkles className="px-6 py-4">
             <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
@@ -83,7 +60,6 @@ const HeroSection = () => {
                       ? "opacity-100 translate-y-0 blur-0"
                       : "opacity-0 translate-y-4 blur-sm"
                   } ${
-                    // "IA" part gets gradient
                     i >= TITLE.length - 2
                       ? "bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(260,60%,58%)]"
                       : "text-foreground"
@@ -96,18 +72,14 @@ const HeroSection = () => {
             </h1>
           </Sparkles>
 
-          {/* Subtitle */}
           <p
             className={`mt-6 text-lg sm:text-xl text-muted-foreground font-light max-w-xl mx-auto transition-all duration-700 ${
-              showSubtitle
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-3"
+              showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
           >
             Solutions IA &amp; Web pour commerces locaux
           </p>
 
-          {/* Scroll hint */}
           <div
             className={`mt-10 flex flex-col items-center gap-2 transition-all duration-500 ${
               scrollProgress > 0.1 ? "opacity-0" : "opacity-60"
@@ -120,7 +92,6 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Expanding media container */}
         <div
           className="absolute transition-none"
           style={{
@@ -137,7 +108,7 @@ const HeroSection = () => {
             style={{ borderRadius: `${borderRadius}rem` }}
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20">
-              {/* VocalAgencIA Card */}
+              {/* Vocal AgencIA Card */}
               <button
                 onClick={() => navigate("/vocal")}
                 className="group relative flex flex-col items-center text-center p-8 sm:p-10 bg-card/60 hover:bg-card/80 transition-all duration-500 cursor-pointer"
@@ -147,7 +118,7 @@ const HeroSection = () => {
                   <div className="w-14 h-14 rounded-2xl bg-primary/[0.06] border border-primary/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-[0_0_20px_-4px_hsl(217_91%_53%/0.2)] transition-all duration-500">
                     <Mic className="text-primary" size={24} />
                   </div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/60 mb-2">VocalAgencIA</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/60 mb-2">Vocal AgencIA</p>
                   <h3 className="text-lg font-bold text-foreground mb-3">Automatiser mes appels</h3>
                   <ul className="text-sm text-muted-foreground space-y-1.5 mb-5">
                     <li>IA Vocale 24h/7</li>
@@ -160,24 +131,24 @@ const HeroSection = () => {
                 </div>
               </button>
 
-              {/* WebAgencIA Card */}
+              {/* Web AgencIA Card */}
               <button
                 onClick={() => navigate("/web")}
                 className="group relative flex flex-col items-center text-center p-8 sm:p-10 bg-card/60 hover:bg-card/80 transition-all duration-500 cursor-pointer"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[hsl(260,60%,58%)]/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-accent/[0.06] border border-accent/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-[0_0_20px_-4px_hsl(160_84%_39%/0.2)] transition-all duration-500">
-                    <Code className="text-accent" size={24} />
+                  <div className="w-14 h-14 rounded-2xl bg-[hsl(260,60%,58%)]/[0.06] border border-[hsl(260,60%,58%)]/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-[0_0_20px_-4px_hsl(260_60%_58%/0.2)] transition-all duration-500">
+                    <Code className="text-[hsl(260,60%,58%)]" size={24} />
                   </div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent/60 mb-2">WebAgencIA</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[hsl(260,60%,58%)]/60 mb-2">Web AgencIA</p>
                   <h3 className="text-lg font-bold text-foreground mb-3">Créer mon site web</h3>
                   <ul className="text-sm text-muted-foreground space-y-1.5 mb-5">
                     <li>Sites Haute Performance</li>
                     <li>SEO Optimisé</li>
                     <li>Design Sur-Mesure</li>
                   </ul>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent/70 group-hover:text-accent transition-colors">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[hsl(260,60%,58%)]/70 group-hover:text-[hsl(260,60%,58%)] transition-colors">
                     Découvrir <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
                   </span>
                 </div>

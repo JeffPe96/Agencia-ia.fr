@@ -4,10 +4,32 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ScrollReveal from "./ScrollReveal";
 
-const ContactForm = () => {
+interface ContactFormProps {
+  formContext?: "vocal" | "web" | "global";
+}
+
+const interestOptions: Record<string, { value: string; label: string }[]> = {
+  vocal: [
+    { value: "Vocal AgencIA uniquement", label: "Vocal AgencIA uniquement" },
+    { value: "Pack Complet AgencIA (Vocal + Web)", label: "Pack Complet AgencIA (Vocal + Web)" },
+  ],
+  web: [
+    { value: "Web AgencIA uniquement", label: "Web AgencIA uniquement" },
+    { value: "Pack Complet AgencIA (Vocal + Web)", label: "Pack Complet AgencIA (Vocal + Web)" },
+  ],
+  global: [
+    { value: "Vocal AgencIA uniquement", label: "Vocal AgencIA uniquement" },
+    { value: "Web AgencIA uniquement", label: "Web AgencIA uniquement" },
+    { value: "Pack Complet AgencIA (Vocal + Web)", label: "Pack Complet AgencIA (Vocal + Web)" },
+  ],
+};
+
+const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
   const [type, setType] = useState("");
   const [interest, setInterest] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const options = interestOptions[formContext];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,7 +55,7 @@ const ContactForm = () => {
             Réservez votre <span className="text-gradient">démo gratuite</span>
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
-            Chaque entreprise est unique. Parlons de vos besoins pour créer votre Agent IA sur-mesure.
+            Chaque entreprise est unique. Parlons de vos besoins pour créer votre solution sur-mesure.
           </p>
         </ScrollReveal>
 
@@ -101,8 +123,9 @@ const ContactForm = () => {
                     className="flex h-10 w-full rounded-xl border border-border/50 bg-background/50 px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     <option value="" disabled>Choisissez une option</option>
-                    <option value="Agent IA uniquement">Agent IA uniquement</option>
-                    <option value="Pack Complet (Agent + Site)">Pack Complet (Agent + Site)</option>
+                    {options.map((opt) => (
+                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
                   </select>
                 </div>
 

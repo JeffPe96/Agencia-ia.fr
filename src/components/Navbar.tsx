@@ -10,8 +10,8 @@ const Navbar = () => {
   const links = [
     { label: "Vocal IA", href: "/vocal" },
     { label: "Expertise Web", href: "/web" },
+    { label: "Tarifs", href: "/tarifs" },
     { label: "Notre Processus", href: "/#processus" },
-    { label: "FAQ", href: "/#faq" },
   ];
 
   const isRoute = (href: string) => !href.startsWith("/#");

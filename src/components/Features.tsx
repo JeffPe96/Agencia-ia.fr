@@ -1,21 +1,21 @@
-import { MessageSquareText, CalendarCheck, PhoneForwarded, FileText } from "lucide-react";
+import { CalendarCheck, PhoneForwarded, FileText, Mic } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const features = [
   {
-    icon: MessageSquareText,
-    title: "ChatBot IA (Web)",
-    desc: "Bien plus qu'un chatbot classique. Un vendeur expert 24/7 qui guide vos clients et booste vos conversions e-commerce.",
+    icon: Mic,
+    title: "Agent Vocal IA 24/7",
+    desc: "Une voix naturelle qui répond à vos clients jour et nuit, sans attente ni interruption.",
   },
   {
     icon: CalendarCheck,
     title: "Prise de RDV Intelligente",
-    desc: "Synchronisation native avec Google Calendar, Cal.com, et vos outils métier via Zapier & Make.",
+    desc: "Synchronisation native avec Google Calendar, Cal.com, et vos outils métier.",
   },
   {
     icon: PhoneForwarded,
     title: "Transfert d'Appel Instantané",
-    desc: "Redirection fluide vers un humain si l'IA détecte un besoin spécifique. Compatible Aircall, Ringover.",
+    desc: "Redirection fluide vers un humain si l'IA détecte un besoin spécifique.",
   },
   {
     icon: FileText,
@@ -23,8 +23,6 @@ const features = [
     desc: "Résumés automatiques et retranscriptions envoyés directement par email après chaque échange.",
   },
 ];
-
-const integrations = ["Google Calendar", "Zapier", "Make", "Aircall", "Cal.com"];
 
 const Features = () => (
   <section id="avantages" className="py-28">
@@ -52,17 +50,6 @@ const Features = () => (
           </ScrollReveal>
         ))}
       </div>
-
-      <ScrollReveal delay={500}>
-        <div className="mt-14 flex flex-wrap items-center justify-center gap-3">
-          <span className="text-xs text-muted-foreground/60 mr-2">Compatible avec</span>
-          {integrations.map((name) => (
-            <span key={name} className="text-xs bg-secondary/80 text-muted-foreground px-3 py-1.5 rounded-full border border-border/30 font-medium">
-              {name}
-            </span>
-          ))}
-        </div>
-      </ScrollReveal>
     </div>
   </section>
 );
