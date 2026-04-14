@@ -18,7 +18,7 @@ const WebPage = () => (
     <div className="relative z-10">
       <Navbar />
       <div className="pt-20" />
-      <SectionBanner text="Web AgencIA : Votre vitrine digitale sur-mesure." variant="accent" />
+      <SectionBanner text="Web AgencIA :" subtitle="Votre vitrine digitale sur-mesure." variant="accent" />
       <WebProblemSolution />
       <WebFeatures />
       <Portfolio />
