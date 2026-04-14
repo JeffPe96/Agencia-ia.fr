@@ -29,7 +29,7 @@ const steps = [
 ];
 
 const OnboardingSteps = () => (
-  <section id="processus" className="py-20 scroll-mt-[120px]">
+  <section id="processus" className="py-20 scroll-mt-[160px]">
     <div className="container mx-auto px-4">
       <ScrollReveal>
         <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Processus</p>
