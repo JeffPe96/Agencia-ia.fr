@@ -16,17 +16,24 @@ const Navbar = () => {
 
   const isRoute = (href: string) => !href.startsWith("/#");
 
+  const handleLinkClick = (e: React.MouseEvent, href: string) => {
+    // If already on this page, scroll to top
+    if (location.pathname === href) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const handleAnchorClick = (e: React.MouseEvent, href: string) => {
     const [path, hash] = href.split("#");
     if (location.pathname === path || (path === "/" && location.pathname === "/")) {
       e.preventDefault();
       const el = document.getElementById(hash);
       if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 120;
+        const top = el.getBoundingClientRect().top + window.scrollY - 160;
         window.scrollTo({ top, behavior: "smooth" });
       }
     }
-    // else: normal <a> navigation to path#hash
   };
 
   const handleContactClick = (e: React.MouseEvent) => {
@@ -35,10 +42,17 @@ const Navbar = () => {
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="text-xl font-bold tracking-tight text-foreground">
+        <Link to="/" onClick={handleLogoClick} className="text-xl font-bold tracking-tight text-foreground">
           <AgencIALogo />
         </Link>
 
@@ -48,6 +62,7 @@ const Navbar = () => {
               <Link
                 key={l.href}
                 to={l.href}
+                onClick={(e) => handleLinkClick(e, l.href)}
                 className={`text-sm font-medium transition-colors ${
                   location.pathname === l.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
@@ -65,6 +80,7 @@ const Navbar = () => {
               </a>
             )
           )}
+
           <button
             onClick={handleContactClick}
             className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl animate-[pulse-glow_3s_ease-in-out_infinite]"
@@ -90,7 +106,7 @@ const Navbar = () => {
                 <Link
                   key={l.href}
                   to={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => { handleLinkClick(e, l.href); setOpen(false); }}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
                 >
                   {l.label}

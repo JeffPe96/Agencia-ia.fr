@@ -30,8 +30,8 @@ const HeroSection = () => {
       const rect = sectionRef.current.getBoundingClientRect();
       const sectionHeight = rect.height;
       const scrolled = -rect.top;
-      const start = sectionHeight * 0.1;
-      const end = sectionHeight * 0.55;
+      const start = sectionHeight * 0.05;
+      const end = sectionHeight * 0.3;
       const progress = Math.max(0, Math.min(1, (scrolled - start) / (end - start)));
       setScrollProgress(progress);
     };
@@ -40,13 +40,13 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const containerWidth = useMemo(() => 40 + scrollProgress * 52, [scrollProgress]);
-  const containerOpacity = useMemo(() => Math.min(1, scrollProgress / 0.3), [scrollProgress]);
-  const containerScale = useMemo(() => 0.85 + scrollProgress * 0.15, [scrollProgress]);
-  const borderRadius = useMemo(() => 2 - scrollProgress * 1, [scrollProgress]);
+  const containerWidth = useMemo(() => 50 + scrollProgress * 42, [scrollProgress]);
+  const containerOpacity = useMemo(() => Math.min(1, scrollProgress / 0.15), [scrollProgress]);
+  const containerScale = useMemo(() => 0.9 + scrollProgress * 0.1, [scrollProgress]);
+  const borderRadius = useMemo(() => 1.5 - scrollProgress * 0.8, [scrollProgress]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[180vh] pt-20 overflow-x-hidden">
+    <section ref={sectionRef} className="relative min-h-[150vh] pt-20 overflow-x-hidden">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden px-4">
         <div className="text-center mb-12">
           <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
