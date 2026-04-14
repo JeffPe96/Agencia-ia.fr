@@ -25,7 +25,7 @@ const reasons = [
 ];
 
 const WhyChooseUs = () => (
-  <section className="py-20">
+  <section className="py-14">
     <div className="container mx-auto px-4">
       <ScrollReveal>
         <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Nos Engagements</p>
