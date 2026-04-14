@@ -106,7 +106,7 @@ const Navbar = () => {
                 <Link
                   key={l.href}
                   to={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => { handleLinkClick(e, l.href); setOpen(false); }}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
                 >
                   {l.label}
