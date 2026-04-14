@@ -96,20 +96,19 @@ const Navbar = () => {
                 <a
                   key={l.href}
                   href={l.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => { handleAnchorClick(e, l.href); setOpen(false); }}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
                 >
                   {l.label}
                 </a>
               )
             )}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
+            <button
+              onClick={(e) => { handleContactClick(e); setOpen(false); }}
               className="btn-primary-neu text-sm text-center px-6 py-2.5 rounded-xl"
             >
               Contactez-nous
-            </a>
+            </button>
           </div>
         </div>
       )}
