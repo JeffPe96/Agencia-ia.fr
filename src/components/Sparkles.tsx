@@ -70,7 +70,8 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
     resize();
 
     const rect = container.getBoundingClientRect();
-    const count = fullScreen ? 60 : 28;
+    const isMobile = rect.width < 768;
+    const count = fullScreen ? (isMobile ? 20 : 60) : (isMobile ? 12 : 28);
     for (let i = 0; i < count; i++) {
       sparklesRef.current.push(createSparkle(rect.width, rect.height));
     }

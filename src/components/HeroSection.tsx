@@ -47,7 +47,7 @@ const HeroSection = () => {
   const borderRadius = useMemo(() => 2 - scrollProgress * 1, [scrollProgress]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[200vh] pt-20">
+    <section ref={sectionRef} className="relative min-h-[200vh] pt-20 overflow-x-hidden">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden px-4">
         <div className="text-center mb-12">
           <Sparkles className="px-6 py-4">

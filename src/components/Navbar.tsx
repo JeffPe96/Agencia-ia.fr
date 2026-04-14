@@ -11,10 +11,26 @@ const Navbar = () => {
     { label: "Vocal AgencIA", href: "/vocal" },
     { label: "Web AgencIA", href: "/web" },
     { label: "Tarifs", href: "/tarifs" },
-    { label: "Notre Processus", href: "/#processus" },
+    { label: "Notre Processus", href: "/#processus", isAnchor: true },
   ];
 
   const isRoute = (href: string) => !href.startsWith("/#");
+
+  const handleAnchorClick = (e: React.MouseEvent, href: string) => {
+    const [path, hash] = href.split("#");
+    if (location.pathname === path || (path === "/" && location.pathname === "/")) {
+      e.preventDefault();
+      const el = document.getElementById(hash);
+      el?.scrollIntoView({ behavior: "smooth" });
+    }
+    // else: normal <a> navigation to path#hash
+  };
+
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById("contact");
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
@@ -39,18 +55,19 @@ const Navbar = () => {
               <a
                 key={l.href}
                 href={l.href}
+                onClick={(e) => handleAnchorClick(e, l.href)}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {l.label}
               </a>
             )
           )}
-          <a
-            href="#contact"
+          <button
+            onClick={handleContactClick}
             className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl animate-[pulse-glow_3s_ease-in-out_infinite]"
           >
             Contactez-nous
-          </a>
+          </button>
         </div>
 
         <button
