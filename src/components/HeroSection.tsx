@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Mic, Code, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Sparkles from "./Sparkles";
 
 const TITLE = "AgencIA";
 
@@ -47,11 +46,10 @@ const HeroSection = () => {
   const borderRadius = useMemo(() => 2 - scrollProgress * 1, [scrollProgress]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[200vh] pt-20 overflow-x-hidden">
+    <section ref={sectionRef} className="relative min-h-[180vh] pt-20 overflow-x-hidden">
       <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden px-4">
         <div className="text-center mb-12">
-          <Sparkles className="px-6 py-4">
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
+          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
               {TITLE.split("").map((letter, i) => (
                 <span
                   key={i}
@@ -70,7 +68,6 @@ const HeroSection = () => {
                 </span>
               ))}
             </h1>
-          </Sparkles>
 
           <p
             className={`mt-6 text-lg sm:text-xl text-muted-foreground font-light max-w-xl mx-auto transition-all duration-700 ${
