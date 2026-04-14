@@ -79,7 +79,8 @@ const Navbar = () => {
                 {l.label}
               </a>
             )
-          )
+          )}
+
           <button
             onClick={handleContactClick}
             className="btn-primary-neu text-sm px-6 py-2.5 rounded-xl animate-[pulse-glow_3s_ease-in-out_infinite]"
