@@ -9,7 +9,7 @@ const ScrollToTopOnNav = () => {
       setTimeout(() => {
         const el = document.getElementById(hash.replace("#", ""));
         if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 120;
+          const top = el.getBoundingClientRect().top + window.scrollY - 160;
           window.scrollTo({ top, behavior: "smooth" });
         }
       }, 100);
