@@ -25,14 +25,14 @@ const reasons = [
 ];
 
 const WhyChooseUs = () => (
-  <section className="py-28">
+  <section className="py-20">
     <div className="container mx-auto px-4">
       <ScrollReveal>
         <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Nos Engagements</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
           Pourquoi nous <span className="text-gradient">choisir ?</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
+        <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto">
           Un partenaire qui comprend vos enjeux et s'engage à vos côtés.
         </p>
       </ScrollReveal>

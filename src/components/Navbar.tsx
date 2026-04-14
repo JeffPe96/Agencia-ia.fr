@@ -21,7 +21,10 @@ const Navbar = () => {
     if (location.pathname === path || (path === "/" && location.pathname === "/")) {
       e.preventDefault();
       const el = document.getElementById(hash);
-      el?.scrollIntoView({ behavior: "smooth" });
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
     }
     // else: normal <a> navigation to path#hash
   };
