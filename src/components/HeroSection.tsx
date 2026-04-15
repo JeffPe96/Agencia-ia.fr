@@ -4,6 +4,36 @@ import { useNavigate } from "react-router-dom";
 
 const TITLE = "AgencIA";
 
+const CardReveal = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.7s ease-out, transform 0.7s ease-out",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 const HeroSection = () => {
   const [visibleLetters, setVisibleLetters] = useState(0);
   const [showSubtitle, setShowSubtitle] = useState(false);
