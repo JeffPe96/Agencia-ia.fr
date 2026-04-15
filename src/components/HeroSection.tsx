@@ -1,8 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Mic, Code, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const TITLE = "AgencIA";
+
+const CardReveal = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: "opacity 0.7s ease-out, transform 0.7s ease-out",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 const HeroSection = () => {
   const [visibleLetters, setVisibleLetters] = useState(0);
@@ -62,8 +92,8 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Service cards — normal flow, no sticky/fixed */}
-      <div className="container mx-auto px-4 pb-12">
+      {/* Service cards — normal flow with fade-in-up reveal */}
+      <CardReveal className="container mx-auto px-4 pb-12">
         <div className="max-w-4xl mx-auto">
           <div className="bg-card/50 backdrop-blur-xl border border-border/40 rounded-2xl overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20">
@@ -115,7 +145,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </CardReveal>
     </section>
   );
 };
