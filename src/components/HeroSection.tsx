@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Mic, Code, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -62,8 +62,8 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Service cards — normal flow, no sticky/fixed */}
-      <div className="container mx-auto px-4 pb-12">
+      {/* Service cards — normal flow with fade-in-up reveal */}
+      <CardReveal className="container mx-auto px-4 pb-12">
         <div className="max-w-4xl mx-auto">
           <div className="bg-card/50 backdrop-blur-xl border border-border/40 rounded-2xl overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20">
@@ -115,7 +115,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </CardReveal>
     </section>
   );
 };
