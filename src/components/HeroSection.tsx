@@ -1,12 +1,10 @@
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Mic, Code, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const TITLE = "AgencIA";
 
 const HeroSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [visibleLetters, setVisibleLetters] = useState(0);
   const [showSubtitle, setShowSubtitle] = useState(false);
   const navigate = useNavigate();
@@ -24,86 +22,50 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = rect.height;
-      const scrolled = -rect.top;
-      const start = sectionHeight * 0.05;
-      const end = sectionHeight * 0.3;
-      const progress = Math.max(0, Math.min(1, (scrolled - start) / (end - start)));
-      setScrollProgress(progress);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const containerWidth = useMemo(() => 50 + scrollProgress * 42, [scrollProgress]);
-  const containerOpacity = useMemo(() => Math.min(1, scrollProgress / 0.15), [scrollProgress]);
-  const containerScale = useMemo(() => 0.9 + scrollProgress * 0.1, [scrollProgress]);
-  const borderRadius = useMemo(() => 1.5 - scrollProgress * 0.8, [scrollProgress]);
-
   return (
-    <section ref={sectionRef} className="relative min-h-[150vh] pt-20 overflow-x-hidden">
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
-              {TITLE.split("").map((letter, i) => (
-                <span
-                  key={i}
-                  className={`inline-block transition-all duration-500 ${
-                    i < visibleLetters
-                      ? "opacity-100 translate-y-0 blur-0"
-                      : "opacity-0 translate-y-4 blur-sm"
-                  } ${
-                    i >= TITLE.length - 2
-                      ? "bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(260,60%,58%)]"
-                      : "text-foreground"
-                  }`}
-                  style={{ transitionDelay: `${i * 60}ms` }}
-                >
-                  {letter}
-                </span>
-              ))}
-            </h1>
+    <section className="pt-20">
+      {/* Hero title */}
+      <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
+          {TITLE.split("").map((letter, i) => (
+            <span
+              key={i}
+              className={`inline-block transition-all duration-500 ${
+                i < visibleLetters
+                  ? "opacity-100 translate-y-0 blur-0"
+                  : "opacity-0 translate-y-4 blur-sm"
+              } ${
+                i >= TITLE.length - 2
+                  ? "bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(260,60%,58%)]"
+                  : "text-foreground"
+              }`}
+              style={{ transitionDelay: `${i * 60}ms` }}
+            >
+              {letter}
+            </span>
+          ))}
+        </h1>
 
-          <p
-            className={`mt-6 text-lg sm:text-xl text-muted-foreground font-light max-w-xl mx-auto transition-all duration-700 ${
-              showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
-            }`}
-          >
-            Solutions IA &amp; Web pour commerces locaux
-          </p>
+        <p
+          className={`mt-6 text-lg sm:text-xl text-muted-foreground font-light max-w-xl mx-auto transition-all duration-700 ${
+            showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+          }`}
+        >
+          Solutions IA &amp; Web pour commerces locaux
+        </p>
 
-          <div
-            className={`mt-10 flex flex-col items-center gap-2 transition-all duration-500 ${
-              scrollProgress > 0.1 ? "opacity-0" : "opacity-60"
-            }`}
-          >
-            <span className="text-xs text-muted-foreground/60 uppercase tracking-widest">Scrollez pour découvrir</span>
-            <div className="w-5 h-8 rounded-full border border-border/50 flex items-start justify-center p-1.5">
-              <div className="w-1 h-2 rounded-full bg-primary/40 animate-bounce" />
-            </div>
+        <div className="mt-10 flex flex-col items-center gap-2 opacity-60">
+          <span className="text-xs text-muted-foreground/60 uppercase tracking-widest">Scrollez pour découvrir</span>
+          <div className="w-5 h-8 rounded-full border border-border/50 flex items-start justify-center p-1.5">
+            <div className="w-1 h-2 rounded-full bg-primary/40 animate-bounce" />
           </div>
         </div>
+      </div>
 
-        <div
-          className="absolute transition-none"
-          style={{
-            width: `min(${containerWidth}%, calc(100% - 2rem))`,
-            maxWidth: "1200px",
-            opacity: containerOpacity,
-            transform: `scale(${containerScale})`,
-            borderRadius: `${borderRadius}rem`,
-            bottom: `${8 - scrollProgress * 3}%`,
-          }}
-        >
-          <div
-            className="bg-card/50 backdrop-blur-xl border border-border/40 overflow-hidden"
-            style={{ borderRadius: `${borderRadius}rem` }}
-          >
+      {/* Service cards — normal flow, no sticky/fixed */}
+      <div className="container mx-auto px-4 pb-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-card/50 backdrop-blur-xl border border-border/40 rounded-2xl overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20">
               {/* Vocal AgencIA Card */}
               <button
