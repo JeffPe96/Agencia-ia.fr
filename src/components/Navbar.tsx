@@ -11,7 +11,6 @@ const Navbar = () => {
     { label: "Vocal AgencIA", href: "/vocal" },
     { label: "Web AgencIA", href: "/web" },
     { label: "Tarifs", href: "/tarifs" },
-    { label: "Notre Processus", href: "/#processus", isAnchor: true },
   ];
 
   const isRoute = (href: string) => !href.startsWith("/#");
