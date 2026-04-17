@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { MessageCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AgencIALogo from "./AgencIALogo";
 
@@ -61,15 +60,6 @@ const Footer = () => {
               </DialogContent>
             </Dialog>
 
-            <a
-              href="https://wa.me/33651626514"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-accent/[0.08] text-accent font-medium px-4 py-2 rounded-xl hover:bg-accent/[0.15] transition-colors border border-accent/20"
-            >
-              <MessageCircle size={18} />
-              WhatsApp
-            </a>
           </div>
         </div>
 
