@@ -208,7 +208,7 @@ const AnnecyHero = () => {
             }}
             aria-hidden="true"
           >
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center">
+            <h1 className="text-5xl sm:text-7xl lg:text-[10rem] font-extrabold tracking-tight text-center leading-none">
               {TITLE.split("").map((letter, i) => (
                 <span
                   key={i}
