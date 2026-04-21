@@ -9,6 +9,7 @@ import WebPage from "./pages/WebPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ScrollToTopOnNav from "./components/ScrollToTopOnNav.tsx";
+import CustomCursor from "./components/CustomCursor.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CustomCursor />
       <BrowserRouter>
         <ScrollToTopOnNav />
         <Routes>
