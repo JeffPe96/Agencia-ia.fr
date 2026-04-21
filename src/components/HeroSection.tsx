@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Mic, Code, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import heroImage from "@/assets/hero-annecy.png";
 
 const TITLE = "AgencIA";
 
@@ -32,8 +33,6 @@ const CardReveal = ({
     return () => obs.disconnect();
   }, []);
 
-  // Desktop: left card from left, right card from right
-  // Mobile: both from bottom with stagger via CSS
   const desktopX = direction === "left" ? "-50px" : "50px";
 
   return (
@@ -56,16 +55,18 @@ const CardReveal = ({
   );
 };
 
-const HeroSection = () => {
-  const [visibleLetters, setVisibleLetters] = useState(0);
+const AnnecyHero = () => {
+  const [titleVisible, setTitleVisible] = useState(0);
   const [showSubtitle, setShowSubtitle] = useState(false);
-  const navigate = useNavigate();
+  const lakeRef = useRef<HTMLDivElement>(null);
+  const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
+  const rippleId = useRef(0);
 
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
       i++;
-      setVisibleLetters(i);
+      setTitleVisible(i);
       if (i >= TITLE.length) {
         clearInterval(interval);
         setTimeout(() => setShowSubtitle(true), 300);
@@ -74,9 +75,179 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleLakeMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const id = rippleId.current++;
+    setRipples((prev) => [...prev.slice(-6), { id, x, y }]);
+    setTimeout(() => {
+      setRipples((prev) => prev.filter((r) => r.id !== id));
+    }, 1800);
+  };
+
   return (
-    <section className="pt-20">
+    <div className="relative w-full h-[100svh] min-h-[600px] overflow-hidden">
+      {/* SVG filter for water distortion */}
+      <svg className="absolute w-0 h-0" aria-hidden="true">
+        <defs>
+          <filter id="waterDistort" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="3">
+              <animate attributeName="baseFrequency" dur="18s" values="0.012 0.025;0.018 0.03;0.012 0.025" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="14" />
+          </filter>
+          <filter id="reflectionDistort" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02 0.04" numOctaves="2" seed="7">
+              <animate attributeName="baseFrequency" dur="14s" values="0.02 0.04;0.03 0.05;0.02 0.04" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="8" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* Sky / mountains - top half (sharp) */}
+      <div
+        className="absolute inset-x-0 top-0 h-[55%] bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundPosition: "center 0%",
+          backgroundSize: "cover",
+        }}
+      />
+
+      {/* Lake - bottom half (animated water) */}
+      <div
+        ref={lakeRef}
+        onMouseMove={handleLakeMove}
+        className="absolute inset-x-0 bottom-0 h-[55%] overflow-hidden cursor-crosshair"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundPosition: "center 100%",
+            backgroundSize: "cover",
+            filter: "url(#waterDistort)",
+          }}
+        />
+        {/* Ripple overlays */}
+        {ripples.map((r) => (
+          <span
+            key={r.id}
+            className="pointer-events-none absolute rounded-full border-2 border-white/40"
+            style={{
+              left: r.x,
+              top: r.y,
+              width: 0,
+              height: 0,
+              transform: "translate(-50%, -50%)",
+              animation: "ripple-expand 1.6s ease-out forwards",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Smooth seam between sky and water */}
+      <div
+        className="absolute inset-x-0 top-[50%] h-[10%] pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, transparent, hsl(220 40% 70% / 0.15), transparent)",
+        }}
+      />
+
+      {/* Title + reflection */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
+        <div className="relative" style={{ animation: "title-float 6s ease-in-out infinite" }}>
+          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+            {TITLE.split("").map((letter, i) => (
+              <span
+                key={i}
+                className={`inline-block transition-all duration-500 ${
+                  i < titleVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
+                } ${
+                  i >= TITLE.length - 2
+                    ? "bg-clip-text text-transparent bg-gradient-to-r from-[hsl(217,91%,60%)] to-[hsl(260,70%,65%)]"
+                    : "text-white"
+                }`}
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                {letter}
+              </span>
+            ))}
+          </h1>
+
+          {/* Reflection */}
+          <div
+            className="absolute left-0 right-0 top-full mt-2 select-none"
+            style={{
+              transform: "scaleY(-1)",
+              filter: "url(#reflectionDistort) blur(0.5px)",
+              opacity: 0.35,
+              maskImage: "linear-gradient(to bottom, black 0%, transparent 90%)",
+              WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 90%)",
+            }}
+            aria-hidden="true"
+          >
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center">
+              {TITLE.split("").map((letter, i) => (
+                <span
+                  key={i}
+                  className={`inline-block ${
+                    i >= TITLE.length - 2
+                      ? "bg-clip-text text-transparent bg-gradient-to-r from-[hsl(217,91%,60%)] to-[hsl(260,70%,65%)]"
+                      : "text-white"
+                  }`}
+                >
+                  {letter}
+                </span>
+              ))}
+            </h1>
+          </div>
+        </div>
+
+        <p
+          className={`mt-8 text-base sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
+            showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+          }`}
+        >
+          Solutions IA &amp; Web pour commerces locaux
+        </p>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
+        <span className="text-[10px] text-white/70 uppercase tracking-widest drop-shadow">Scrollez pour découvrir</span>
+        <div className="w-5 h-8 rounded-full border border-white/50 flex items-start justify-center p-1.5 backdrop-blur-sm">
+          <div className="w-1 h-2 rounded-full bg-white/80 animate-bounce" />
+        </div>
+      </div>
+
+      {/* Fade-out to next section */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, transparent, hsl(var(--background)))",
+        }}
+      />
+    </div>
+  );
+};
+
+const HeroSection = () => {
+  const navigate = useNavigate();
+
+  return (
+    <section className="pt-16">
       <style>{`
+        @keyframes title-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes ripple-expand {
+          0% { width: 0; height: 0; opacity: 0.7; border-width: 2px; }
+          100% { width: 220px; height: 220px; opacity: 0; border-width: 0.5px; }
+        }
         @media (max-width: 639px) {
           .card-reveal-left {
             --card-desktop-x: 0px !important;
@@ -90,50 +261,13 @@ const HeroSection = () => {
         }
       `}</style>
 
-      {/* Hero title */}
-      <div className="min-h-[50vh] sm:min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-10 sm:py-16">
-        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
-          {TITLE.split("").map((letter, i) => (
-            <span
-              key={i}
-              className={`inline-block transition-all duration-500 ${
-                i < visibleLetters
-                  ? "opacity-100 translate-y-0 blur-0"
-                  : "opacity-0 translate-y-4 blur-sm"
-              } ${
-                i >= TITLE.length - 2
-                  ? "bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(260,60%,58%)]"
-                  : "text-foreground"
-              }`}
-              style={{ transitionDelay: `${i * 60}ms` }}
-            >
-              {letter}
-            </span>
-          ))}
-        </h1>
-
-        <p
-          className={`mt-6 text-lg sm:text-xl text-muted-foreground font-light max-w-xl mx-auto transition-all duration-700 ${
-            showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
-          }`}
-        >
-          Solutions IA &amp; Web pour commerces locaux
-        </p>
-
-        <div className="mt-10 flex flex-col items-center gap-2 opacity-60">
-          <span className="text-xs text-muted-foreground/60 uppercase tracking-widest">Scrollez pour découvrir</span>
-          <div className="w-5 h-8 rounded-full border border-border/50 flex items-start justify-center p-1.5">
-            <div className="w-1 h-2 rounded-full bg-primary/40 animate-bounce" />
-          </div>
-        </div>
-      </div>
+      <AnnecyHero />
 
       {/* Service cards */}
-      <div className="container mx-auto px-4 pb-12 -mt-4 sm:mt-0">
+      <div className="container mx-auto px-4 py-10">
         <div className="max-w-4xl mx-auto">
           <div className="bg-card/50 backdrop-blur-xl border border-border/40 rounded-2xl overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20">
-              {/* Vocal AgencIA Card */}
               <CardReveal direction="left" className="card-reveal-left">
                 <button
                   onClick={() => navigate("/vocal")}
@@ -158,7 +292,6 @@ const HeroSection = () => {
                 </button>
               </CardReveal>
 
-              {/* Web AgencIA Card */}
               <CardReveal direction="right" className="card-reveal-right">
                 <button
                   onClick={() => navigate("/web")}
