@@ -11,7 +11,14 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <a href="#" className="block">
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="block"
+            >
               <AgencIALogo />
             </a>
             <p className="text-xs text-muted-foreground mt-1">
