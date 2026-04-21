@@ -87,10 +87,16 @@ const AnnecyHero = () => {
   };
 
   return (
-    <div className="relative w-full h-[100svh] min-h-[600px] overflow-hidden">
-      {/* SVG filter for water distortion */}
+    <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-screen h-screen overflow-hidden">
+      {/* SVG filters for nature distortion */}
       <svg className="absolute w-0 h-0" aria-hidden="true">
         <defs>
+          <filter id="skyDistort" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="5">
+              <animate attributeName="baseFrequency" dur="24s" values="0.008 0.012;0.01 0.014;0.008 0.012" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="3" />
+          </filter>
           <filter id="waterDistort" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="3">
               <animate attributeName="baseFrequency" dur="18s" values="0.012 0.025;0.018 0.03;0.012 0.025" repeatCount="indefinite" />
@@ -106,13 +112,14 @@ const AnnecyHero = () => {
         </defs>
       </svg>
 
-      {/* Sky / mountains - top half (sharp) */}
+      {/* Sky / mountains - top half (subtle distortion) */}
       <div
         className="absolute inset-x-0 top-0 h-[55%] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundPosition: "center 0%",
           backgroundSize: "cover",
+          filter: "url(#skyDistort)",
         }}
       />
 
@@ -156,10 +163,10 @@ const AnnecyHero = () => {
         }}
       />
 
-      {/* Title + reflection */}
+      {/* Title + reflection - perfectly centered */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
         <div className="relative" style={{ animation: "title-float 6s ease-in-out infinite" }}>
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
             {TITLE.split("").map((letter, i) => (
               <span
                 key={i}
@@ -189,7 +196,7 @@ const AnnecyHero = () => {
             }}
             aria-hidden="true"
           >
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center">
               {TITLE.split("").map((letter, i) => (
                 <span
                   key={i}
@@ -207,7 +214,7 @@ const AnnecyHero = () => {
         </div>
 
         <p
-          className={`mt-8 text-base sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
+          className={`mt-8 text-sm sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
             showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
@@ -238,7 +245,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="pt-16">
+    <section>
       <style>{`
         @keyframes title-float {
           0%, 100% { transform: translateY(0); }
