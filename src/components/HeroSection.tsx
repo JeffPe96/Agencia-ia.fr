@@ -58,7 +58,7 @@ const CardReveal = ({
 const AnnecyHero = () => {
   const [titleVisible, setTitleVisible] = useState(0);
   const [showSubtitle, setShowSubtitle] = useState(false);
-  const lakeRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
   const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
   const rippleId = useRef(0);
 
@@ -75,23 +75,26 @@ const AnnecyHero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleLakeMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleHeroMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const id = rippleId.current++;
-    setRipples((prev) => [...prev.slice(-6), { id, x, y }]);
+    setRipples((prev) => [...prev.slice(-8), { id, x, y }]);
     setTimeout(() => {
       setRipples((prev) => prev.filter((r) => r.id !== id));
     }, 1800);
   };
 
   return (
-    <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-screen h-screen overflow-hidden">
+    <div
+      ref={heroRef}
+      onMouseMove={handleHeroMove}
+      className="relative w-screen left-1/2 -translate-x-1/2 min-h-screen h-screen overflow-hidden"
+    >
       {/* SVG filters for nature distortion */}
       <svg className="absolute w-0 h-0" aria-hidden="true">
         <defs>
-          {/* Localized water filter - only affects the central lake area */}
           <filter id="waterDistort" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="3" result="turb">
               <animate attributeName="baseFrequency" dur="18s" values="0.012 0.025;0.018 0.03;0.012 0.025" repeatCount="indefinite" />
@@ -117,11 +120,8 @@ const AnnecyHero = () => {
 
       {/* Localized animated water - centered lake area only */}
       <div
-        ref={lakeRef}
-        onMouseMove={handleLakeMove}
-        className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[60%] sm:w-[55%] h-[32%] overflow-hidden cursor-crosshair"
+        className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[60%] sm:w-[55%] h-[32%] overflow-hidden pointer-events-none"
         style={{
-          // Soft radial mask so distorted water blends seamlessly into the static shoreline
           maskImage:
             "radial-gradient(ellipse 80% 90% at 50% 90%, black 40%, transparent 100%)",
           WebkitMaskImage:
@@ -131,7 +131,6 @@ const AnnecyHero = () => {
         <div
           className="absolute bg-cover bg-no-repeat"
           style={{
-            // Re-create the full hero background, then offset so this slice aligns with the underlying static image
             backgroundImage: `url(${heroImage})`,
             backgroundSize: "166.67% auto",
             backgroundPosition: "center bottom",
@@ -139,22 +138,14 @@ const AnnecyHero = () => {
             filter: "url(#waterDistort)",
           }}
         />
-        <div
-          className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundPosition: "center 100%",
-            backgroundSize: "cover",
-            filter: "url(#waterDistort)",
-            display: "none",
-          }}
-        />
-        {/* keep historic node hidden to preserve diff minimal */}
-        {/* Ripple overlays */}
+      </div>
+
+      {/* Ripple overlays - now span the entire Hero */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {ripples.map((r) => (
           <span
             key={r.id}
-            className="pointer-events-none absolute rounded-full border-2 border-white/40"
+            className="absolute rounded-full border-2 border-white/40"
             style={{
               left: r.x,
               top: r.y,
