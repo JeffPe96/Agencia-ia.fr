@@ -87,10 +87,16 @@ const AnnecyHero = () => {
   };
 
   return (
-    <div className="relative w-full h-[100svh] min-h-[600px] overflow-hidden">
-      {/* SVG filter for water distortion */}
+    <div className="relative w-screen left-1/2 -translate-x-1/2 min-h-screen h-screen overflow-hidden">
+      {/* SVG filters for nature distortion */}
       <svg className="absolute w-0 h-0" aria-hidden="true">
         <defs>
+          <filter id="skyDistort" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="5">
+              <animate attributeName="baseFrequency" dur="24s" values="0.008 0.012;0.01 0.014;0.008 0.012" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="3" />
+          </filter>
           <filter id="waterDistort" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="3">
               <animate attributeName="baseFrequency" dur="18s" values="0.012 0.025;0.018 0.03;0.012 0.025" repeatCount="indefinite" />
@@ -106,13 +112,14 @@ const AnnecyHero = () => {
         </defs>
       </svg>
 
-      {/* Sky / mountains - top half (sharp) */}
+      {/* Sky / mountains - top half (subtle distortion) */}
       <div
         className="absolute inset-x-0 top-0 h-[55%] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundPosition: "center 0%",
           backgroundSize: "cover",
+          filter: "url(#skyDistort)",
         }}
       />
 
