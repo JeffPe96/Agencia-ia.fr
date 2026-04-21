@@ -91,7 +91,7 @@ const HeroSection = () => {
       `}</style>
 
       {/* Hero title */}
-      <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
+      <div className="min-h-[50vh] sm:min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-10 sm:py-16">
         <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight">
           {TITLE.split("").map((letter, i) => (
             <span
@@ -129,7 +129,7 @@ const HeroSection = () => {
       </div>
 
       {/* Service cards */}
-      <div className="container mx-auto px-4 pb-12">
+      <div className="container mx-auto px-4 pb-12 -mt-4 sm:mt-0">
         <div className="max-w-4xl mx-auto">
           <div className="bg-card/50 backdrop-blur-xl border border-border/40 rounded-2xl overflow-hidden">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20">
