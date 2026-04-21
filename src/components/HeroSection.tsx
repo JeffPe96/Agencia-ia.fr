@@ -163,10 +163,10 @@ const AnnecyHero = () => {
         }}
       />
 
-      {/* Title + reflection */}
+      {/* Title + reflection - perfectly centered */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
         <div className="relative" style={{ animation: "title-float 6s ease-in-out infinite" }}>
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
             {TITLE.split("").map((letter, i) => (
               <span
                 key={i}
@@ -196,7 +196,7 @@ const AnnecyHero = () => {
             }}
             aria-hidden="true"
           >
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center">
               {TITLE.split("").map((letter, i) => (
                 <span
                   key={i}
@@ -214,7 +214,7 @@ const AnnecyHero = () => {
         </div>
 
         <p
-          className={`mt-8 text-base sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
+          className={`mt-8 text-sm sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
             showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
