@@ -245,7 +245,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="pt-16">
+    <section>
       <style>{`
         @keyframes title-float {
           0%, 100% { transform: translateY(0); }
