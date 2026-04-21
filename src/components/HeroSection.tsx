@@ -91,17 +91,12 @@ const AnnecyHero = () => {
       {/* SVG filters for nature distortion */}
       <svg className="absolute w-0 h-0" aria-hidden="true">
         <defs>
-          <filter id="skyDistort" x="0%" y="0%" width="100%" height="100%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="5">
-              <animate attributeName="baseFrequency" dur="24s" values="0.008 0.012;0.01 0.014;0.008 0.012" repeatCount="indefinite" />
-            </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" scale="3" />
-          </filter>
+          {/* Localized water filter - only affects the central lake area */}
           <filter id="waterDistort" x="0%" y="0%" width="100%" height="100%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="3">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.025" numOctaves="2" seed="3" result="turb">
               <animate attributeName="baseFrequency" dur="18s" values="0.012 0.025;0.018 0.03;0.012 0.025" repeatCount="indefinite" />
             </feTurbulence>
-            <feDisplacementMap in="SourceGraphic" scale="14" />
+            <feDisplacementMap in="SourceGraphic" in2="turb" scale="14" />
           </filter>
           <filter id="reflectionDistort" x="-10%" y="-10%" width="120%" height="120%">
             <feTurbulence type="fractalNoise" baseFrequency="0.02 0.04" numOctaves="2" seed="7">
@@ -112,23 +107,38 @@ const AnnecyHero = () => {
         </defs>
       </svg>
 
-      {/* Sky / mountains - top half (subtle distortion) */}
+      {/* Full static background (sky, mountains, houses, shoreline) - 100% sharp */}
       <div
-        className="absolute inset-x-0 top-0 h-[55%] bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${heroImage})`,
-          backgroundPosition: "center 0%",
-          backgroundSize: "cover",
-          filter: "url(#skyDistort)",
         }}
       />
 
-      {/* Lake - bottom half (animated water) */}
+      {/* Localized animated water - centered lake area only */}
       <div
         ref={lakeRef}
         onMouseMove={handleLakeMove}
-        className="absolute inset-x-0 bottom-0 h-[55%] overflow-hidden cursor-crosshair"
+        className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[60%] sm:w-[55%] h-[32%] overflow-hidden cursor-crosshair"
+        style={{
+          // Soft radial mask so distorted water blends seamlessly into the static shoreline
+          maskImage:
+            "radial-gradient(ellipse 80% 90% at 50% 90%, black 40%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 80% 90% at 50% 90%, black 40%, transparent 100%)",
+        }}
       >
+        <div
+          className="absolute bg-cover bg-no-repeat"
+          style={{
+            // Re-create the full hero background, then offset so this slice aligns with the underlying static image
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "166.67% auto",
+            backgroundPosition: "center bottom",
+            inset: 0,
+            filter: "url(#waterDistort)",
+          }}
+        />
         <div
           className="absolute inset-0 bg-cover bg-no-repeat"
           style={{
@@ -136,8 +146,10 @@ const AnnecyHero = () => {
             backgroundPosition: "center 100%",
             backgroundSize: "cover",
             filter: "url(#waterDistort)",
+            display: "none",
           }}
         />
+        {/* keep historic node hidden to preserve diff minimal */}
         {/* Ripple overlays */}
         {ripples.map((r) => (
           <span
