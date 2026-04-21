@@ -178,7 +178,7 @@ const AnnecyHero = () => {
       {/* Title + reflection - perfectly centered */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
         <div className="relative" style={{ animation: "title-float 6s ease-in-out infinite" }}>
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)]">
+          <h1 className="text-5xl sm:text-7xl lg:text-[10rem] font-extrabold tracking-tight text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)] leading-none">
             {TITLE.split("").map((letter, i) => (
               <span
                 key={i}
