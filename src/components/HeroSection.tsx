@@ -110,7 +110,7 @@ const AnnecyHero = () => {
         </defs>
       </svg>
 
-      {/* Full static background (sky, mountains, houses, shoreline) - 100% sharp */}
+      {/* Single background image (sky, mountains, houses, lake) - covers entire hero */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -118,29 +118,21 @@ const AnnecyHero = () => {
         }}
       />
 
-      {/* Localized animated water - centered lake area only */}
+      {/* Subtle water shimmer overlay - tinted gradient only, NO image duplication */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[60%] sm:w-[55%] h-[32%] overflow-hidden pointer-events-none"
+        className="absolute left-0 right-0 bottom-0 h-[28%] pointer-events-none"
         style={{
+          background:
+            "linear-gradient(to bottom, transparent, hsl(210 60% 75% / 0.08) 40%, hsl(210 70% 70% / 0.12))",
           maskImage:
-            "radial-gradient(ellipse 80% 90% at 50% 90%, black 40%, transparent 100%)",
+            "radial-gradient(ellipse 70% 100% at 50% 100%, black 30%, transparent 90%)",
           WebkitMaskImage:
-            "radial-gradient(ellipse 80% 90% at 50% 90%, black 40%, transparent 100%)",
+            "radial-gradient(ellipse 70% 100% at 50% 100%, black 30%, transparent 90%)",
+          filter: "url(#waterDistort)",
         }}
-      >
-        <div
-          className="absolute bg-cover bg-no-repeat"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "166.67% auto",
-            backgroundPosition: "center bottom",
-            inset: 0,
-            filter: "url(#waterDistort)",
-          }}
-        />
-      </div>
+      />
 
-      {/* Ripple overlays - now span the entire Hero */}
+      {/* Ripple overlays - span the entire Hero */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {ripples.map((r) => (
           <span
@@ -217,7 +209,7 @@ const AnnecyHero = () => {
         </div>
 
         <p
-          className={`mt-8 text-sm sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
+          className={`mt-3 sm:mt-8 text-xs sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
             showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
@@ -226,8 +218,8 @@ const AnnecyHero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
-        <span className="text-[10px] text-white/70 uppercase tracking-widest drop-shadow">Scrollez pour découvrir</span>
+      <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 sm:gap-2 pointer-events-none">
+        <span className="text-[9px] sm:text-[10px] text-white/70 uppercase tracking-widest drop-shadow">Scrollez pour découvrir</span>
         <div className="w-5 h-8 rounded-full border border-white/50 flex items-start justify-center p-1.5 backdrop-blur-sm">
           <div className="w-1 h-2 rounded-full bg-white/80 animate-bounce" />
         </div>
