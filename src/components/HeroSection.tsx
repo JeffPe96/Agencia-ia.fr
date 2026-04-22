@@ -209,7 +209,7 @@ const AnnecyHero = () => {
         </div>
 
         <p
-          className={`mt-8 text-sm sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
+          className={`mt-3 sm:mt-8 text-xs sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
             showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
@@ -218,8 +218,8 @@ const AnnecyHero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
-        <span className="text-[10px] text-white/70 uppercase tracking-widest drop-shadow">Scrollez pour découvrir</span>
+      <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 sm:gap-2 pointer-events-none">
+        <span className="text-[9px] sm:text-[10px] text-white/70 uppercase tracking-widest drop-shadow">Scrollez pour découvrir</span>
         <div className="w-5 h-8 rounded-full border border-white/50 flex items-start justify-center p-1.5 backdrop-blur-sm">
           <div className="w-1 h-2 rounded-full bg-white/80 animate-bounce" />
         </div>
