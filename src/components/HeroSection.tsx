@@ -110,7 +110,7 @@ const AnnecyHero = () => {
         </defs>
       </svg>
 
-      {/* Full static background (sky, mountains, houses, shoreline) - 100% sharp */}
+      {/* Single background image (sky, mountains, houses, lake) - covers entire hero */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -118,29 +118,21 @@ const AnnecyHero = () => {
         }}
       />
 
-      {/* Localized animated water - centered lake area only */}
+      {/* Subtle water shimmer overlay - tinted gradient only, NO image duplication */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[60%] sm:w-[55%] h-[32%] overflow-hidden pointer-events-none"
+        className="absolute left-0 right-0 bottom-0 h-[28%] pointer-events-none"
         style={{
+          background:
+            "linear-gradient(to bottom, transparent, hsl(210 60% 75% / 0.08) 40%, hsl(210 70% 70% / 0.12))",
           maskImage:
-            "radial-gradient(ellipse 80% 90% at 50% 90%, black 40%, transparent 100%)",
+            "radial-gradient(ellipse 70% 100% at 50% 100%, black 30%, transparent 90%)",
           WebkitMaskImage:
-            "radial-gradient(ellipse 80% 90% at 50% 90%, black 40%, transparent 100%)",
+            "radial-gradient(ellipse 70% 100% at 50% 100%, black 30%, transparent 90%)",
+          filter: "url(#waterDistort)",
         }}
-      >
-        <div
-          className="absolute bg-cover bg-no-repeat"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "166.67% auto",
-            backgroundPosition: "center bottom",
-            inset: 0,
-            filter: "url(#waterDistort)",
-          }}
-        />
-      </div>
+      />
 
-      {/* Ripple overlays - now span the entire Hero */}
+      {/* Ripple overlays - span the entire Hero */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {ripples.map((r) => (
           <span
