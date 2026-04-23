@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 type Plan = {
   name: string;
   tagline: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
+  icon: LucideIcon;
   setupLabel: string;
   setupPrice: string;
   monthly?: string;
