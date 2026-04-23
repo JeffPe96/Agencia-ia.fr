@@ -31,7 +31,6 @@ const plans: Plan[] = [
       "Scripts sur-mesure",
       "Connexion calendriers (Google / Cal.com)",
       "Transfert d'appels intelligents",
-      "SMS de confirmation automatique",
     ],
     popular: true,
   },
