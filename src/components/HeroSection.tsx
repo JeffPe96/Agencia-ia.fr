@@ -1,59 +1,7 @@
 import { useEffect, useState, useRef } from "react";
-import { Mic, Code, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-annecy.png";
 
 const TITLE = "AgencIA";
-
-const CardReveal = ({
-  children,
-  className,
-  direction,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  direction: "left" | "right";
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setVisible(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  const desktopX = direction === "left" ? "-50px" : "50px";
-
-  return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible
-          ? "translate(0, 0) scale(1)"
-          : `translate(var(--reveal-x, 0), var(--reveal-y, 0)) scale(0.8)`,
-        transition: "opacity 0.7s ease-out, transform 0.7s ease-out",
-        // @ts-ignore CSS custom properties
-        "--reveal-x": `var(--card-desktop-x, ${desktopX})`,
-        "--reveal-y": "var(--card-desktop-y, 0px)",
-      } as React.CSSProperties}
-    >
-      {children}
-    </div>
-  );
-};
 
 const AnnecyHero = () => {
   const [titleVisible, setTitleVisible] = useState(0);
