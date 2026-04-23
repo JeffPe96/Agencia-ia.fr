@@ -264,61 +264,6 @@ const HeroSection = () => {
       `}</style>
 
       <AnnecyHero />
-
-      {/* Service cards */}
-      <div className="container mx-auto px-4 py-10">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-card/50 backdrop-blur-xl border border-border/40 rounded-2xl overflow-hidden">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border/20">
-              <CardReveal direction="left" className="card-reveal-left">
-                <button
-                  onClick={() => navigate("/vocal")}
-                  className="group relative flex flex-col items-center text-center p-8 sm:p-10 bg-card/60 hover:bg-card/80 transition-all duration-500 cursor-pointer w-full"
-                >
-                  <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/[0.06] border border-primary/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-[0_0_20px_-4px_hsl(217_91%_53%/0.2)] transition-all duration-500">
-                      <Mic className="text-primary" size={24} />
-                    </div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary/60 mb-2">Vocal AgencIA</p>
-                    <h3 className="text-lg font-bold text-foreground mb-3">Automatiser mes appels</h3>
-                    <ul className="text-sm text-muted-foreground space-y-1.5 mb-5">
-                      <li>IA Vocale 24h/7</li>
-                      <li>Réservation Automatique</li>
-                      <li>Transfert Intelligent</li>
-                    </ul>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary/70 group-hover:text-primary transition-colors">
-                      Découvrir <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
-                    </span>
-                  </div>
-                </button>
-              </CardReveal>
-
-              <CardReveal direction="right" className="card-reveal-right">
-                <button
-                  onClick={() => navigate("/web")}
-                  className="group relative flex flex-col items-center text-center p-8 sm:p-10 bg-card/60 hover:bg-card/80 transition-all duration-500 cursor-pointer w-full"
-                >
-                  <div className="relative z-10">
-                    <div className="w-14 h-14 rounded-2xl bg-[hsl(260,60%,58%)]/[0.06] border border-[hsl(260,60%,58%)]/[0.08] flex items-center justify-center mx-auto mb-5 group-hover:shadow-[0_0_20px_-4px_hsl(260_60%_58%/0.2)] transition-all duration-500">
-                      <Code className="text-[hsl(260,60%,58%)]" size={24} />
-                    </div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[hsl(260,60%,58%)]/60 mb-2">Web AgencIA</p>
-                    <h3 className="text-lg font-bold text-foreground mb-3">Créer mon site web</h3>
-                    <ul className="text-sm text-muted-foreground space-y-1.5 mb-5">
-                      <li>Sites Haute Performance</li>
-                      <li>SEO Optimisé</li>
-                      <li>Design Sur-Mesure</li>
-                    </ul>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[hsl(260,60%,58%)]/70 group-hover:text-[hsl(260,60%,58%)] transition-colors">
-                      Découvrir <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
-                    </span>
-                  </div>
-                </button>
-              </CardReveal>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   );
 };
