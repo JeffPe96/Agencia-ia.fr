@@ -185,8 +185,6 @@ const AnnecyHero = () => {
 };
 
 const HeroSection = () => {
-  const navigate = useNavigate();
-
   return (
     <section>
       <style>{`
