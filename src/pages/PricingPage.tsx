@@ -1,4 +1,4 @@
-import { Phone, Monitor, MessageCircleHeart, Mic2, Languages, CreditCard, Check, Sparkles } from "lucide-react";
+import { Phone, Monitor, MessageCircleHeart, Mic2, Languages, CreditCard, Check, Sparkles, type LucideIcon } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ScrollToTop from "@/components/ScrollToTop";
 import GlobalSparkles from "@/components/GlobalSparkles";
