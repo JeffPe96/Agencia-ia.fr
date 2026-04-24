@@ -19,7 +19,7 @@ const VocalPage = () => (
     <div className="relative z-10">
       <Navbar />
       <div className="pt-20" />
-      <SectionBanner text="Vocal AgencIA :" subtitle="Ne manquez plus aucun client." variant="primary" />
+      <SectionBanner text="Vocal AgencIA" subtitle="Ne manquez plus aucun client." variant="primary" />
       <ProblemSolution />
       <Features />
       <DemoSection />
