@@ -1,54 +1,82 @@
-import { Clock, SmilePlus, Handshake, TrendingUp } from "lucide-react";
+import { Zap, Heart, Handshake, TrendingUp, type LucideIcon } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
-const reasons = [
+type Reason = {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  gradient: string;
+  glow: string;
+};
+
+const reasons: Reason[] = [
   {
-    icon: Clock,
+    icon: Zap,
     title: "Gain de Temps",
-    desc: "Libérez-vous de 90% des appels répétitifs et concentrez-vous sur votre cœur de métier.",
+    desc: "Libérez-vous de 90% des tâches répétitives. Concentrez-vous sur votre cœur de métier pendant que l'IA gère le reste.",
+    gradient: "from-[#00d2ff] to-[#3a7bd5]",
+    glow: "hsl(190 80% 50% / 0.35)",
   },
   {
-    icon: SmilePlus,
+    icon: Heart,
     title: "Satisfaction Client",
-    desc: "Une réponse instantanée, aimable et professionnelle, sans attente.",
+    desc: "Réponses instantanées et amicales. Vos clients bénéficient d'une attention VIP, 24h/24, sans attente.",
+    gradient: "from-[#00d2ff] to-[#3a7bd5]",
+    glow: "hsl(217 91% 53% / 0.35)",
   },
   {
     icon: Handshake,
     title: "Accompagnement Sur-Mesure",
-    desc: "Nous ne vendons pas un robot, nous créons votre collaborateur digital.",
+    desc: "Nous ne vendons pas des outils, nous bâtissons votre collaborateur digital. Un suivi humain pour une IA performante.",
+    gradient: "from-[#3a7bd5] to-[#6c5ce7]",
+    glow: "hsl(217 91% 53% / 0.35)",
   },
   {
     icon: TrendingUp,
     title: "Évolutivité",
-    desc: "Des solutions qui grandissent avec votre volume d'appels.",
+    desc: "Des solutions qui grandissent avec vous. De la simple FAQ à l'automatisation complète de vos ventes.",
+    gradient: "from-[#6c5ce7] to-[#00d2ff]",
+    glow: "hsl(260 60% 65% / 0.35)",
   },
 ];
 
 const WhyChooseUs = () => (
-  <section className="py-14">
+  <section className="py-20 sm:py-28">
     <div className="container mx-auto px-4">
       <ScrollReveal>
-        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Nos Engagements</p>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">
+          Nos Engagements
+        </p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
           Pourquoi nous <span className="text-gradient">choisir ?</span>
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto">
+        <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
           Un partenaire qui comprend vos enjeux et s'engage à vos côtés.
         </p>
       </ScrollReveal>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-        {reasons.map((r, i) => (
-          <ScrollReveal key={r.title} delay={i * 100}>
-            <div className="card-glass text-center h-full group">
-              <div className="w-14 h-14 rounded-2xl bg-accent/[0.06] flex items-center justify-center mx-auto mb-5 group-hover:bg-accent/[0.12] transition-colors duration-300">
-                <r.icon className="text-accent" size={24} />
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        {reasons.map((r, i) => {
+          const Icon = r.icon;
+          return (
+            <ScrollReveal key={r.title} delay={i * 100}>
+              <div
+                className="service-card group h-full text-center"
+                style={{ ["--card-glow" as string]: r.glow }}
+              >
+                <div className="flex justify-center mb-5">
+                  <div
+                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${r.gradient} flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110`}
+                  >
+                    <Icon size={26} className="text-white" strokeWidth={2.2} />
+                  </div>
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">{r.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
               </div>
-              <h3 className="font-semibold text-lg mb-2 text-foreground">{r.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
-            </div>
-          </ScrollReveal>
-        ))}
+            </ScrollReveal>
+          );
+        })}
       </div>
     </div>
   </section>
