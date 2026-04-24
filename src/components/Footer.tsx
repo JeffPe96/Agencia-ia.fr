@@ -158,23 +158,29 @@ const Footer = () => {
 
           {/* Bottom bar */}
           <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
-            <p>© 2024 AgencIA — Tous droits réservés.</p>
+            <p>© {new Date().getFullYear()} AgencIA — Tous droits réservés.</p>
             <div className="flex items-center gap-6">
               <Dialog open={mentionsOpen} onOpenChange={setMentionsOpen}>
                 <DialogTrigger asChild>
                   <button className="hover:text-white transition-colors">Mentions Légales</button>
                 </DialogTrigger>
-                <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
+                <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto bg-[hsl(220_25%_8%)] border-white/10 text-white/80">
                   <DialogHeader>
-                    <DialogTitle>Mentions légales</DialogTitle>
+                    <DialogTitle className="text-white">Mentions légales</DialogTitle>
                   </DialogHeader>
-                  <div className="text-sm text-muted-foreground space-y-3 leading-relaxed">
-                    <p><strong className="text-foreground">Éditeur du site :</strong> AgencIA — Agence de solutions vocales intelligentes pour commerces locaux.</p>
-                    <p><strong className="text-foreground">Responsable de la publication :</strong> Le gérant de la société AgencIA.</p>
-                    <p><strong className="text-foreground">Hébergement :</strong> Le site est hébergé par un prestataire professionnel conforme aux normes européennes de protection des données.</p>
-                    <p><strong className="text-foreground">Propriété intellectuelle :</strong> L'ensemble du contenu de ce site (textes, images, logos, design, code source) est protégé par le droit d'auteur et les lois relatives à la propriété intellectuelle. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable d'AgencIA.</p>
-                    <p><strong className="text-foreground">Responsabilité :</strong> AgencIA s'efforce de fournir des informations aussi précises que possible. Toutefois, elle ne pourra être tenue responsable des omissions, inexactitudes ou carences dans la mise à jour des informations.</p>
-                    <p><strong className="text-foreground">Contact :</strong> Pour toute question relative aux mentions légales, veuillez utiliser le formulaire de contact disponible sur le site.</p>
+                  <div className="text-sm text-white/70 space-y-3 leading-relaxed">
+                    <p><strong className="text-white">Éditeur :</strong> AgencIA (En attente d'immatriculation).</p>
+                    <p><strong className="text-white">Directeur de la publication :</strong> [Votre Nom].</p>
+                    <p><strong className="text-white">Hébergement :</strong> Lovable.dev / Supabase.</p>
+                    <p><strong className="text-white">Propriété intellectuelle :</strong> Tous les contenus (textes, logos, images) sont la propriété exclusive d'AgencIA. Toute reproduction est interdite sans accord préalable.</p>
+                  </div>
+                  <div className="pt-2">
+                    <button
+                      onClick={() => setMentionsOpen(false)}
+                      className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium bg-primary/15 text-primary border border-primary/30 hover:bg-primary/25 transition-colors"
+                    >
+                      ← Retour
+                    </button>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -183,19 +189,23 @@ const Footer = () => {
                 <DialogTrigger asChild>
                   <button className="hover:text-white transition-colors">Confidentialité</button>
                 </DialogTrigger>
-                <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto">
+                <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto bg-[hsl(220_25%_8%)] border-white/10 text-white/80">
                   <DialogHeader>
-                    <DialogTitle>Politique de confidentialité</DialogTitle>
+                    <DialogTitle className="text-white">Politique de confidentialité (RGPD)</DialogTitle>
                   </DialogHeader>
-                  <div className="text-sm text-muted-foreground space-y-3 leading-relaxed">
-                    <p><strong className="text-foreground">Introduction :</strong> AgencIA accorde une importance primordiale à la protection de vos données personnelles. Cette politique décrit les données collectées, leur utilisation et vos droits.</p>
-                    <p><strong className="text-foreground">Données collectées :</strong> Les informations recueillies via le formulaire de contact (nom, établissement, téléphone, type d'activité, centre d'intérêt) sont utilisées exclusivement pour répondre à votre demande et vous proposer nos services d'Agent IA vocal.</p>
-                    <p><strong className="text-foreground">Finalité du traitement :</strong> Vos données sont traitées dans le but de : répondre à vos demandes de démonstration, vous proposer une offre adaptée à votre activité, et assurer le suivi de la relation commerciale.</p>
-                    <p><strong className="text-foreground">Conservation :</strong> Vos données sont conservées pendant une durée maximale de 3 ans à compter du dernier contact, conformément aux recommandations de la CNIL.</p>
-                    <p><strong className="text-foreground">Partage des données :</strong> Vos données ne sont jamais revendues ni cédées à des tiers à des fins commerciales. Elles peuvent être partagées avec nos sous-traitants techniques (hébergement, CRM) dans le strict cadre de la prestation.</p>
-                    <p><strong className="text-foreground">Vos droits (RGPD) :</strong> Conformément au Règlement Général sur la Protection des Données, vous disposez d'un droit d'accès, de rectification, de suppression, de portabilité et d'opposition concernant vos données. Pour exercer ces droits, contactez-nous via le formulaire du site.</p>
-                    <p><strong className="text-foreground">Cookies :</strong> Ce site n'utilise pas de cookies de suivi publicitaire ni de cookies tiers. Seuls des cookies techniques essentiels au bon fonctionnement du site peuvent être déposés.</p>
-                    <p><strong className="text-foreground">Sécurité :</strong> Nous mettons en œuvre toutes les mesures techniques et organisationnelles nécessaires pour garantir la sécurité et la confidentialité de vos données.</p>
+                  <div className="text-sm text-white/70 space-y-3 leading-relaxed">
+                    <p><strong className="text-white">Collecte des données :</strong> Les informations collectées via le formulaire de contact (nom, email, établissement) sont utilisées exclusivement pour répondre à vos demandes de démo.</p>
+                    <p><strong className="text-white">Conservation :</strong> Vos données sont conservées pendant une durée maximale de 3 ans.</p>
+                    <p><strong className="text-white">Droits :</strong> Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en nous contactant via le formulaire de contact.</p>
+                    <p><strong className="text-white">Cookies :</strong> Ce site utilise uniquement des cookies techniques nécessaires au bon fonctionnement de l'interface et à l'analyse de trafic anonyme.</p>
+                  </div>
+                  <div className="pt-2">
+                    <button
+                      onClick={() => setPrivacyOpen(false)}
+                      className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium bg-primary/15 text-primary border border-primary/30 hover:bg-primary/25 transition-colors"
+                    >
+                      ← Retour
+                    </button>
                   </div>
                 </DialogContent>
               </Dialog>
