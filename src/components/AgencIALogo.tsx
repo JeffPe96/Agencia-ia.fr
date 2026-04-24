@@ -4,7 +4,7 @@ const AgencIALogo = () => (
     style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}
   >
     <span
-      className="text-[#0F172A] dark:text-white"
+      className="text-[#0F172A] dark:text-[hsl(215,20%,75%)]"
       style={{ fontWeight: 500 }}
     >
       Agenc
