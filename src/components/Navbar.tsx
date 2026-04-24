@@ -16,8 +16,9 @@ const Navbar = () => {
   }, []);
 
   const links = [
-    { label: "Vocal AgencIA", href: "/vocal" },
-    { label: "Web AgencIA", href: "/web" },
+    { label: "Vocal", href: "/vocal" },
+    { label: "Web", href: "/web" },
+    { label: "Agent", href: "/agent" },
     { label: "Tarifs", href: "/tarifs" },
   ];
 
