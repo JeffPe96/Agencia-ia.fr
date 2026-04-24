@@ -7,7 +7,7 @@ interface Props {
 const SectionBanner = ({ text, subtitle }: Props) => (
   <div className="min-h-[85vh] flex flex-col items-center justify-center text-center px-4">
     <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight">
-      <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(260,60%,58%)]">
+      <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-[hsl(260,60%,58%)] text-9xl">
         {text}
       </span>
     </h1>
