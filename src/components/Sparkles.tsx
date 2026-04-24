@@ -38,12 +38,12 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
     return {
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 2.5 + 0.5,
+      size: Math.random() * 2 + 0.6,
       opacity: 0,
-      speedX: (Math.random() - 0.5) * 0.4,
-      speedY: (Math.random() - 0.5) * 0.4,
+      speedX: (Math.random() - 0.5) * 0.35,
+      speedY: (Math.random() - 0.5) * 0.35,
       life: 0,
-      maxLife: Math.random() * 120 + 60,
+      maxLife: Math.random() * 180 + 120,
     };
   }, []);
 
@@ -71,7 +71,8 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
 
     const rect = container.getBoundingClientRect();
     const isMobile = rect.width < 768;
-    const count = fullScreen ? (isMobile ? 20 : 60) : (isMobile ? 12 : 28);
+    const count = fullScreen ? (isMobile ? 28 : 75) : (isMobile ? 12 : 28);
+    sparklesRef.current = [];
     for (let i = 0; i < count; i++) {
       sparklesRef.current.push(createSparkle(rect.width, rect.height));
     }
@@ -85,8 +86,10 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
 
     if (handleMouseMove) container.addEventListener("mousemove", handleMouseMove);
 
-    const REPEL_RADIUS = 120;
-    const REPEL_FORCE = 2.5;
+    const REPEL_RADIUS = 140;
+    const REPEL_FORCE = 2.8;
+    const LINK_DIST = fullScreen ? 130 : 100;
+    const MOUSE_LINK_DIST = 180;
 
     const animate = () => {
       const r = container.getBoundingClientRect();
@@ -94,10 +97,13 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
 
-      sparklesRef.current.forEach((s, i) => {
+      const sparkles = sparklesRef.current;
+
+      // Update positions and lifecycles
+      sparkles.forEach((s, i) => {
         s.life++;
-        
-        // Mouse repel
+
+        // Mouse interaction (repel)
         const dx = s.x - mx;
         const dy = s.y - my;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -108,8 +114,8 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
         }
 
         // Damping
-        s.speedX *= 0.98;
-        s.speedY *= 0.98;
+        s.speedX *= 0.97;
+        s.speedY *= 0.97;
 
         s.x += s.speedX;
         s.y += s.speedY;
@@ -124,28 +130,58 @@ const Sparkles = ({ children, className = "", fullScreen = false }: SparklesProp
         }
 
         if (s.life >= s.maxLife) {
-          sparklesRef.current[i] = createSparkle(r.width, r.height);
-          return;
+          sparkles[i] = createSparkle(r.width, r.height);
         }
+      });
 
+      // Neural network: connection lines between close particles
+      ctx.lineWidth = 0.6;
+      for (let i = 0; i < sparkles.length; i++) {
+        const a = sparkles[i];
+        for (let j = i + 1; j < sparkles.length; j++) {
+          const b = sparkles[j];
+          const ddx = a.x - b.x;
+          const ddy = a.y - b.y;
+          const d = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (d < LINK_DIST) {
+            const alpha = (1 - d / LINK_DIST) * 0.2 * Math.min(a.opacity, b.opacity);
+            ctx.strokeStyle = `hsla(195, 100%, 65%, ${alpha})`;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Mouse-to-particle connection lines (active neural feel)
+      if (mx > -500) {
+        for (const s of sparkles) {
+          const ddx = s.x - mx;
+          const ddy = s.y - my;
+          const d = Math.sqrt(ddx * ddx + ddy * ddy);
+          if (d < MOUSE_LINK_DIST) {
+            const alpha = (1 - d / MOUSE_LINK_DIST) * 0.4 * s.opacity;
+            ctx.strokeStyle = `hsla(190, 100%, 70%, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(s.x, s.y);
+            ctx.lineTo(mx, my);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw glowing particles
+      sparkles.forEach((s) => {
         ctx.save();
-        ctx.globalAlpha = s.opacity * 0.9;
-        ctx.fillStyle = `hsl(217, 91%, ${65 + Math.random() * 20}%)`;
-        ctx.shadowColor = "hsl(217, 91%, 70%)";
-        ctx.shadowBlur = 6;
+        ctx.globalAlpha = s.opacity * 0.95;
+        ctx.fillStyle = "hsl(195, 100%, 70%)";
+        ctx.shadowColor = "hsl(195, 100%, 65%)";
+        ctx.shadowBlur = 10;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
         ctx.fill();
-
-        ctx.strokeStyle = `hsl(217, 91%, ${70 + Math.random() * 15}%)`;
-        ctx.lineWidth = 0.5;
-        ctx.globalAlpha = s.opacity * 0.5;
-        ctx.beginPath();
-        ctx.moveTo(s.x - s.size * 2, s.y);
-        ctx.lineTo(s.x + s.size * 2, s.y);
-        ctx.moveTo(s.x, s.y - s.size * 2);
-        ctx.lineTo(s.x, s.y + s.size * 2);
-        ctx.stroke();
         ctx.restore();
       });
 

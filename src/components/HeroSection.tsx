@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import heroImage from "@/assets/hero-annecy.png";
+import heroImage from "@/assets/hero-immersive.jpg";
 
 const TITLE = "AgencIA";
 
@@ -173,11 +173,12 @@ const AnnecyHero = () => {
         </div>
       </div>
 
-      {/* Fade-out to next section */}
+      {/* Waterfall fade — image extends naturally into the dark background of the rest of the site */}
       <div
-        className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+        className="absolute inset-x-0 bottom-0 h-[40%] pointer-events-none"
         style={{
-          background: "linear-gradient(to bottom, transparent, hsl(var(--background)))",
+          background:
+            "linear-gradient(to bottom, transparent 0%, hsl(220 30% 6% / 0.4) 50%, hsl(220 30% 6% / 0.95) 90%, hsl(220 30% 6%) 100%)",
         }}
       />
     </div>
@@ -186,7 +187,7 @@ const AnnecyHero = () => {
 
 const HeroSection = () => {
   return (
-    <section>
+    <section className="relative">
       <style>{`
         @keyframes title-float {
           0%, 100% { transform: translateY(0); }
@@ -195,17 +196,6 @@ const HeroSection = () => {
         @keyframes ripple-expand {
           0% { width: 0; height: 0; opacity: 0.7; border-width: 2px; }
           100% { width: 220px; height: 220px; opacity: 0; border-width: 0.5px; }
-        }
-        @media (max-width: 639px) {
-          .card-reveal-left {
-            --card-desktop-x: 0px !important;
-            --card-desktop-y: 30px !important;
-          }
-          .card-reveal-right {
-            --card-desktop-x: 0px !important;
-            --card-desktop-y: 30px !important;
-            transition-delay: 0.15s !important;
-          }
         }
       `}</style>
 
