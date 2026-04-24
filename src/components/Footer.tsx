@@ -171,7 +171,7 @@ const Footer = () => {
                   <div className="text-sm text-white/70 space-y-3 leading-relaxed">
                     <p><strong className="text-white">Éditeur :</strong> AgencIA (En attente d'immatriculation).</p>
                     <p><strong className="text-white">Directeur de la publication :</strong> Jefferson DE LA CRUZ.</p>
-                    <p><strong className="text-white">Hébergement :</strong> Lovable.dev / Supabase.</p>
+                    <p><strong className="text-white">Hébergement :</strong> Vercel.</p>
                     <p><strong className="text-white">Propriété intellectuelle :</strong> Tous les contenus (textes, logos, images) sont la propriété exclusive d'AgencIA. Toute reproduction est interdite sans accord préalable.</p>
                   </div>
                   <div className="pt-2">
