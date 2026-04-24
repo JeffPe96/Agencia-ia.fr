@@ -109,22 +109,25 @@ const AnnecyHero = () => {
       {/* Title + reflection - perfectly centered */}
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
         <div className="relative" style={{ animation: "title-float 6s ease-in-out infinite" }}>
-          <h1 className="text-5xl sm:text-7xl lg:text-[10rem] font-extrabold tracking-tight text-center drop-shadow-[0_4px_20px_rgba(0,0,0,0.35)] leading-none">
-            {TITLE.split("").map((letter, i) => (
-              <span
-                key={i}
-                className={`inline-block transition-all duration-500 ${
-                  i < titleVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
-                } ${
-                  i >= TITLE.length - 2
-                    ? "bg-clip-text text-transparent bg-gradient-to-r from-[hsl(217,91%,60%)] to-[hsl(260,70%,65%)]"
-                    : "text-white"
-                }`}
-                style={{ transitionDelay: `${i * 60}ms` }}
-              >
-                {letter}
-              </span>
-            ))}
+          <h1 className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none" style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}>
+            {TITLE.split("").map((letter, i) => {
+              const isIA = i >= TITLE.length - 2;
+              return (
+                <span
+                  key={i}
+                  className={`inline-block transition-all duration-500 ${
+                    i < titleVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
+                  } ${isIA ? "text-[#3B82F6]" : "text-[hsl(215,20%,75%)]"}`}
+                  style={{
+                    transitionDelay: `${i * 60}ms`,
+                    fontWeight: isIA ? 800 : 500,
+                    textShadow: isIA ? "0 0 40px rgba(59, 130, 246, 0.35)" : undefined,
+                  }}
+                >
+                  {letter}
+                </span>
+              );
+            })}
           </h1>
 
           {/* Reflection */}
@@ -139,19 +142,19 @@ const AnnecyHero = () => {
             }}
             aria-hidden="true"
           >
-            <h1 className="text-5xl sm:text-7xl lg:text-[10rem] font-extrabold tracking-tight text-center leading-none">
-              {TITLE.split("").map((letter, i) => (
-                <span
-                  key={i}
-                  className={`inline-block ${
-                    i >= TITLE.length - 2
-                      ? "bg-clip-text text-transparent bg-gradient-to-r from-[hsl(217,91%,60%)] to-[hsl(260,70%,65%)]"
-                      : "text-white"
-                  }`}
-                >
-                  {letter}
-                </span>
-              ))}
+            <h1 className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none" style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}>
+              {TITLE.split("").map((letter, i) => {
+                const isIA = i >= TITLE.length - 2;
+                return (
+                  <span
+                    key={i}
+                    className={`inline-block ${isIA ? "text-[#3B82F6]" : "text-[hsl(215,20%,75%)]"}`}
+                    style={{ fontWeight: isIA ? 800 : 500 }}
+                  >
+                    {letter}
+                  </span>
+                );
+              })}
             </h1>
           </div>
         </div>
