@@ -1,38 +1,39 @@
-import { Gauge, Search, Smartphone, Settings, Zap, TrendingUp, Layout, Lock } from "lucide-react";
+import { Rocket, Search, Smartphone, ShieldCheck, Zap, TrendingUp, Layout, Lock, Sparkles } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const features = [
   {
-    icon: Gauge,
-    title: "Site Haute Performance",
-    desc: "Architecture moderne, hébergement premium et optimisation Core Web Vitals pour une expérience ultra-fluide.",
+    icon: Rocket,
+    title: "Vitesse Éclair & Performance",
+    desc: "Architecture optimisée avec les technologies les plus rapides pour un temps de chargement minimal et un score SEO maximal.",
     metric: "< 1.5s",
     metricLabel: "Temps de chargement",
     accent: "from-[#00d2ff] to-[#3a7bd5]",
   },
   {
     icon: Search,
-    title: "SEO & Visibilité Google",
-    desc: "Référencement naturel avancé, données structurées et stratégie de contenu pour dominer la première page.",
+    title: "SEO Local & National Avancé",
+    desc: "Optimisation structurelle complète pour dominer Google, attirer des clients qualifiés et booster votre visibilité.",
     metric: "TOP 3",
     metricLabel: "Objectif Google",
     accent: "from-[#7b5cff] to-[#3a7bd5]",
   },
   {
     icon: Smartphone,
-    title: "Design Responsive",
-    desc: "Une expérience parfaite sur mobile, tablette et desktop. Design sur-mesure aligné à votre identité de marque.",
+    title: "Expérience Mobile-First",
+    desc: "Navigation fluide et design adaptatif sur tous les écrans (mobile, tablette, PC) pour convertir chaque visiteur.",
     metric: "100%",
-    metricLabel: "Mobile-first",
+    metricLabel: "Responsive",
     accent: "from-[#00d2ff] to-[#7b5cff]",
   },
   {
-    icon: Settings,
-    title: "Interface d'Administration",
-    desc: "Modifiez textes, images et pages en autonomie totale grâce à un back-office intuitif et sécurisé.",
-    metric: "0 code",
-    metricLabel: "Autonomie totale",
+    icon: ShieldCheck,
+    title: "Maintenance & Évolutions Illimitées",
+    desc: "Service tout inclus : sécurité, mises à jour techniques et modifications de contenu illimitées chaque mois pour votre sérénité.",
+    metric: "49€/mois",
+    metricLabel: "Tout inclus",
     accent: "from-[#3a7bd5] to-[#00d2ff]",
+    badge: "Premium",
   },
 ];
 
