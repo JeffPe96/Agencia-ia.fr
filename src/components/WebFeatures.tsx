@@ -60,8 +60,15 @@ const WebFeatures = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {features.map((f, i) => (
           <ScrollReveal key={f.title} delay={i * 100}>
-            <div className="web-feature-card group h-full">
+            <div className={`web-feature-card group h-full relative ${f.badge ? "web-feature-card-premium" : ""}`}>
               <div className="web-feature-glow" aria-hidden="true" />
+
+              {f.badge && (
+                <div className="web-feature-badge">
+                  <Sparkles size={11} strokeWidth={2.2} />
+                  <span>{f.badge}</span>
+                </div>
+              )}
 
               <div className={`web-feature-icon bg-gradient-to-br ${f.accent}`}>
                 <f.icon size={22} strokeWidth={1.8} className="text-white" />
