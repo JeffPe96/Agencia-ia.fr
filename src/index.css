@@ -601,6 +601,8 @@
     }
     .web-faq-cta > div { text-align: center !important; }
   }
+
+  .web-feature-metric {
     display: flex;
     flex-direction: column;
     gap: 2px;
