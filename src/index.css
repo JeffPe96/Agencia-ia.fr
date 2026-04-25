@@ -615,3 +615,182 @@
     100% { top: 100%; opacity: 0; }
   }
 }
+
+/* ===================================================== */
+/* ===== Workflow IA — Steps with circuit connector  === */
+/* ===================================================== */
+
+.workflow-step {
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(145deg, hsl(220 30% 9% / 0.7), hsl(220 28% 7% / 0.5));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid hsl(220 20% 22% / 0.6);
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.04),
+    0 8px 28px -14px hsl(220 60% 2% / 0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  text-align: center;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.workflow-step::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, hsl(195 100% 60% / 0.55), hsl(217 91% 55% / 0.35), transparent 70%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.workflow-step:hover {
+  transform: translateY(-6px);
+  border-color: hsl(195 100% 50% / 0.35);
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.06),
+    0 18px 50px -16px hsl(195 100% 50% / 0.35),
+    0 0 60px -16px hsl(190 80% 50% / 0.3);
+}
+
+.workflow-step:hover::before {
+  opacity: 1;
+}
+
+/* Glowing step number */
+.workflow-number {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 24px hsl(195 100% 60% / 0.45);
+  filter: drop-shadow(0 0 12px hsl(195 100% 55% / 0.55));
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.workflow-step:hover .workflow-number {
+  filter: drop-shadow(0 0 18px hsl(195 100% 60% / 0.85));
+}
+
+/* Tech icon — neon outline */
+.workflow-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  background: linear-gradient(145deg, hsl(220 30% 8% / 0.9), hsl(220 28% 12% / 0.7));
+  border: 1px solid hsl(195 100% 50% / 0.25);
+  color: hsl(195 100% 70%);
+  box-shadow:
+    inset 0 0 14px -4px hsl(195 100% 50% / 0.3),
+    0 0 18px -6px hsl(195 100% 50% / 0.4);
+  transition: box-shadow 0.4s ease, color 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+}
+
+.workflow-step:hover .workflow-icon {
+  color: hsl(195 100% 85%);
+  border-color: hsl(195 100% 60% / 0.6);
+  box-shadow:
+    inset 0 0 22px -2px hsl(195 100% 55% / 0.5),
+    0 0 30px -4px hsl(195 100% 55% / 0.7);
+  transform: scale(1.05);
+}
+
+/* Circuit connector between steps (desktop) */
+.workflow-connector {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background-image: linear-gradient(90deg, hsl(195 100% 55% / 0.55) 50%, transparent 50%);
+  background-size: 10px 2px;
+  background-repeat: repeat-x;
+  opacity: 0.55;
+}
+
+.workflow-connector::before,
+.workflow-connector::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: hsl(195 100% 65%);
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px hsl(195 100% 60%);
+}
+
+.workflow-connector::before { left: -3px; }
+.workflow-connector::after { right: -3px; }
+
+.workflow-pulse {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: hsl(195 100% 75%);
+  box-shadow: 0 0 14px 2px hsl(195 100% 60%);
+  transform: translateY(-50%);
+  animation: workflow-flow 3.5s ease-in-out infinite;
+}
+
+@keyframes workflow-flow {
+  0% { left: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* Speed badge */
+.speed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, hsl(217 60% 10% / 0.7), hsl(195 60% 9% / 0.6));
+  border: 1px solid hsl(195 100% 50% / 0.35);
+  color: hsl(195 100% 88%);
+  font-size: 0.85rem;
+  font-weight: 500;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 0 18px -4px hsl(195 100% 50% / 0.25),
+    0 8px 24px -10px hsl(195 100% 50% / 0.4);
+}
+
+.speed-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: hsl(195 100% 60%);
+  box-shadow: 0 0 10px hsl(195 100% 60%);
+  animation: pulse-soft 2s ease-in-out infinite;
+}

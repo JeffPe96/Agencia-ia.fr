@@ -1,63 +1,85 @@
-import { Palette, Layout, Code, Rocket } from "lucide-react";
+import { ScanSearch, Cpu, Rocket, Zap } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const steps = [
   {
-    icon: Palette,
+    icon: ScanSearch,
     number: "01",
-    title: "Étude de marque",
-    desc: "Nous analysons votre image de marque, vos valeurs et votre positionnement pour créer un univers visuel cohérent.",
+    title: "Audit & Diagnostic IA",
+    desc: "Analyse approfondie de votre présence numérique et identification des leviers de croissance grâce à nos outils prédictifs.",
   },
   {
-    icon: Layout,
+    icon: Cpu,
     number: "02",
-    title: "Design & Maquettage",
-    desc: "Création de maquettes sur-mesure validées ensemble avant le développement.",
-  },
-  {
-    icon: Code,
-    number: "03",
-    title: "Développement & SEO",
-    desc: "Construction de votre site avec les meilleures pratiques de performance et de référencement naturel.",
+    title: "Conception & Architecture Augmentée",
+    desc: "Développement agile de votre plateforme. Nous fusionnons design premium et optimisation technique pour une vitesse de chargement record.",
   },
   {
     icon: Rocket,
-    number: "04",
-    title: "Mise en ligne & Formation",
-    desc: "Lancement de votre site et formation complète à l'interface d'administration pour votre autonomie.",
+    number: "03",
+    title: "Déploiement & Évolutivité",
+    desc: "Mise en ligne sécurisée et suivi continu. Votre site n'est pas juste fini, il est prêt à évoluer avec les dernières innovations de l'IA.",
   },
 ];
 
 const WebOnboardingSteps = () => (
-  <section className="py-28">
-    <div className="container mx-auto px-4">
+  <section className="py-28 relative">
+    <div className="container mx-auto px-4 relative z-10">
       <ScrollReveal>
-        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Processus</p>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Workflow IA</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Votre site en <span className="text-gradient">4 étapes</span>
+          Nos solutions <span className="text-gradient">web</span>
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
-          Un processus clair et transparent pour votre projet web.
+          Un processus optimisé par l'IA, du diagnostic au déploiement.
         </p>
       </ScrollReveal>
 
-      <div className="max-w-4xl mx-auto">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="max-w-5xl mx-auto relative">
+        {/* Desktop circuit connectors between cards */}
+        <div className="hidden lg:block absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div
+            className="workflow-connector"
+            style={{ left: "calc(33.333% - 24px)", width: "48px" }}
+          >
+            <span className="workflow-pulse" />
+          </div>
+          <div
+            className="workflow-connector"
+            style={{ left: "calc(66.666% - 24px)", width: "48px" }}
+          >
+            <span className="workflow-pulse" style={{ animationDelay: "1.2s" }} />
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 relative">
           {steps.map((step, i) => (
-            <ScrollReveal key={step.number} delay={i * 120}>
-              <div className="card-glass text-center h-full relative group">
-                <span className="text-5xl font-extrabold text-primary/[0.06] absolute top-4 right-6 group-hover:text-primary/[0.12] transition-colors duration-300">
-                  {step.number}
-                </span>
-                <div className="w-12 h-12 rounded-2xl bg-primary/[0.06] flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/[0.12] transition-colors duration-300">
-                  <step.icon className="text-primary" size={22} />
+            <ScrollReveal key={step.number} delay={i * 140}>
+              <div className="workflow-step group">
+                <div className="workflow-icon">
+                  <step.icon size={26} strokeWidth={1.5} />
                 </div>
-                <h3 className="font-semibold text-lg mb-2 text-foreground">{step.title}</h3>
+                <div className="workflow-number">{step.number}</div>
+                <h3 className="font-semibold text-lg mb-3 text-foreground">{step.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
               </div>
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Speed badge */}
+        <ScrollReveal delay={500}>
+          <div className="flex justify-center mt-12">
+            <div className="speed-badge">
+              <span className="speed-badge-dot" />
+              <Zap size={15} className="text-primary" strokeWidth={2} />
+              <span>
+                <strong className="text-foreground font-semibold">Délai moyen de livraison : 7 à 14 jours</strong>{" "}
+                <span className="text-muted-foreground">— grâce à notre workflow optimisé par l'IA.</span>
+              </span>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </div>
   </section>
