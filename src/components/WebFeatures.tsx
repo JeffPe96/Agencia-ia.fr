@@ -1,4 +1,4 @@
-import { Rocket, Search, Smartphone, ShieldCheck, Zap, TrendingUp, Layout, Lock, Sparkles } from "lucide-react";
+import { Rocket, Search, Smartphone, ShieldCheck, Sparkles } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const features = [
@@ -37,12 +37,6 @@ const features = [
   },
 ];
 
-const trustPoints = [
-  { icon: Zap, label: "Stack moderne (React, Vite, Tailwind)" },
-  { icon: TrendingUp, label: "Analytics & conversion intégrés" },
-  { icon: Layout, label: "Design system cohérent" },
-  { icon: Lock, label: "Sécurité & hébergement premium" },
-];
 
 const WebFeatures = () => (
   <section className="py-28 relative">
@@ -88,18 +82,6 @@ const WebFeatures = () => (
         ))}
       </div>
 
-      <ScrollReveal delay={500}>
-        <div className="mt-12 max-w-4xl mx-auto">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {trustPoints.map((tp) => (
-              <div key={tp.label} className="web-trust-chip">
-                <tp.icon size={14} className="text-primary" strokeWidth={2} />
-                <span>{tp.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </ScrollReveal>
     </div>
   </section>
 );
