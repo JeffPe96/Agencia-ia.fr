@@ -37,12 +37,6 @@ const features = [
   },
 ];
 
-const trustPoints = [
-  { icon: Zap, label: "Stack moderne (React, Vite, Tailwind)" },
-  { icon: TrendingUp, label: "Analytics & conversion intégrés" },
-  { icon: Layout, label: "Design system cohérent" },
-  { icon: Lock, label: "Sécurité & hébergement premium" },
-];
 
 const WebFeatures = () => (
   <section className="py-28 relative">
