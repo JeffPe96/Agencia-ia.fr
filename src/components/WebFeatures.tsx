@@ -1,4 +1,4 @@
-import { Rocket, Search, Smartphone, ShieldCheck, Zap, TrendingUp, Layout, Lock, Sparkles } from "lucide-react";
+import { Rocket, Search, Smartphone, ShieldCheck, Sparkles } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const features = [
