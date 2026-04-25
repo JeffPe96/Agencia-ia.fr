@@ -141,11 +141,11 @@ const Footer = () => {
               <ul className="space-y-3 text-sm">
                 <li>
                   <a
-                    href="mailto:contact@agencia.fr"
+                    href="mailto:contact@agencia-ia.fr"
                     className="flex items-start gap-3 text-white/60 hover:text-primary transition-colors duration-200"
                   >
                     <Mail size={16} className="mt-0.5 shrink-0 text-primary/80" />
-                    <span>contact@agencia.fr</span>
+                    <span>contact@agencia-ia.fr</span>
                   </a>
                 </li>
                 <li className="flex items-start gap-3 text-white/60">
