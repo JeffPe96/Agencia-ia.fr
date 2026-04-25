@@ -88,18 +88,6 @@ const WebFeatures = () => (
         ))}
       </div>
 
-      <ScrollReveal delay={500}>
-        <div className="mt-12 max-w-4xl mx-auto">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {trustPoints.map((tp) => (
-              <div key={tp.label} className="web-trust-chip">
-                <tp.icon size={14} className="text-primary" strokeWidth={2} />
-                <span>{tp.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </ScrollReveal>
     </div>
   </section>
 );
