@@ -44,7 +44,7 @@ const OnboardingSteps = () => (
   <section id="processus" className="py-20 sm:py-28 scroll-mt-[160px]">
     <div className="container mx-auto px-4">
       <ScrollReveal>
-        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Processus</p>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Nos solutions</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
           Votre transformation en <span className="text-gradient">4 étapes</span>
         </h2>
