@@ -21,7 +21,7 @@ const WebPage = () => (
       <SectionBanner text="Web AgencIA" subtitle="Votre vitrine digitale sur-mesure." variant="accent" />
       <WebProblemSolution />
       <WebFeatures />
-      <Portfolio />
+      
       <WebFAQ />
       <WebOnboardingSteps />
       <ContactForm formContext="web" />
