@@ -28,7 +28,7 @@ const WebOnboardingSteps = () => (
       <ScrollReveal>
         <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Workflow IA</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Nos solutions <span className="text-gradient">web</span>
+          Notre processus <span className="text-gradient">web</span>
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
           Un processus optimisé par l'IA, du diagnostic au déploiement.
