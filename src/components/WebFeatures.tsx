@@ -33,7 +33,7 @@ const features = [
     metric: "49€/mois",
     metricLabel: "Tout inclus",
     accent: "from-[#3a7bd5] to-[#00d2ff]",
-    badge: "Premium",
+    badge: "Abonnement",
   },
 ];
 
