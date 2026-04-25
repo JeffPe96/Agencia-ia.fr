@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import SectionBanner from "@/components/SectionBanner";
 import WebProblemSolution from "@/components/WebProblemSolution";
 import WebFeatures from "@/components/WebFeatures";
-import Portfolio from "@/components/Portfolio";
+
 import WebFAQ from "@/components/WebFAQ";
 import WebOnboardingSteps from "@/components/WebOnboardingSteps";
 import ContactForm from "@/components/ContactForm";
