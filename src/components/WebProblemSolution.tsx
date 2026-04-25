@@ -3,16 +3,16 @@ import ScrollReveal from "./ScrollReveal";
 
 const steps = [
   {
-    problem: "Un site vieillissant qui ne convertit pas",
-    solution: "Un design moderne qui inspire confiance immédiatement",
+    problem: "Design vieillissant qui ne convertit pas",
+    solution: "Identité visuelle Premium qui capte l'attention dès la 1ère seconde.",
   },
   {
     problem: "Invisible sur Google, zéro trafic organique",
-    solution: "SEO optimisé pour apparaître en première page",
+    solution: "SEO de combat : Dominez les résultats locaux et dépassez vos concurrents.",
   },
   {
     problem: "Site lent et non adapté au mobile",
-    solution: "Performance maximale sur tous les écrans",
+    solution: "Vitesse éclair (Core Web Vitals) : Zéro frustration, conversion maximale.",
   },
 ];
 
@@ -47,10 +47,10 @@ const WebProblemSolution = () => {
   }, [started]);
 
   return (
-    <section className="py-28" ref={sectionRef}>
-      <div className="container mx-auto px-4">
+    <section className="py-28 relative" ref={sectionRef}>
+      <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
-          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Avant / Après</p>
+          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Audit / Transformation</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
             Le changement avec <span className="text-gradient">Web AgencIA</span>
           </h2>
@@ -59,27 +59,36 @@ const WebProblemSolution = () => {
           </p>
         </ScrollReveal>
 
-        <div className="max-w-2xl mx-auto space-y-5">
+        <div className="max-w-3xl mx-auto space-y-6">
           {steps.map((step, i) => (
             <div
               key={i}
-              className={`transition-all duration-500 ${
+              className={`audit-row transition-all duration-500 ${
                 i <= visibleStep ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 sm:gap-4 items-center">
-                <div className="card-glass border-destructive/10 bg-destructive/[0.02] px-5 py-4 flex items-center gap-3">
-                  <span className="text-destructive text-lg shrink-0">✗</span>
-                  <p className="text-sm text-muted-foreground">{step.problem}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 sm:gap-2 items-center">
+                {/* AVANT */}
+                <div className="audit-card-before">
+                  <span className="audit-icon-x text-sm">✕</span>
+                  <p className="text-sm text-muted-foreground/90 leading-snug">{step.problem}</p>
                 </div>
-                <span className="hidden sm:block text-muted-foreground/30 text-xl">→</span>
+
+                {/* Connector with flowing light on hover */}
+                <div className="audit-connector" aria-hidden="true" />
+
+                {/* APRÈS */}
                 <div
-                  className={`card-glass border-primary/10 bg-primary/[0.02] px-5 py-4 flex items-center gap-3 transition-all duration-500 ${
+                  className={`audit-card-after transition-all duration-500 ${
                     i <= showSolution ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
                   }`}
                 >
-                  <span className="text-primary text-lg shrink-0">✓</span>
-                  <p className="text-sm text-muted-foreground">{step.solution}</p>
+                  <span className="audit-icon-check">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+                  <p className="audit-text text-sm text-foreground/90 leading-snug font-medium">{step.solution}</p>
                 </div>
               </div>
             </div>
