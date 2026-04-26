@@ -1,4 +1,4 @@
-import { Phone, Monitor, MessageCircleHeart, Mic2, Languages, CreditCard, Check, Sparkles, Info, type LucideIcon } from "lucide-react";
+import { Phone, Monitor, MessageCircleHeart, Mic2, Languages, CreditCard, CheckCircle2, Sparkles, Info, type LucideIcon } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import ScrollToTop from "@/components/ScrollToTop";
 import GlobalSparkles from "@/components/GlobalSparkles";
@@ -30,11 +30,12 @@ const plans: Plan[] = [
     setupPrice: "À partir de 950 €",
     monthly: "149 €/mois",
     features: [
-      "Création du cerveau IA",
-      "Scripts sur-mesure",
-      "Connexion calendriers (Google / Cal.com)",
-      "Transfert d'appels intelligents",
-      "Transfert d'appel vers un humain si nécessaire",
+      "Installation et configuration complète",
+      "IA entraînée sur vos données",
+      "Prise de rendez-vous automatisée (Sync Agenda)",
+      "Transfert d'appel intelligent vers un humain",
+      "Support technique dédié",
+      "Rapport d'appels hebdomadaire",
     ],
     note: "Le prix final dépend de la complexité de la connexion avec vos outils de gestion internes.",
     popular: true,
@@ -48,11 +49,12 @@ const plans: Plan[] = [
     setupPrice: "À partir de 1 600 €",
     monthly: "89 €/mois",
     features: [
+      "Installation et configuration complète",
       "Design Premium & Responsive",
       "Optimisation SEO",
       "Hébergement Ultra-rapide",
       "Maintenance & Sécurité incluses",
-      "Changements mineurs inclus (textes, photos)",
+      "Support technique dédié",
     ],
     note: "Hébergement et DNS à la charge du client (AgencIA vous accompagne dans la configuration).",
     accent: "violet",
@@ -71,10 +73,12 @@ const plans: Plan[] = [
     monthly: "79 €/mois",
     monthlyDetail: "Inclus l'analyse des logs et mise à jour de la base de connaissances.",
     features: [
-      "IA experte SAV",
+      "Installation et configuration complète",
+      "IA entraînée sur vos données",
       "Stratégie proactive de vente",
       "Lead Scoring",
-      "Analyse des logs mensuelle",
+      "Support technique dédié",
+      "Rapport d'appels hebdomadaire",
     ],
     accent: "cyan",
   },
@@ -205,7 +209,7 @@ const PricingPage = () => {
                       <ul className="space-y-3 mb-6 flex-1">
                         {plan.features.map((f) => (
                           <li key={f} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                            <Check size={16} className={`${a.iconText} mt-0.5 shrink-0`} />
+                            <CheckCircle2 size={18} className={`${a.iconText} mt-0.5 shrink-0`} />
                             <span>{f}</span>
                           </li>
                         ))}
