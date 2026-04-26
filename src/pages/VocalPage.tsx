@@ -22,10 +22,10 @@ const VocalPage = () => (
       <SectionBanner text="Vocal AgencIA" subtitle="Ne manquez plus aucun client." variant="primary" />
       <ProblemSolution />
       <Features />
+      <OnboardingSteps />
       <DemoSection />
       <Sectors />
       <FAQ />
-      <OnboardingSteps />
       <ContactForm formContext="vocal" />
       <Footer />
     </div>
