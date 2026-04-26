@@ -1,30 +1,24 @@
-import { Search, BrainCircuit, FlaskConical, Rocket, Zap } from "lucide-react";
+import { Brain, Settings2, Rocket, Zap } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const steps = [
   {
-    icon: Search,
+    icon: Brain,
     number: "01",
-    title: "Audit Stratégique",
-    desc: "Analyse approfondie de votre flux d'appels et de vos process métier pour identifier les opportunités d'automatisation les plus rentables.",
+    title: "Analyse & Stratégie",
+    desc: "Analyse de vos besoins et entraînement de l'IA avec vos données spécifiques pour créer un script sur-mesure.",
   },
   {
-    icon: BrainCircuit,
+    icon: Settings2,
     number: "02",
-    title: "Conception & Entraînement IA",
-    desc: "Création de votre Assistant Vocal sur-mesure. Nous entraînons l'IA sur vos données, votre ton et votre catalogue pour une expérience 100% naturelle.",
-  },
-  {
-    icon: FlaskConical,
-    number: "03",
-    title: "Tests & Optimisation",
-    desc: "Tests en conditions réelles et ajustements basés sur vos retours. Nous peaufinons chaque scénario pour garantir une qualité de réponse irréprochable.",
+    title: "Configuration & IA",
+    desc: "Connexion à vos outils (Agenda, CRM) et configuration de la voix pour des conversations naturelles et fluides.",
   },
   {
     icon: Rocket,
-    number: "04",
+    number: "03",
     title: "Déploiement & Suivi",
-    desc: "Mise en production de votre Assistant et connexion à votre agenda. Nous assurons le monitoring continu et l'évolution de votre IA dans le temps.",
+    desc: "Lancement de votre agent 24h/7 et optimisation continue des performances pour maximiser vos résultats.",
   },
 ];
 
@@ -37,34 +31,28 @@ const OnboardingSteps = () => (
           Notre processus <span className="text-gradient">vocal</span>
         </h2>
         <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
-          Un parcours optimisé par l'IA, de l'audit stratégique au déploiement de votre Assistant Vocal.
+          Un parcours optimisé par l'IA, de l'analyse stratégique au déploiement de votre Assistant Vocal.
         </p>
       </ScrollReveal>
 
-      <div className="max-w-6xl mx-auto relative">
+      <div className="max-w-5xl mx-auto relative">
         {/* Desktop circuit connectors between cards */}
         <div className="hidden lg:block absolute inset-0 pointer-events-none" aria-hidden="true">
           <div
             className="workflow-connector"
-            style={{ left: "calc(25% - 24px)", width: "48px" }}
+            style={{ left: "calc(33.333% - 24px)", width: "48px" }}
           >
             <span className="workflow-pulse" />
           </div>
           <div
             className="workflow-connector"
-            style={{ left: "calc(50% - 24px)", width: "48px" }}
+            style={{ left: "calc(66.666% - 24px)", width: "48px" }}
           >
-            <span className="workflow-pulse" style={{ animationDelay: "0.8s" }} />
-          </div>
-          <div
-            className="workflow-connector"
-            style={{ left: "calc(75% - 24px)", width: "48px" }}
-          >
-            <span className="workflow-pulse" style={{ animationDelay: "1.6s" }} />
+            <span className="workflow-pulse" style={{ animationDelay: "1.2s" }} />
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
+        <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 relative">
           {steps.map((step, i) => (
             <ScrollReveal key={step.number} delay={i * 140}>
               <div className="workflow-step group">
@@ -80,7 +68,7 @@ const OnboardingSteps = () => (
         </div>
 
         {/* Speed badge */}
-        <ScrollReveal delay={600}>
+        <ScrollReveal delay={500}>
           <div className="flex justify-center mt-12">
             <div className="speed-badge">
               <span className="speed-badge-dot" />
