@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AgencIALogo from "./AgencIALogo";
+import { navigateToHomeContact } from "@/lib/navigateToContact";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 100);
@@ -46,8 +48,7 @@ const Navbar = () => {
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const el = document.getElementById("contact");
-    el?.scrollIntoView({ behavior: "smooth" });
+    navigateToHomeContact(navigate);
   };
 
   const handleLogoClick = (e: React.MouseEvent) => {
