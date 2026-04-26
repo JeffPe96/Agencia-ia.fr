@@ -1,71 +1,116 @@
 import { useState } from "react";
-import { Scissors, PawPrint, UtensilsCrossed, Sparkles, HelpCircle, ArrowRight } from "lucide-react";
+import { Scissors, Dog, Utensils, Heart, HelpCircle, ArrowRight, Send } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const sectors = [
   {
     id: "coiffure",
     icon: Scissors,
     label: "Coiffure",
-    text: "L'Agent IA identifie le type de soin et réserve le créneau idéal. Sublimez vos clients, l'IA gère le temps.",
-    accent: "from-[#00d2ff] to-[#3a7bd5]",
+    title: "Coiffure & Beauté",
+    text:
+      "Libérez-vous de la prise de rendez-vous. Notre IA qualifie les demandes, gère votre calendrier en temps réel et relance vos clients automatiquement pour réduire les rendez-vous manqués.",
+    accent: "from-[#00BFFF] to-[#3a7bd5]",
     stats: [
-      { value: "+38%", label: "RDV pris hors horaires" },
-      { value: "0", label: "Appel manqué" },
+      { value: "−70%", label: "RDV manqués" },
+      { value: "24/7", label: "Calendrier géré" },
     ],
   },
   {
     id: "toilettage",
-    icon: PawPrint,
+    icon: Dog,
     label: "Toilettage",
-    text: "L'Agent IA prend les rendez-vous et pose les bonnes questions : race, taille, type de soin. Vous vous occupez des poils, pas du téléphone.",
-    accent: "from-[#7b5cff] to-[#3a7bd5]",
+    title: "Toilettage",
+    text:
+      "Une gestion fluide pour vos clients à quatre pattes. L'Agent IA identifie le type de soin nécessaire et optimise vos créneaux pour maximiser votre journée sans stress.",
+    accent: "from-[#7b5cff] to-[#00BFFF]",
     stats: [
-      { value: "100%", label: "Qualification automatique" },
-      { value: "24/7", label: "Disponibilité" },
+      { value: "100%", label: "Soins qualifiés" },
+      { value: "+30%", label: "Créneaux optimisés" },
     ],
   },
   {
     id: "restauration",
-    icon: UtensilsCrossed,
+    icon: Utensils,
     label: "Restauration",
-    text: "Gestion des réservations de tables et réponses immédiates aux questions de vos clients (carte, horaires, accès).",
-    accent: "from-[#00d2ff] to-[#7b5cff]",
+    title: "Restauration",
+    text:
+      "Ne perdez plus aucune réservation. Notre IA répond aux questions sur le menu, gère les réservations de tables et recueille les avis clients pour booster votre réputation sur Google.",
+    accent: "from-[#00BFFF] to-[#7b5cff]",
     stats: [
       { value: "< 2s", label: "Temps de réponse" },
-      { value: "+25%", label: "Tables remplies" },
+      { value: "★ +", label: "Avis Google" },
     ],
   },
   {
     id: "bien-etre",
-    icon: Sparkles,
+    icon: Heart,
     label: "Bien-être",
-    text: "Offrez un accueil VIP immédiat pour vos centres de soin, spas ou salles de sport.",
-    accent: "from-[#3a7bd5] to-[#00d2ff]",
+    title: "Bien-être",
+    text:
+      "Accompagnez vos clients avant même leur arrivée. L'IA conseille sur les séances adaptées, gère les inscriptions aux cours et assure un suivi personnalisé après chaque séance.",
+    accent: "from-[#3a7bd5] to-[#00BFFF]",
     stats: [
-      { value: "VIP", label: "Accueil premium" },
-      { value: "24/7", label: "Réservations" },
+      { value: "VIP", label: "Conseil personnalisé" },
+      { value: "Suivi", label: "Post-séance" },
     ],
   },
   {
     id: "autre",
     icon: HelpCircle,
     label: "Votre secteur ?",
-    text: "Votre métier n'est pas listé ? Nous créons des agents sur-mesure pour tout type d'activité. Contactez-nous pour en discuter.",
-    accent: "from-[#7b5cff] to-[#00d2ff]",
-    cta: true,
+    title: "Votre secteur ?",
+    text:
+      "Votre métier n'est pas listé ? Nous créons des agents sur-mesure pour tout type d'activité. Décrivez-nous votre besoin et un expert vous recontacte sous 24h.",
+    accent: "from-[#7b5cff] to-[#00BFFF]",
+    cta: true as const,
   },
 ];
 
 const Sectors = () => {
   const [active, setActive] = useState("coiffure");
+  const [open, setOpen] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", sector: "", message: "" });
+  const { toast } = useToast();
   const current = sectors.find((s) => s.id === active)!;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.sector) {
+      toast({
+        title: "Champs requis",
+        description: "Merci de renseigner votre nom, email et secteur.",
+        variant: "destructive",
+      });
+      return;
+    }
+    toast({
+      title: "Demande reçue ✨",
+      description: "Notre équipe vous recontacte sous 24h pour étudier votre projet.",
+    });
+    setForm({ name: "", email: "", sector: "", message: "" });
+    setOpen(false);
+  };
 
   return (
     <section id="secteurs" className="py-28 relative">
       <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
-          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Secteurs</p>
+          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">
+            Secteurs
+          </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
             Adapté à <span className="text-gradient">votre secteur</span>
           </h2>
@@ -101,17 +146,26 @@ const Sectors = () => {
               })}
             </div>
 
-            {/* Card */}
-            <div className="sector-card group relative animate-fade-in" key={current.id}>
+            {/* Card with smooth transition on tab change */}
+            <div
+              className="sector-card group relative animate-fade-in"
+              key={current.id}
+            >
               <div className="web-feature-glow" aria-hidden="true" />
 
               <div className="flex items-start gap-5 mb-6">
-                <div className={`web-feature-icon shrink-0 bg-gradient-to-br ${current.accent}`}>
+                <div
+                  className={`web-feature-icon shrink-0 bg-gradient-to-br ${current.accent}`}
+                >
                   <current.icon size={24} strokeWidth={1.8} className="text-white" />
                 </div>
                 <div className="flex-1 text-left">
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-foreground">{current.label}</h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{current.text}</p>
+                  <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-foreground">
+                    {current.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    {current.text}
+                  </p>
                 </div>
               </div>
 
@@ -131,10 +185,57 @@ const Sectors = () => {
               )}
 
               {"cta" in current && current.cta && (
-                <a href="#contact" className="sector-cta-btn group/btn">
-                  <span>Nous contacter</span>
-                  <ArrowRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </a>
+                <Dialog open={open} onOpenChange={setOpen}>
+                  <DialogTrigger asChild>
+                    <button className="sector-cta-btn group/btn">
+                      <span>Décrire mon projet</span>
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform duration-300 group-hover/btn:translate-x-1"
+                      />
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md bg-card/95 backdrop-blur border-border/60">
+                    <DialogHeader>
+                      <DialogTitle className="text-xl">
+                        Parlons de <span className="text-gradient">votre secteur</span>
+                      </DialogTitle>
+                      <DialogDescription>
+                        Décrivez-nous votre activité, un expert vous recontacte sous 24h.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <form onSubmit={handleSubmit} className="space-y-4 mt-2">
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        <Input
+                          placeholder="Votre nom"
+                          value={form.name}
+                          onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        />
+                        <Input
+                          type="email"
+                          placeholder="Email"
+                          value={form.email}
+                          onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        />
+                      </div>
+                      <Input
+                        placeholder="Votre secteur d'activité"
+                        value={form.sector}
+                        onChange={(e) => setForm({ ...form, sector: e.target.value })}
+                      />
+                      <Textarea
+                        placeholder="Décrivez brièvement votre besoin (optionnel)"
+                        rows={4}
+                        value={form.message}
+                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      />
+                      <Button type="submit" className="w-full sector-cta-btn !mt-2 justify-center">
+                        <Send size={16} />
+                        <span>Envoyer ma demande</span>
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
               )}
             </div>
           </div>
