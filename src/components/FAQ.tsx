@@ -6,6 +6,8 @@ import {
 } from "@/components/ui/accordion";
 import ScrollReveal from "./ScrollReveal";
 import { Mic, Calendar, Brain, Languages, Lock, PhoneForwarded, UserSearch, Zap, MessageCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { navigateToHomeContact } from "@/lib/navigateToContact";
 
 const items = [
   {

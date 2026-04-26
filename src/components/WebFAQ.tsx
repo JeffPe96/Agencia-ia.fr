@@ -6,6 +6,8 @@ import {
 } from "@/components/ui/accordion";
 import ScrollReveal from "./ScrollReveal";
 import { Clock, Search, Edit3, Server, Smartphone, LifeBuoy, Sparkles, MessageCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { navigateToHomeContact } from "@/lib/navigateToContact";
 
 const items = [
   {
