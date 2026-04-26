@@ -52,7 +52,9 @@ const items = [
   },
 ];
 
-const FAQ = () => (
+const FAQ = () => {
+  const navigate = useNavigate();
+  return (
   <section id="faq" className="py-28 relative">
     <div className="container mx-auto px-4 relative z-10">
       <ScrollReveal>
@@ -117,14 +119,19 @@ const FAQ = () => (
                 Notre équipe vous répond sous 24h, sans engagement.
               </p>
             </div>
-            <a href="#contact" className="web-faq-cta-btn">
+            <button
+              type="button"
+              onClick={() => navigateToHomeContact(navigate)}
+              className="web-faq-cta-btn"
+            >
               Nous contacter
-            </a>
+            </button>
           </div>
         </div>
       </ScrollReveal>
     </div>
   </section>
-);
+  );
+};
 
 export default FAQ;
