@@ -18,7 +18,7 @@ const AgentPage = () => (
       <Navbar />
       <div className="pt-20" />
       <SectionBanner
-        text="Vos Agents IA Intelligents"
+        text="Agent AgencIA"
         subtitle="Automatisez votre support client et vos ventes avec des agents capables de comprendre, d'apprendre et d'agir 24h/7."
         variant="primary"
       />
