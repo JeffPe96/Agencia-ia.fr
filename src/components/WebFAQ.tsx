@@ -5,38 +5,43 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import ScrollReveal from "./ScrollReveal";
-import { Clock, Search, Settings, Smartphone, ShieldCheck, Bot, MessageCircle } from "lucide-react";
+import { Clock, Search, Edit3, Server, Smartphone, LifeBuoy, Sparkles, MessageCircle } from "lucide-react";
 
 const items = [
   {
     icon: Clock,
-    q: "Combien de temps faut-il pour créer mon site ?",
-    a: "En général, un site vitrine est livré en 2 à 4 semaines. Nous adaptons le planning à vos besoins et à la complexité du projet.",
+    q: "Combien de temps faut-il pour créer un site ?",
+    a: "Grâce à notre workflow optimisé par l'Intelligence Artificielle, nous sommes capables de livrer un site professionnel en un temps record, généralement entre 7 et 14 jours. Nous combinons rapidité d'exécution et précision technologique pour vous offrir un avantage concurrentiel immédiat.",
   },
   {
     icon: Search,
-    q: "Mon site sera-t-il bien référencé sur Google ?",
-    a: "Absolument. Chaque site est construit avec les meilleures pratiques SEO : balises optimisées, vitesse de chargement, structure sémantique et contenu adapté.",
+    q: "Le site est-il optimisé pour le SEO ?",
+    a: "Absolument. Chaque site bénéficie d'une architecture SEO de haute performance dès sa conception. De plus, votre abonnement de 89€ inclut une surveillance continue pour adapter votre site aux évolutions des algorithmes de Google et maintenir votre visibilité.",
   },
   {
-    icon: Settings,
+    icon: Edit3,
     q: "Puis-je modifier le contenu moi-même ?",
-    a: "Oui, nous intégrons une interface d'administration simple et intuitive pour que vous puissiez modifier textes et images en toute autonomie.",
+    a: "Nous faisons mieux que ça : nous gérons tout pour vous. Pour vous libérer de toute contrainte technique, les modifications de textes ou d'images sont incluses dans votre abonnement. Envoyez-nous simplement vos changements par message, et nous les appliquons sous 48h.",
+  },
+  {
+    icon: Server,
+    q: "Proposez-vous un hébergement ?",
+    a: "Oui, un hébergement Cloud ultra-rapide et sécurisé est inclus dans votre forfait mensuel. Nous gérons la configuration technique et les serveurs. Seul le nom de domaine reste à votre charge (environ 15€/an) afin de vous garantir la pleine propriété légale de votre identité numérique.",
   },
   {
     icon: Smartphone,
-    q: "Le site sera-t-il adapté aux mobiles ?",
-    a: "100% responsive. Votre site s'adapte parfaitement à tous les écrans : smartphone, tablette et desktop.",
+    q: "Est-ce que mon site sera compatible mobile ?",
+    a: "Totalement. Nous utilisons une approche \"Mobile-First\". Votre site sera parfaitement fluide, rapide et esthétique sur tous les supports : smartphones, tablettes et ordinateurs.",
   },
   {
-    icon: ShieldCheck,
-    q: "Qu'est-ce qui est inclus dans la maintenance ?",
-    a: "Hébergement, mises à jour de sécurité, sauvegardes régulières et support technique. Vous n'avez à vous soucier de rien.",
+    icon: LifeBuoy,
+    q: "Offrez-vous un support technique ?",
+    a: "Oui, c'est l'essence même de notre service. Vous bénéficiez d'une assistance prioritaire et d'une maintenance proactive. Sécurité, mises à jour et sauvegardes : nous veillons sur votre site 24h/24 pour que vous puissiez vous concentrer sur votre métier.",
   },
   {
-    icon: Bot,
-    q: "Peut-on intégrer un ChatBot IA sur mon site ?",
-    a: "Bien sûr ! Notre ChatBot IA Web agit comme un vendeur expert 24/7, guidant vos visiteurs et boostant vos conversions. En complément, l'Agent Vocal AgencIA gère vos appels téléphoniques pour une automatisation à 360°.",
+    icon: Sparkles,
+    q: "Pourquoi choisir l'abonnement à 89€/mois ?",
+    a: "C'est votre pack \"Sérénité Totale\". Il couvre l'hébergement premium, la sécurité avancée, les mises à jour techniques et surtout, les modifications de contenu illimitées. C'est l'assurance d'un site qui reste moderne, performant et qui évolue avec votre entreprise.",
   },
 ];
 
