@@ -48,8 +48,7 @@ const Navbar = () => {
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const el = document.getElementById("contact");
-    el?.scrollIntoView({ behavior: "smooth" });
+    navigateToHomeContact(navigate);
   };
 
   const handleLogoClick = (e: React.MouseEvent) => {
