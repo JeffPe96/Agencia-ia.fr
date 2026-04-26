@@ -22,7 +22,6 @@ const WebPage = () => (
       <WebFeatures />
       <WebOnboardingSteps />
       <WebFAQ />
-      <ContactForm formContext="web" />
       <Footer />
     </div>
     <ScrollToTop />
