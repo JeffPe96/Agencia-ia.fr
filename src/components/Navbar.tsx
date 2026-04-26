@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AgencIALogo from "./AgencIALogo";
+import { navigateToHomeContact } from "@/lib/navigateToContact";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
