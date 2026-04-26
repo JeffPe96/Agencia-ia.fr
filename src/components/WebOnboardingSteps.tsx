@@ -26,7 +26,7 @@ const WebOnboardingSteps = () => (
   <section className="py-28 relative">
     <div className="container mx-auto px-4 relative z-10">
       <ScrollReveal>
-        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Workflow IA</p>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">PROCESSUS</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
           Notre processus <span className="text-gradient">web</span>
         </h2>
