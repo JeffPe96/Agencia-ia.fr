@@ -26,7 +26,7 @@ const items = [
   {
     icon: Languages,
     q: "Est-ce que l'IA peut parler plusieurs langues ?",
-    a: "Absolument. Nos agents vocaux sont polyglottes. Ils peuvent détecter automatiquement la langue de l'interlocuteur ou être configurés pour répondre en français, anglais, espagnol et bien d'autres langues, idéal pour une clientèle internationale.",
+    a: "Oui, cette fonctionnalité est disponible en tant que complément optionnel pour répondre à une clientèle internationale.",
   },
   {
     icon: Lock,
