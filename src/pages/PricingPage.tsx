@@ -195,7 +195,7 @@ const PricingPage = () => {
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary border border-border/60">
                               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                               <span className="text-sm text-foreground">
-                                <span className="font-semibold">Abonnement :</span> {plan.monthly}
+                                <span className="font-semibold">ABONNEMENT :</span> {plan.monthly}
                               </span>
                             </div>
                             {plan.monthlyDetail && (
