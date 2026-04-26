@@ -50,7 +50,7 @@ const WebProblemSolution = () => {
     <section className="py-28 relative" ref={sectionRef}>
       <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
-          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Audit / Transformation</p>
+          <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Avant / Après</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
             Le changement avec <span className="text-gradient">Web AgencIA</span>
           </h2>
