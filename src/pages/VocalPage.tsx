@@ -9,7 +9,6 @@ import DemoSection from "@/components/DemoSection";
 import Sectors from "@/components/Sectors";
 import FAQ from "@/components/FAQ";
 import OnboardingSteps from "@/components/OnboardingSteps";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 const VocalPage = () => (
@@ -26,7 +25,6 @@ const VocalPage = () => (
       <DemoSection />
       <Sectors />
       <FAQ />
-      <ContactForm formContext="vocal" />
       <Footer />
     </div>
     <ScrollToTop />
