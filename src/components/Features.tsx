@@ -41,7 +41,7 @@ const Features = () => (
   <section id="avantages" className="py-28 relative">
     <div className="container mx-auto px-4 relative z-10">
       <ScrollReveal>
-        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Nos Solutions</p>
+        <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">Nos Solutions Vocales</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
           Des outils <span className="text-gradient">d'automatisation d'élite</span>
         </h2>
