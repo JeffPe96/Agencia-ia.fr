@@ -8,7 +8,6 @@ import WebFeatures from "@/components/WebFeatures";
 
 import WebFAQ from "@/components/WebFAQ";
 import WebOnboardingSteps from "@/components/WebOnboardingSteps";
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 const WebPage = () => (
@@ -23,7 +22,6 @@ const WebPage = () => (
       <WebFeatures />
       <WebOnboardingSteps />
       <WebFAQ />
-      <ContactForm formContext="web" />
       <Footer />
     </div>
     <ScrollToTop />
