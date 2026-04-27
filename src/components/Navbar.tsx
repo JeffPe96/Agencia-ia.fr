@@ -11,7 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 100);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -60,8 +60,9 @@ const Navbar = () => {
 
   return (
     <nav
+      aria-label="Navigation principale"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[400ms] ease-in-out ${
-        scrolled ? "glass opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none -translate-y-2"
+        scrolled ? "glass opacity-100 pointer-events-auto" : "bg-transparent opacity-100 pointer-events-auto"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
