@@ -5,7 +5,7 @@ const AgencIALogo = () => (
   >
     <span
       className="text-[#0F172A] dark:text-[hsl(215,20%,75%)]"
-      style={{ fontWeight: 500 }}
+      style={{ fontWeight: 650 }}
     >
       Agenc
     </span>
