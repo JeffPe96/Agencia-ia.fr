@@ -1269,3 +1269,41 @@
     0 14px 36px -10px hsl(195 100% 50% / 0.65),
     inset 0 0 0 1px hsl(255 100% 100% / 0.12);
 }
+/* ============================================================
+   PERFORMANCE & ACCESSIBILITY ENHANCEMENTS
+   ============================================================ */
+
+/* Lighter blobs on mobile for performance */
+@media (max-width: 640px) {
+  .animated-bg .blob {
+    filter: blur(70px);
+    opacity: 0.12;
+  }
+  .animated-bg .blob:nth-child(3),
+  .animated-bg .blob:nth-child(4) {
+    display: none;
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animated-bg .blob { animation: none !important; }
+}
+
+/* Accessible focus ring (keyboard only) */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 3px;
+}
