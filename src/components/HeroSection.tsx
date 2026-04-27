@@ -120,7 +120,7 @@ const AnnecyHero = () => {
                   } ${isIA ? "text-[#3B82F6]" : "text-[hsl(215,20%,75%)]"}`}
                   style={{
                     transitionDelay: `${i * 60}ms`,
-                    fontWeight: isIA ? 800 : 500,
+                    fontWeight: isIA ? 800 : 650,
                     textShadow: isIA ? "0 0 40px rgba(59, 130, 246, 0.35)" : undefined,
                   }}
                 >
@@ -149,7 +149,7 @@ const AnnecyHero = () => {
                   <span
                     key={i}
                     className={`inline-block ${isIA ? "text-[#3B82F6]" : "text-[hsl(215,20%,75%)]"}`}
-                    style={{ fontWeight: isIA ? 800 : 500 }}
+                    style={{ fontWeight: isIA ? 800 : 650 }}
                   >
                     {letter}
                   </span>
