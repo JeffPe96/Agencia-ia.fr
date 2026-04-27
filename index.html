@@ -12,13 +12,20 @@
     <meta name="supported-color-schemes" content="dark" />
     <meta name="theme-color" content="#0a0e17" />
 
-    <title>AgencIA — L'alliance de la performance web et de l'intelligence vocale</title>
+    <title>AgencIA — Agents IA & Sites Web haute performance pour commerces locaux</title>
     <meta
       name="description"
-      content="Optimisez votre entreprise avec nos solutions d'IA sur-mesure. Experts en agents vocaux, écosystèmes web et chatbots intelligents."
+      content="AgencIA conçoit des assistants vocaux IA, sites web haute performance et agents conversationnels sur-mesure pour les commerces locaux. Démo gratuite."
     />
+    <meta name="keywords" content="agence IA, assistant vocal IA, agent IA, chatbot, site web, Annecy, automatisation, commerces locaux" />
     <meta name="author" content="AgencIA" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://agencia.fr/" />
+
+    <!-- Performance: preconnect & preload critical assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/src/assets/hero-immersive.jpg" fetchpriority="high" />
 
     <!-- Favicon & App Icons -->
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
@@ -27,12 +34,13 @@
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="AgencIA — L'alliance de la performance web et de l'intelligence vocale" />
+    <meta property="og:title" content="AgencIA — Agents IA & Sites Web haute performance" />
     <meta
       property="og:description"
-      content="Optimisez votre entreprise avec nos solutions d'IA sur-mesure. Experts en agents vocaux, écosystèmes web et chatbots intelligents."
+      content="Assistants vocaux IA, sites web haute performance et agents conversationnels sur-mesure pour les commerces locaux."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://agencia.fr/" />
     <meta property="og:site_name" content="AgencIA" />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:image" content="/og-image.jpg" />
@@ -42,15 +50,48 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AgencIA — L'alliance de la performance web et de l'intelligence vocale" />
+    <meta name="twitter:title" content="AgencIA — Agents IA & Sites Web haute performance" />
     <meta
       name="twitter:description"
-      content="Optimisez votre entreprise avec nos solutions d'IA sur-mesure. Experts en agents vocaux, écosystèmes web et chatbots intelligents."
+      content="Assistants vocaux IA, sites web haute performance et agents conversationnels sur-mesure."
     />
     <meta name="twitter:image" content="/og-image.jpg" />
+
+    <!-- Structured data: Organization + WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://agencia.fr/#organization",
+            "name": "AgencIA",
+            "url": "https://agencia.fr/",
+            "logo": "https://agencia.fr/favicon.png",
+            "email": "contact@agencia-ia.fr",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Annecy",
+              "addressCountry": "FR"
+            },
+            "areaServed": "FR",
+            "description": "Agence spécialisée dans les assistants vocaux IA, sites web haute performance et agents conversationnels pour les commerces locaux."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://agencia.fr/#website",
+            "url": "https://agencia.fr/",
+            "name": "AgencIA",
+            "inLanguage": "fr-FR",
+            "publisher": { "@id": "https://agencia.fr/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[10000] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-md">Aller au contenu</a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
