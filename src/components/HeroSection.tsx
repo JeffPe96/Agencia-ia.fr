@@ -107,14 +107,15 @@ const AnnecyHero = () => {
       />
 
       {/* Title + reflection - perfectly centered */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
+      <div id="main" className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
         <div className="relative" style={{ animation: "title-float 6s ease-in-out infinite" }}>
-          <h1 className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none" style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}>
+          <h1 className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none" style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }} aria-label="AgencIA — Solutions IA et Web pour commerces locaux">
             {TITLE.split("").map((letter, i) => {
               const isIA = i >= TITLE.length - 2;
               return (
                 <span
                   key={i}
+                  aria-hidden="true"
                   className={`inline-block transition-all duration-500 ${
                     i < titleVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
                   } ${isIA ? "text-[#3B82F6]" : "text-[hsl(215,20%,75%)]"}`}

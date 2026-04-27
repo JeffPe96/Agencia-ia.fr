@@ -12,9 +12,10 @@ const CustomCursor = () => {
   const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
-    // Disable on touch / coarse pointer devices
+    // Disable on touch / coarse pointer devices and when user prefers reduced motion
     const isFine = window.matchMedia("(pointer: fine)").matches;
-    if (!isFine) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!isFine || reduced) return;
     setEnabled(true);
 
     let mouseX = 0;
