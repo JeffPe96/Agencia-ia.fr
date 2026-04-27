@@ -18,10 +18,10 @@ const sectors = [
   {
     id: "coiffure",
     icon: Scissors,
-    label: "Coiffure",
-    title: "Coiffure & Beauté",
+    label: "Coiffure Annecy",
+    title: "Coiffure & Beauté à Annecy",
     text:
-      "Libérez-vous de la prise de rendez-vous. Notre IA qualifie les demandes, gère votre calendrier en temps réel et relance vos clients automatiquement pour réduire les rendez-vous manqués.",
+      "Libérez-vous de la prise de rendez-vous. Notre Agent IA pour salons de coiffure à Annecy qualifie les demandes, gère votre calendrier en temps réel et relance vos clients automatiquement pour réduire les rendez-vous manqués.",
     accent: "from-[#00BFFF] to-[#3a7bd5]",
     stats: [
       { value: "−70%", label: "RDV manqués" },
@@ -31,10 +31,10 @@ const sectors = [
   {
     id: "toilettage",
     icon: Dog,
-    label: "Toilettage",
-    title: "Toilettage",
+    label: "Vétérinaire Genève",
+    title: "Vétérinaire & Toilettage à Genève",
     text:
-      "Une gestion fluide pour vos clients à quatre pattes. L'Agent IA identifie le type de soin nécessaire et optimise vos créneaux pour maximiser votre journée sans stress.",
+      "Une gestion fluide pour vos clients à quatre pattes. L'Agent IA pour vétérinaires et toiletteurs à Genève identifie le type de soin nécessaire et optimise vos créneaux pour maximiser votre journée sans stress.",
     accent: "from-[#7b5cff] to-[#00BFFF]",
     stats: [
       { value: "100%", label: "Soins qualifiés" },
@@ -44,10 +44,10 @@ const sectors = [
   {
     id: "restauration",
     icon: Utensils,
-    label: "Restauration",
-    title: "Restauration",
+    label: "Restauration Bassin Genevois",
+    title: "Restauration — Bassin Genevois",
     text:
-      "Ne perdez plus aucune réservation. Notre IA répond aux questions sur le menu, gère les réservations de tables et recueille les avis clients pour booster votre réputation sur Google.",
+      "Ne perdez plus aucune réservation. Notre Agent Vocal IA pour restaurants à Genève et Annecy répond aux questions sur le menu, gère les réservations de tables et recueille les avis pour booster votre réputation sur Google.",
     accent: "from-[#00BFFF] to-[#7b5cff]",
     stats: [
       { value: "< 2s", label: "Temps de réponse" },
@@ -57,10 +57,10 @@ const sectors = [
   {
     id: "bien-etre",
     icon: Heart,
-    label: "Bien-être",
-    title: "Bien-être",
+    label: "Bien-être Haute-Savoie",
+    title: "Bien-être & Spa — Haute-Savoie",
     text:
-      "Accompagnez vos clients avant même leur arrivée. L'IA conseille sur les séances adaptées, gère les inscriptions aux cours et assure un suivi personnalisé après chaque séance.",
+      "Accompagnez vos clients avant même leur arrivée. L'IA pour spas et instituts en Haute-Savoie conseille sur les séances adaptées, gère les inscriptions aux cours et assure un suivi personnalisé après chaque séance.",
     accent: "from-[#3a7bd5] to-[#00BFFF]",
     stats: [
       { value: "VIP", label: "Conseil personnalisé" },
@@ -71,9 +71,9 @@ const sectors = [
     id: "autre",
     icon: HelpCircle,
     label: "Votre secteur ?",
-    title: "Votre secteur ?",
+    title: "Votre secteur à Annecy ou Genève ?",
     text:
-      "Votre métier n'est pas listé ? Nous créons des agents sur-mesure pour tout type d'activité. Décrivez-nous votre besoin et un expert vous recontacte sous 24h.",
+      "Votre métier n'est pas listé ? Nous créons des Agents IA sur-mesure pour tout type d'activité à Annecy, Genève, Annemasse et alentours. Décrivez-nous votre besoin et un expert vous recontacte sous 24h.",
     accent: "from-[#7b5cff] to-[#00BFFF]",
     cta: true as const,
   },
