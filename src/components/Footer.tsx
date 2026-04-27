@@ -14,7 +14,6 @@ const solutions = [
   { label: "Vocal AgencIA", to: "/vocal" },
   { label: "Web AgencIA", to: "/web" },
   { label: "Agents Chatbots", to: "/", scrollTo: "services" },
-  { label: "Audit IA", to: "/", scrollTo: "contact" },
 ];
 
 const agence = [
