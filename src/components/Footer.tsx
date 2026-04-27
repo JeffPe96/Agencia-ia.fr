@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Linkedin, Instagram, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AgencIALogo from "./AgencIALogo";
 
@@ -9,18 +9,6 @@ const scrollToId = (id: string) => {
   if (el) el.scrollIntoView({ behavior: "smooth" });
 };
 
-// Custom X (Twitter) icon
-const XIcon = ({ size = 18 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
-
-const socials = [
-  { Icon: Linkedin, label: "LinkedIn", href: "#" },
-  { Icon: Instagram, label: "Instagram", href: "#" },
-  { Icon: XIcon, label: "X", href: "#" },
-];
 
 const solutions = [
   { label: "Vocal AgencIA", to: "/vocal" },
@@ -79,18 +67,6 @@ const Footer = () => {
               <p className="text-sm text-white/60 leading-relaxed mb-5 max-w-xs">
                 L'alliance de la performance web et de l'intelligence vocale au service des entreprises visionnaires.
               </p>
-              <div className="flex items-center gap-3">
-                {socials.map(({ Icon, label, href }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 text-white/70 border border-white/10 hover:text-white hover:bg-primary/20 hover:border-primary/40 hover:shadow-[0_0_16px_-2px_hsl(217_91%_53%/0.5)] transition-all duration-300"
-                  >
-                    <Icon size={16} />
-                  </a>
-                ))}
-              </div>
             </div>
 
             {/* Solutions */}
