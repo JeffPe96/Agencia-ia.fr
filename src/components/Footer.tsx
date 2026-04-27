@@ -19,7 +19,6 @@ const solutions = [
 const agence = [
   { label: "À propos", to: "/", scrollTo: "services" },
   { label: "Nos Tarifs", to: "/tarifs" },
-  { label: "Processus", to: "/", scrollTo: "processus" },
   { label: "Contact", to: "/", scrollTo: "contact" },
 ];
 
