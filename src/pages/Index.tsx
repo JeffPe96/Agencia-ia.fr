@@ -8,6 +8,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import OnboardingSteps from "@/components/OnboardingSteps";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import CityFooter from "@/components/CityFooter";
 
 const Index = () => (
   <>
@@ -20,6 +21,7 @@ const Index = () => (
       <WhyChooseUs />
       <OnboardingSteps />
       <ContactForm />
+      <CityFooter />
       <Footer />
     </div>
     <ScrollToTop />
