@@ -109,13 +109,14 @@ const AnnecyHero = () => {
       {/* Title + reflection - perfectly centered */}
       <div id="main" className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
         <div className="relative" style={{ animation: "title-float 6s ease-in-out infinite" }}>
-          <h1 className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none" style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }} aria-label="AgencIA — Solutions IA et Web pour commerces locaux">
+          <h1 className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none" style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}>
+            <span className="sr-only">AgencIA — Automatisation IA & Agents Vocaux à Annecy et Genève</span>
+            <span aria-hidden="true">
             {TITLE.split("").map((letter, i) => {
               const isIA = i >= TITLE.length - 2;
               return (
                 <span
                   key={i}
-                  aria-hidden="true"
                   className={`inline-block transition-all duration-500 ${
                     i < titleVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
                   } ${isIA ? "text-[#3B82F6]" : "text-[hsl(215,20%,75%)]"}`}
@@ -129,6 +130,7 @@ const AnnecyHero = () => {
                 </span>
               );
             })}
+            </span>
           </h1>
 
           {/* Reflection */}
@@ -161,11 +163,11 @@ const AnnecyHero = () => {
         </div>
 
         <p
-          className={`mt-3 sm:mt-8 text-xs sm:text-xl text-white/90 font-light max-w-xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
+          className={`mt-3 sm:mt-8 text-xs sm:text-xl text-white/90 font-light max-w-2xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
             showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
-          Solutions IA &amp; Web pour commerces locaux
+          Automatisation IA &amp; Agents Vocaux à <strong className="font-medium text-white">Annecy</strong> &amp; <strong className="font-medium text-white">Genève</strong>
         </p>
       </div>
 

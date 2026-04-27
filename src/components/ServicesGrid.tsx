@@ -10,18 +10,18 @@ type Service = {
 const services: Service[] = [
   {
     icon: PhoneForwarded,
-    title: "Réceptionniste IA 24/7",
-    desc: "Automatisez vos appels. Notre IA qualifie vos leads et fixe des rendez-vous sans intervention humaine.",
+    title: "Agent Vocal IA 24/7 à Annecy & Genève",
+    desc: "Automatisez vos appels entrants. Notre IA qualifie vos leads et fixe des rendez-vous sans intervention humaine, pour les commerces d'Annecy, Genève et du Bassin Genevois.",
   },
   {
     icon: MonitorCheck,
-    title: "Écosystème Web Intelligent",
-    desc: "Sites haute performance optimisés pour la conversion avec IA intégrée pour capturer chaque opportunité.",
+    title: "Sites Web Haute Performance — Haute-Savoie",
+    desc: "Sites optimisés pour la conversion et le SEO local à Annecy, Annemasse et Saint-Julien-en-Genevois, avec IA intégrée pour capturer chaque opportunité.",
   },
   {
     icon: MessageCircleCode,
-    title: "Omnicanalité Augmentée",
-    desc: "Vendez sur WhatsApp, Instagram et Web. Une réponse instantanée pour booster vos ventes 24h/24.",
+    title: "Chatbots & Omnicanalité IA",
+    desc: "Vendez sur WhatsApp, Instagram et Web depuis Annecy ou Genève. Une réponse instantanée 24h/24 pour booster vos ventes locales.",
   },
 ];
 
