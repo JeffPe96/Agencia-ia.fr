@@ -59,29 +59,6 @@ const plans: Plan[] = [
     note: "Hébergement et DNS à la charge du client (AgencIA vous accompagne dans la configuration).",
     accent: "violet",
   },
-  {
-    name: "Les Agents Chatbots",
-    tagline: "Vendez sur WhatsApp, Instagram et Web",
-    icon: MessageCircleHeart,
-    setupLabel: "Pack Intégration Seule",
-    setupPrice: "750 €",
-    altOption: {
-      label: "Pack Solution Complète",
-      price: "1 100 €",
-      detail: "Nouvel Agent + Stratégie de conversion proactive",
-    },
-    monthly: "79 €/mois",
-    monthlyDetail: "Inclus l'analyse des logs et mise à jour de la base de connaissances.",
-    features: [
-      "Installation et configuration complète",
-      "IA entraînée sur vos données",
-      "Stratégie proactive de vente",
-      "Lead Scoring",
-      "Support technique dédié",
-      "Rapport d'appels hebdomadaire",
-    ],
-    accent: "cyan",
-  },
 ];
 
 const addons = [
