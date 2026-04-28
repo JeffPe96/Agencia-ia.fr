@@ -390,16 +390,6 @@ const Sectors = () => {
                 </div>
               </div>
             )}
-            {/* Hidden until ready: full interactive demo */}
-            {false && current.demo && (
-              <SectorDemo
-                businessName={current.demo.businessName}
-                lines={current.demo.lines}
-                duration={current.demo.duration}
-                finishedLabel={current.demo.finishedLabel}
-                accent={current.accent}
-              />
-            )}
           </div>
         </ScrollReveal>
       </div>
