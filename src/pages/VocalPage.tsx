@@ -21,7 +21,6 @@ const VocalPage = () => (
       <ProblemSolution />
       <Features />
       <OnboardingSteps />
-      <DemoSection />
       <Sectors />
       <FAQ />
       <Footer />
