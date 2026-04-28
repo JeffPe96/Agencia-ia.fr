@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Scissors, Dog, Utensils, Heart, HelpCircle, ArrowRight, Send } from "lucide-react";
+import { Scissors, Dog, Utensils, Heart, HelpCircle, ArrowRight, Send, Play } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import SectorDemo, { type DemoLine } from "./SectorDemo";
 import {
   Dialog,
   DialogContent,
@@ -14,19 +15,54 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
-const sectors = [
+interface SectorDemoConfig {
+  businessName: string;
+  lines: DemoLine[];
+  duration: number;
+  finishedLabel: string;
+}
+
+interface Sector {
+  id: string;
+  icon: typeof Scissors;
+  label: string;
+  title: string;
+  text: string;
+  accent: string;
+  stats?: { value: string; label: string }[];
+  demo?: SectorDemoConfig;
+  cta?: true;
+}
+
+const sectors: Sector[] = [
   {
     id: "coiffure",
     icon: Scissors,
     label: "Salons de Coiffure",
     title: "Salons de Coiffure & Beauté",
     text:
-      "Libérez-vous de la prise de rendez-vous. Notre Agent IA qualifie les demandes, gère votre calendrier en temps réel et relance vos clients automatiquement pour réduire les rendez-vous manqués. Optimisé pour les professionnels d'Annecy et alentours.",
+      "Libérez-vous de la prise de rendez-vous. Notre Agent IA qualifie les demandes, gère votre calendrier en temps réel et relance vos clients automatiquement pour réduire les rendez-vous manqués.",
     accent: "from-[#00BFFF] to-[#3a7bd5]",
     stats: [
       { value: "−70%", label: "RDV manqués" },
       { value: "24/7", label: "Calendrier géré" },
     ],
+    demo: {
+      businessName: "Salon Élégance",
+      duration: 30,
+      finishedLabel: "Rendez-vous confirmé & enregistré",
+      lines: [
+        { time: 0, speaker: "ai", text: "Bonjour, Salon Élégance, comment puis-je vous aider ?" },
+        { time: 3, speaker: "client", text: "Bonjour, je voudrais prendre un rendez-vous." },
+        { time: 6, speaker: "ai", text: "Bien sûr, vous souhaitez un rendez-vous pour quelle prestation ?" },
+        { time: 10, speaker: "client", text: "Une coupe et un brushing, s'il vous plaît." },
+        { time: 13, speaker: "ai", text: "Parfait. Je regarde les disponibilités… Je vous propose jeudi à 14h ou vendredi à 10h." },
+        { time: 18, speaker: "client", text: "Jeudi à 14h, c'est parfait." },
+        { time: 21, speaker: "ai", text: "C'est noté ! À quel nom, s'il vous plaît ?" },
+        { time: 24, speaker: "client", text: "Madame Dupont." },
+        { time: 26, speaker: "ai", text: "Merci Madame Dupont, votre rendez-vous est confirmé. À jeudi !" },
+      ],
+    },
   },
   {
     id: "toilettage",
@@ -40,6 +76,22 @@ const sectors = [
       { value: "100%", label: "Soins qualifiés" },
       { value: "+30%", label: "Créneaux optimisés" },
     ],
+    demo: {
+      businessName: "Clinique VetCare",
+      duration: 32,
+      finishedLabel: "Consultation programmée",
+      lines: [
+        { time: 0, speaker: "ai", text: "Clinique VetCare bonjour, en quoi puis-je vous aider ?" },
+        { time: 3, speaker: "client", text: "Bonjour, mon chien tousse depuis hier, je m'inquiète." },
+        { time: 7, speaker: "ai", text: "Je comprends. Quelle est la race et l'âge de votre chien ?" },
+        { time: 11, speaker: "client", text: "Un Labrador de 6 ans." },
+        { time: 13, speaker: "ai", text: "D'accord. Une consultation est recommandée. Le Dr. Martin a une disponibilité demain à 9h30." },
+        { time: 19, speaker: "client", text: "C'est parfait, je prends." },
+        { time: 21, speaker: "ai", text: "Très bien. À quel nom dois-je enregistrer le rendez-vous ?" },
+        { time: 25, speaker: "client", text: "Monsieur Bernard, avec mon chien Max." },
+        { time: 28, speaker: "ai", text: "Noté Monsieur Bernard. À demain 9h30 avec Max !" },
+      ],
+    },
   },
   {
     id: "restauration",
@@ -47,12 +99,28 @@ const sectors = [
     label: "Restauration",
     title: "Restauration",
     text:
-      "Ne perdez plus aucune réservation. Notre Agent Vocal IA répond aux questions sur le menu, gère les réservations de tables et recueille les avis pour booster votre réputation sur Google.",
+      "Ne perdez plus aucune réservation. Notre Agent Vocal IA répond aux questions sur le menu, gère les réservations de tables et recueille les avis pour booster votre réputation.",
     accent: "from-[#00BFFF] to-[#7b5cff]",
     stats: [
       { value: "< 2s", label: "Temps de réponse" },
       { value: "★ +", label: "Avis Google" },
     ],
+    demo: {
+      businessName: "Le Bistrot du Lac",
+      duration: 30,
+      finishedLabel: "Table réservée",
+      lines: [
+        { time: 0, speaker: "ai", text: "Le Bistrot du Lac, bonsoir. Comment puis-je vous aider ?" },
+        { time: 4, speaker: "client", text: "Bonsoir, je souhaiterais réserver une table pour samedi." },
+        { time: 8, speaker: "ai", text: "Avec plaisir. Pour combien de personnes et à quelle heure ?" },
+        { time: 12, speaker: "client", text: "Quatre personnes, vers 20h." },
+        { time: 15, speaker: "ai", text: "Parfait. Une table en terrasse ou en salle ?" },
+        { time: 19, speaker: "client", text: "En terrasse si possible." },
+        { time: 21, speaker: "ai", text: "C'est noté. À quel nom, s'il vous plaît ?" },
+        { time: 24, speaker: "client", text: "Monsieur Lefèvre." },
+        { time: 26, speaker: "ai", text: "Merci Monsieur Lefèvre. Table de 4 en terrasse, samedi 20h. À bientôt !" },
+      ],
+    },
   },
   {
     id: "bien-etre",
@@ -60,12 +128,28 @@ const sectors = [
     label: "Bien-être & Spa",
     title: "Bien-être & Spa",
     text:
-      "Accompagnez vos clients avant même leur arrivée. L'IA conseille sur les séances adaptées, gère les inscriptions aux cours et assure un suivi personnalisé après chaque séance.",
+      "Accompagnez vos clients avant même leur arrivée. L'IA conseille sur les séances adaptées, gère les inscriptions aux cours et assure un suivi personnalisé.",
     accent: "from-[#3a7bd5] to-[#00BFFF]",
     stats: [
       { value: "VIP", label: "Conseil personnalisé" },
       { value: "Suivi", label: "Post-séance" },
     ],
+    demo: {
+      businessName: "Spa Sérénité",
+      duration: 32,
+      finishedLabel: "Séance réservée",
+      lines: [
+        { time: 0, speaker: "ai", text: "Spa Sérénité bonjour, comment puis-je vous accompagner ?" },
+        { time: 4, speaker: "client", text: "Bonjour, j'aimerais offrir un soin à ma compagne." },
+        { time: 8, speaker: "ai", text: "Quelle belle attention. Souhaitez-vous un massage, un soin du visage ou un duo ?" },
+        { time: 13, speaker: "client", text: "Un massage relaxant d'une heure." },
+        { time: 16, speaker: "ai", text: "Excellent choix. J'ai une disponibilité samedi 15h ou dimanche 11h." },
+        { time: 21, speaker: "client", text: "Dimanche 11h, parfait." },
+        { time: 23, speaker: "ai", text: "Je prépare un bon cadeau personnalisé. À quel nom ?" },
+        { time: 27, speaker: "client", text: "Pour Madame Laurent." },
+        { time: 29, speaker: "ai", text: "C'est noté ! Le bon cadeau vous est envoyé par email." },
+      ],
+    },
   },
   {
     id: "autre",
@@ -75,16 +159,22 @@ const sectors = [
     text:
       "Nous créons des Agents IA sur-mesure pour tout type d'activité. Décrivez-nous votre besoin et un expert vous recontacte sous 24h.",
     accent: "from-[#7b5cff] to-[#00BFFF]",
-    cta: true as const,
+    cta: true,
   },
 ];
 
 const Sectors = () => {
   const [active, setActive] = useState("coiffure");
   const [open, setOpen] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", sector: "", message: "" });
   const { toast } = useToast();
   const current = sectors.find((s) => s.id === active)!;
+
+  const handleSelect = (id: string) => {
+    setActive(id);
+    setDemoOpen(false);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,18 +199,18 @@ const Sectors = () => {
       <div className="container mx-auto px-4 relative z-10">
         <ScrollReveal>
           <p className="text-sm font-medium text-primary text-center mb-3 tracking-wide uppercase">
-            Secteurs
+            Secteurs & Démos
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
             Adapté à <span className="text-gradient">votre secteur</span>
           </h2>
           <p className="text-center text-muted-foreground mb-16 max-w-xl mx-auto">
-            Un Agent IA entraîné pour les besoins spécifiques de chaque métier.
+            Un Agent IA entraîné pour les besoins de chaque métier. Écoutez une démo en direct.
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             {/* Tabs */}
             <div className="flex justify-center gap-2 mb-10 flex-wrap">
               {sectors.map((s) => {
@@ -128,7 +218,7 @@ const Sectors = () => {
                 return (
                   <button
                     key={s.id}
-                    onClick={() => setActive(s.id)}
+                    onClick={() => handleSelect(s.id)}
                     className={`sector-tab group ${isActive ? "sector-tab-active" : ""}`}
                   >
                     {isActive && (
@@ -146,31 +236,60 @@ const Sectors = () => {
               })}
             </div>
 
-            {/* Card with smooth transition on tab change */}
+            {/* Card */}
             <div
               className="sector-card group relative animate-fade-in"
               key={current.id}
             >
               <div className="web-feature-glow" aria-hidden="true" />
 
-              <div className="flex items-start gap-5 mb-6">
-                <div
-                  className={`web-feature-icon shrink-0 bg-gradient-to-br ${current.accent}`}
-                >
-                  <current.icon size={24} strokeWidth={1.8} className="text-white" />
+              <div className="grid md:grid-cols-[1fr_auto] gap-6 items-center">
+                <div className="flex items-start gap-5">
+                  <div
+                    className={`web-feature-icon shrink-0 bg-gradient-to-br ${current.accent}`}
+                  >
+                    <current.icon size={24} strokeWidth={1.8} className="text-white" />
+                  </div>
+                  <div className="flex-1 text-left">
+                    <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-foreground">
+                      {current.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      {current.text}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1 text-left">
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-foreground">
-                    {current.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                    {current.text}
-                  </p>
-                </div>
+
+                {/* Giant Play button for demo */}
+                {current.demo && (
+                  <button
+                    onClick={() => setDemoOpen((v) => !v)}
+                    className="group/play relative shrink-0 mx-auto md:mx-0"
+                    aria-label={`Écouter la démo ${current.demo.businessName}`}
+                  >
+                    <span
+                      className={`absolute inset-0 rounded-full bg-gradient-to-br ${current.accent} blur-xl opacity-50 group-hover/play:opacity-80 transition-opacity animate-pulse`}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className={`relative flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br ${current.accent} shadow-2xl ring-2 ring-white/20 group-hover/play:scale-110 transition-transform duration-300`}
+                    >
+                      <Play
+                        size={36}
+                        strokeWidth={2}
+                        className="text-white ml-1"
+                        fill="currentColor"
+                      />
+                    </span>
+                    <span className="block mt-2 text-xs font-semibold text-foreground/80 text-center">
+                      {demoOpen ? "Masquer la démo" : "Écouter la démo"}
+                    </span>
+                  </button>
+                )}
               </div>
 
-              {"stats" in current && current.stats && (
-                <div className="grid grid-cols-2 gap-3 pt-5 border-t border-border/40">
+              {current.stats && (
+                <div className="grid grid-cols-2 gap-3 pt-5 mt-6 border-t border-border/40">
                   {current.stats.map((stat, idx) => (
                     <div key={idx} className="sector-stat">
                       <span
@@ -184,7 +303,7 @@ const Sectors = () => {
                 </div>
               )}
 
-              {"cta" in current && current.cta && (
+              {current.cta && (
                 <Dialog open={open} onOpenChange={setOpen}>
                   <DialogTrigger asChild>
                     <button className="sector-cta-btn group/btn">
@@ -238,6 +357,19 @@ const Sectors = () => {
                 </Dialog>
               )}
             </div>
+
+            {/* Inline Demo, appears below the card */}
+            {current.demo && demoOpen && (
+              <div className="mt-6 max-w-2xl mx-auto" key={`demo-${current.id}`}>
+                <SectorDemo
+                  businessName={current.demo.businessName}
+                  lines={current.demo.lines}
+                  duration={current.demo.duration}
+                  finishedLabel={current.demo.finishedLabel}
+                  accent={current.accent}
+                />
+              </div>
+            )}
           </div>
         </ScrollReveal>
       </div>
