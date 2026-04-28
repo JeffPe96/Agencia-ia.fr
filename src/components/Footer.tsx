@@ -13,7 +13,6 @@ const scrollToId = (id: string) => {
 const solutions = [
   { label: "Vocal AgencIA", to: "/vocal" },
   { label: "Web AgencIA", to: "/web" },
-  { label: "Agents Chatbots", to: "/", scrollTo: "services" },
 ];
 
 const agence = [
