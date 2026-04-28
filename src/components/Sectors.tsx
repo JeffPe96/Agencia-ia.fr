@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Scissors, Dog, Utensils, Heart, HelpCircle, ArrowRight, Send, Play, Sparkles, Clock } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import { type DemoLine } from "./SectorDemo";
+type DemoLine = { time: number; speaker: "ai" | "client"; text: string };
 import {
   Dialog,
   DialogContent,
