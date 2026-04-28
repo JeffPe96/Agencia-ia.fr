@@ -167,7 +167,7 @@ const AnnecyHero = () => {
             showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
-          Automatisation IA &amp; Agents Vocaux à <strong className="font-medium text-white">Annecy</strong> &amp; <strong className="font-medium text-white">Genève</strong>
+          L'Intelligence Artificielle au service de votre croissance.
         </p>
       </div>
 

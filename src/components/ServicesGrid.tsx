@@ -1,4 +1,4 @@
-import { PhoneForwarded, MonitorCheck, MessageCircleCode, type LucideIcon } from "lucide-react";
+import { PhoneForwarded, MonitorCheck, type LucideIcon } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 type Service = {
@@ -10,18 +10,13 @@ type Service = {
 const services: Service[] = [
   {
     icon: PhoneForwarded,
-    title: "Agent Vocal IA 24/7 à Annecy & Genève",
-    desc: "Automatisez vos appels entrants. Notre IA qualifie vos leads et fixe des rendez-vous sans intervention humaine, pour les commerces d'Annecy, Genève et du Bassin Genevois.",
+    title: "Vocal AgencIA — Agent Vocal IA 24/7",
+    desc: "Notre produit phare. Une voix naturelle qui répond à vos appels, qualifie vos leads et fixe vos rendez-vous, jour et nuit, sans intervention humaine.",
   },
   {
     icon: MonitorCheck,
-    title: "Sites Web Haute Performance — Haute-Savoie",
-    desc: "Sites optimisés pour la conversion et le SEO local à Annecy, Annemasse et Saint-Julien-en-Genevois, avec IA intégrée pour capturer chaque opportunité.",
-  },
-  {
-    icon: MessageCircleCode,
-    title: "Chatbots & Omnicanalité IA",
-    desc: "Vendez sur WhatsApp, Instagram et Web depuis Annecy ou Genève. Une réponse instantanée 24h/24 pour booster vos ventes locales.",
+    title: "Web AgencIA — Sites Haute Performance",
+    desc: "Votre vitrine digitale, conçue pour convertir. Sites rapides, optimisés pour le référencement et pensés pour transformer chaque visiteur en client.",
   },
 ];
 
@@ -33,14 +28,14 @@ const ServicesGrid = () => (
           Nos Services
         </p>
         <h2 className="text-3xl sm:text-4xl font-bold text-center tracking-tight mb-4">
-          Une suite IA <span className="text-gradient">complète</span>
+          L'Excellence de l'<span className="text-gradient">Intelligence Artificielle</span> au service de votre croissance
         </h2>
-        <p className="text-center text-muted-foreground mb-14 max-w-xl mx-auto">
-          Trois leviers d'automatisation pensés pour convertir plus, plus vite, sans effort.
+        <p className="text-center text-muted-foreground mb-14 max-w-2xl mx-auto">
+          Deux solutions complémentaires pour automatiser votre relation client et accélérer votre développement.
         </p>
       </ScrollReveal>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto">
+      <div className="grid sm:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto">
         {services.map((s, i) => {
           const Icon = s.icon;
           return (

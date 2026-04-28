@@ -20,7 +20,6 @@ const Navbar = () => {
   const links = [
     { label: "Vocal", href: "/vocal" },
     { label: "Web", href: "/web" },
-    { label: "Agent", href: "/agent" },
     { label: "Tarifs", href: "/tarifs" },
   ];
 
