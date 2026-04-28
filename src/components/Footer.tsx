@@ -10,10 +10,9 @@ const scrollToId = (id: string) => {
 };
 
 
-const solutions = [
+const solutions: { label: string; to: string; scrollTo?: string }[] = [
   { label: "Vocal AgencIA", to: "/vocal" },
   { label: "Web AgencIA", to: "/web" },
-  { label: "Agents Chatbots", to: "/", scrollTo: "services" },
 ];
 
 const agence = [
