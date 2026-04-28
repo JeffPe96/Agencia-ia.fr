@@ -16,7 +16,6 @@ const solutions: { label: string; to: string; scrollTo?: string }[] = [
 ];
 
 const agence = [
-  { label: "À propos", to: "/", scrollTo: "services" },
   { label: "Nos Tarifs", to: "/tarifs" },
   { label: "Contact", to: "/", scrollTo: "contact" },
 ];
