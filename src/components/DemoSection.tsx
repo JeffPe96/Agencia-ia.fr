@@ -201,10 +201,10 @@ const DemoSection = () => {
                 <div className="flex items-center justify-center gap-3">
                   <button
                     onClick={handleToggle}
-                    className="btn-primary-neu flex items-center gap-2.5 text-sm px-7 py-3 rounded-xl"
+                    className="btn-primary-neu flex items-center gap-2.5 text-base font-semibold px-8 py-4 rounded-xl shadow-lg shadow-primary/30 ring-1 ring-primary/40 animate-[pulse-glow_2.4s_ease-in-out_infinite] hover:scale-[1.03] transition-transform"
                   >
-                    {playing ? <Pause size={18} /> : <Play size={18} />}
-                    {playing ? "Pause" : isFinished ? "Rejouer" : "Écouter la simulation"}
+                    {playing ? <Pause size={20} /> : <Play size={20} fill="currentColor" />}
+                    {playing ? "Pause" : isFinished ? "Rejouer la démo" : "▶ Écouter la simulation"}
                   </button>
                   {(elapsed > 0 && !playing) && (
                     <button
