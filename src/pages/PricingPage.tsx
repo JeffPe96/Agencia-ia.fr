@@ -117,7 +117,7 @@ const PricingPage = () => {
             </ScrollReveal>
 
             {/* PLANS GRID */}
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto items-stretch">
               {plans.map((plan, i) => {
                 const Icon = plan.icon;
                 const a = accentClasses[plan.accent];
