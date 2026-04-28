@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import SectionBanner from "@/components/SectionBanner";
 import ProblemSolution from "@/components/ProblemSolution";
 import Features from "@/components/Features";
-import DemoSection from "@/components/DemoSection";
 import Sectors from "@/components/Sectors";
 import FAQ from "@/components/FAQ";
 import OnboardingSteps from "@/components/OnboardingSteps";
@@ -22,7 +21,6 @@ const VocalPage = () => (
       <ProblemSolution />
       <Features />
       <OnboardingSteps />
-      <DemoSection />
       <Sectors />
       <FAQ />
       <Footer />
