@@ -30,7 +30,7 @@ const features = [
     icon: ShieldCheck,
     title: "Maintenance & Évolutions Illimitées",
     desc: "Service tout inclus : sécurité, mises à jour techniques et modifications de contenu illimitées chaque mois pour votre sérénité.",
-    metric: "49€/mois",
+    metric: "89€/mois",
     metricLabel: "Tout inclus",
     accent: "from-[#3a7bd5] to-[#00d2ff]",
     badge: "Abonnement",
