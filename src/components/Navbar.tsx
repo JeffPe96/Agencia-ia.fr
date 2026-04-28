@@ -127,14 +127,28 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden glass border-t border-border/50 animate-fade-in-up">
           <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
-            {links.map((l) =>
-              isRoute(l.href) ? (
+            {links.map((l) => {
+              const isActive = isRoute(l.href) && location.pathname === l.href;
+              const cls = `relative flex items-center gap-2 text-sm font-medium py-2 pl-3 transition-colors ${
+                isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`;
+              const dot = (
+                <span
+                  aria-hidden="true"
+                  className={`absolute left-0 top-1/2 -translate-y-1/2 h-4 w-0.5 rounded-full bg-gradient-to-b from-[#00BFFF] to-[#7b5cff] transition-opacity ${
+                    isActive ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              );
+              return isRoute(l.href) ? (
                 <Link
                   key={l.href}
                   to={l.href}
                   onClick={(e) => { handleLinkClick(e, l.href); setOpen(false); }}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
+                  aria-current={isActive ? "page" : undefined}
+                  className={cls}
                 >
+                  {dot}
                   {l.label}
                 </Link>
               ) : (
@@ -142,12 +156,13 @@ const Navbar = () => {
                   key={l.href}
                   href={l.href}
                   onClick={(e) => { handleAnchorClick(e, l.href); setOpen(false); }}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground py-2 transition-colors"
+                  className={cls}
                 >
+                  {dot}
                   {l.label}
                 </a>
-              )
-            )}
+              );
+            })}
             <button
               onClick={(e) => { handleContactClick(e); setOpen(false); }}
               className="btn-primary-neu text-sm text-center px-6 py-2.5 rounded-xl"
