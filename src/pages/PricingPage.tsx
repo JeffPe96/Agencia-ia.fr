@@ -111,7 +111,7 @@ const PricingPage = () => {
                   <span className="text-gradient">transparentes</span>
                 </h1>
                 <p className="text-base text-muted-foreground">
-                  Trois services modulaires conçus pour automatiser, convertir et faire grandir votre activité.
+                  Deux services modulaires conçus pour automatiser, convertir et faire grandir votre activité.
                 </p>
               </div>
             </ScrollReveal>
