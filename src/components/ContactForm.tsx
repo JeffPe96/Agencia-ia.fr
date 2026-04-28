@@ -11,19 +11,18 @@ interface ContactFormProps {
 const interestOptions: Record<string, { value: string; label: string }[]> = {
   vocal: [
     { value: "Vocal AgencIA (Réceptionniste IA)", label: "Vocal AgencIA (Réceptionniste IA)" },
-    { value: "Audit Stratégique Complet", label: "Audit Stratégique Complet" },
+    { value: "Les deux, Vocal et Web AgencIA", label: "Les deux, Vocal et Web AgencIA" },
     { value: "Autre", label: "Autre" },
   ],
   web: [
     { value: "Web AgencIA (Site Haute Performance)", label: "Web AgencIA (Site Haute Performance)" },
-    { value: "Audit Stratégique Complet", label: "Audit Stratégique Complet" },
+    { value: "Les deux, Vocal et Web AgencIA", label: "Les deux, Vocal et Web AgencIA" },
     { value: "Autre", label: "Autre" },
   ],
   global: [
     { value: "Vocal AgencIA (Réceptionniste IA)", label: "Vocal AgencIA (Réceptionniste IA)" },
     { value: "Web AgencIA (Site Haute Performance)", label: "Web AgencIA (Site Haute Performance)" },
-    { value: "Les Agents AgencIA (Chatbots & Automatisation)", label: "Les Agents AgencIA (Chatbots & Automatisation)" },
-    { value: "Audit Stratégique Complet", label: "Audit Stratégique Complet" },
+    { value: "Les deux, Vocal et Web AgencIA", label: "Les deux, Vocal et Web AgencIA" },
     { value: "Autre", label: "Autre" },
   ],
 };
