@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Scissors, Dog, Utensils, Heart, HelpCircle, ArrowRight, Send, Play } from "lucide-react";
+import { Scissors, Dog, Utensils, Heart, HelpCircle, ArrowRight, Send, Play, Sparkles, Clock } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import SectorDemo, { type DemoLine } from "./SectorDemo";
 import {
@@ -358,17 +358,47 @@ const Sectors = () => {
               )}
             </div>
 
-            {/* Inline Demo, appears below the card */}
+            {/* Coming soon message, appears below the card */}
             {current.demo && demoOpen && (
-              <div className="mt-6 max-w-2xl mx-auto" key={`demo-${current.id}`}>
-                <SectorDemo
-                  businessName={current.demo.businessName}
-                  lines={current.demo.lines}
-                  duration={current.demo.duration}
-                  finishedLabel={current.demo.finishedLabel}
-                  accent={current.accent}
-                />
+              <div className="mt-6 max-w-2xl mx-auto animate-fade-in" key={`demo-${current.id}`}>
+                <div className="card-glass p-6 sm:p-8 text-center relative overflow-hidden">
+                  <div
+                    className={`absolute inset-0 opacity-[0.06] bg-gradient-to-br ${current.accent}`}
+                    aria-hidden="true"
+                  />
+                  <div className="relative flex flex-col items-center gap-4">
+                    <div
+                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${current.accent} flex items-center justify-center shadow-lg`}
+                    >
+                      <Sparkles size={26} className="text-white" />
+                    </div>
+                    <div className="space-y-2 max-w-md">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 ring-1 ring-primary/20 text-[11px] font-semibold text-primary uppercase tracking-wider">
+                        <Clock size={11} />
+                        Bientôt disponible
+                      </div>
+                      <h4 className="text-lg sm:text-xl font-semibold text-foreground">
+                        Démo en préparation
+                      </h4>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Nous finalisons des exemples audio personnalisés pour chaque secteur.
+                        Très prochainement, vous pourrez écouter une démonstration réaliste de
+                        l'Agent Vocal IA en action pour <span className="text-foreground font-medium">{current.title}</span>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
+            )}
+            {/* Hidden until ready: full interactive demo */}
+            {false && current.demo && (
+              <SectorDemo
+                businessName={current.demo.businessName}
+                lines={current.demo.lines}
+                duration={current.demo.duration}
+                finishedLabel={current.demo.finishedLabel}
+                accent={current.accent}
+              />
             )}
           </div>
         </ScrollReveal>
