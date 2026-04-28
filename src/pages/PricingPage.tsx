@@ -244,30 +244,32 @@ const PricingPage = () => {
                     return (
                       <div
                         key={a.name}
-                        className="group relative flex items-center gap-4 p-5 rounded-2xl bg-card/70 backdrop-blur-md border border-border/60 hover:border-primary/20 hover:-translate-y-0.5 hover:shadow-soft transition-all duration-300"
+                        className="group relative flex flex-col gap-3 p-4 sm:p-5 rounded-2xl bg-card/70 backdrop-blur-md border border-border/60 hover:border-primary/20 hover:-translate-y-0.5 hover:shadow-soft transition-all duration-300"
                       >
-                        <div className="absolute top-2.5 right-2.5 flex flex-wrap gap-1 justify-end max-w-[60%]">
+                        <div className="flex flex-wrap gap-1.5">
                           {a.services.map((s) => {
                             const b = serviceBadges[s];
                             const BIcon = b.icon;
                             return (
                               <span
                                 key={s}
-                                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[9px] font-semibold uppercase tracking-wide ${b.className}`}
+                                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[9px] sm:text-[10px] font-semibold uppercase tracking-wide leading-none whitespace-nowrap ${b.className}`}
                                 title={b.label}
                               >
-                                <BIcon size={10} />
+                                <BIcon size={9} className="shrink-0" />
                                 {b.label}
                               </span>
                             );
                           })}
                         </div>
-                        <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                          <Icon size={20} className="text-primary" />
-                        </div>
-                        <div className="min-w-0 flex-1 pt-5">
-                          <p className="text-sm font-medium text-foreground leading-snug">{a.name}</p>
-                          <p className="text-base font-semibold text-gradient mt-0.5">{a.price}</p>
+                        <div className="flex items-center gap-3 sm:gap-4">
+                          <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                            <Icon size={20} className="text-primary" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-medium text-foreground leading-snug break-words">{a.name}</p>
+                            <p className="text-base font-semibold text-gradient mt-0.5">{a.price}</p>
+                          </div>
                         </div>
                       </div>
                     );
