@@ -61,11 +61,26 @@ const plans: Plan[] = [
   },
 ];
 
-const addons = [
-  { icon: Mic2, name: "Clonage de voix personnalisé", price: "+350 €" },
-  { icon: Languages, name: "Module Multilingue", price: "+250 € / langue" },
-  { icon: CreditCard, name: "Système de Paiement & Réservation Complexe", price: "+550 €" },
+type AddonService = "vocal" | "web";
+
+const addons: { icon: LucideIcon; name: string; price: string; services: AddonService[] }[] = [
+  { icon: Mic2, name: "Clonage de voix personnalisé", price: "+350 €", services: ["vocal"] },
+  { icon: Languages, name: "Module Multilingue", price: "+250 € / langue", services: ["vocal", "web"] },
+  { icon: CreditCard, name: "Système de Paiement & Réservation Complexe", price: "+550 €", services: ["web"] },
 ];
+
+const serviceBadges: Record<AddonService, { label: string; icon: LucideIcon; className: string }> = {
+  vocal: {
+    label: "Vocal AgencIA",
+    icon: Phone,
+    className: "bg-primary/10 text-primary border-primary/20",
+  },
+  web: {
+    label: "Web AgencIA",
+    icon: Monitor,
+    className: "bg-[hsl(260,60%,58%)]/10 text-[hsl(260,60%,58%)] border-[hsl(260,60%,58%)]/20",
+  },
+};
 
 const accentClasses: Record<Plan["accent"], { iconBg: string; iconText: string; tag: string }> = {
   primary: {
