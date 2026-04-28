@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Scissors, Dog, Utensils, Heart, HelpCircle, ArrowRight, Send, Play, Sparkles, Clock } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import SectorDemo, { type DemoLine } from "./SectorDemo";
+type DemoLine = { time: number; speaker: "ai" | "client"; text: string };
 import {
   Dialog,
   DialogContent,
@@ -389,16 +389,6 @@ const Sectors = () => {
                   </div>
                 </div>
               </div>
-            )}
-            {/* Hidden until ready: full interactive demo */}
-            {false && current.demo && (
-              <SectorDemo
-                businessName={current.demo.businessName}
-                lines={current.demo.lines}
-                duration={current.demo.duration}
-                finishedLabel={current.demo.finishedLabel}
-                accent={current.accent}
-              />
             )}
           </div>
         </ScrollReveal>
