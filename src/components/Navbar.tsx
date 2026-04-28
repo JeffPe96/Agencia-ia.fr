@@ -70,29 +70,42 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) =>
-            isRoute(l.href) ? (
+          {links.map((l) => {
+            const isActive = isRoute(l.href) && location.pathname === l.href;
+            const baseCls = `relative text-sm font-medium transition-colors py-1.5 ${
+              isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`;
+            const indicator = (
+              <span
+                aria-hidden="true"
+                className={`pointer-events-none absolute left-0 right-0 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-[#00BFFF] to-[#7b5cff] origin-left transition-transform duration-300 ${
+                  isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                }`}
+              />
+            );
+            return isRoute(l.href) ? (
               <Link
                 key={l.href}
                 to={l.href}
                 onClick={(e) => handleLinkClick(e, l.href)}
-                className={`text-sm font-medium transition-colors ${
-                  location.pathname === l.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                }`}
+                aria-current={isActive ? "page" : undefined}
+                className={`group ${baseCls}`}
               >
                 {l.label}
+                {indicator}
               </Link>
             ) : (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={(e) => handleAnchorClick(e, l.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className={`group ${baseCls}`}
               >
                 {l.label}
+                {indicator}
               </a>
-            )
-          )}
+            );
+          })}
 
           <button
             onClick={handleContactClick}
