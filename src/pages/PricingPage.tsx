@@ -61,11 +61,26 @@ const plans: Plan[] = [
   },
 ];
 
-const addons = [
-  { icon: Mic2, name: "Clonage de voix personnalisé", price: "+350 €" },
-  { icon: Languages, name: "Module Multilingue", price: "+250 € / langue" },
-  { icon: CreditCard, name: "Système de Paiement & Réservation Complexe", price: "+550 €" },
+type AddonService = "vocal" | "web";
+
+const addons: { icon: LucideIcon; name: string; price: string; services: AddonService[] }[] = [
+  { icon: Mic2, name: "Clonage de voix personnalisé", price: "+350 €", services: ["vocal"] },
+  { icon: Languages, name: "Module Multilingue", price: "+250 € / langue", services: ["vocal", "web"] },
+  { icon: CreditCard, name: "Système de Paiement & Réservation Complexe", price: "+550 €", services: ["web"] },
 ];
+
+const serviceBadges: Record<AddonService, { label: string; icon: LucideIcon; className: string }> = {
+  vocal: {
+    label: "Vocal AgencIA",
+    icon: Phone,
+    className: "bg-primary/10 text-primary border-primary/20",
+  },
+  web: {
+    label: "Web AgencIA",
+    icon: Monitor,
+    className: "bg-[hsl(260,60%,58%)]/10 text-[hsl(260,60%,58%)] border-[hsl(260,60%,58%)]/20",
+  },
+};
 
 const accentClasses: Record<Plan["accent"], { iconBg: string; iconText: string; tag: string }> = {
   primary: {
@@ -229,12 +244,28 @@ const PricingPage = () => {
                     return (
                       <div
                         key={a.name}
-                        className="group flex items-center gap-4 p-5 rounded-2xl bg-card/70 backdrop-blur-md border border-border/60 hover:border-primary/20 hover:-translate-y-0.5 hover:shadow-soft transition-all duration-300"
+                        className="group relative flex items-center gap-4 p-5 rounded-2xl bg-card/70 backdrop-blur-md border border-border/60 hover:border-primary/20 hover:-translate-y-0.5 hover:shadow-soft transition-all duration-300"
                       >
+                        <div className="absolute top-2.5 right-2.5 flex flex-wrap gap-1 justify-end max-w-[60%]">
+                          {a.services.map((s) => {
+                            const b = serviceBadges[s];
+                            const BIcon = b.icon;
+                            return (
+                              <span
+                                key={s}
+                                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[9px] font-semibold uppercase tracking-wide ${b.className}`}
+                                title={b.label}
+                              >
+                                <BIcon size={10} />
+                                {b.label}
+                              </span>
+                            );
+                          })}
+                        </div>
                         <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
                           <Icon size={20} className="text-primary" />
                         </div>
-                        <div className="min-w-0 flex-1">
+                        <div className="min-w-0 flex-1 pt-5">
                           <p className="text-sm font-medium text-foreground leading-snug">{a.name}</p>
                           <p className="text-base font-semibold text-gradient mt-0.5">{a.price}</p>
                         </div>
