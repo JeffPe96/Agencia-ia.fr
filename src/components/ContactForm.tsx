@@ -30,8 +30,12 @@ const interestOptions: Record<string, { value: string; label: string }[]> = {
 const fieldClass =
   "rounded-xl bg-secondary/60 border border-border/60 focus-visible:border-primary/60 focus-visible:ring-2 focus-visible:ring-primary/30 transition-colors";
 
+const selectClass =
+  "flex h-10 w-full rounded-xl border border-border/60 bg-secondary/60 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30 transition-colors";
+
 const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
-  const [type, setType] = useState("");
+  const [secteur, setSecteur] = useState("");
+  const [taille, setTaille] = useState("");
   const [interest, setInterest] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -87,44 +91,82 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                 style={{ ["--card-glow" as string]: "hsl(217 91% 53% / 0.3)" }}
               >
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Nom complet</label>
-                  <Input name="nom" placeholder="Jean Dupont" required className={fieldClass} />
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Nom / Prénom</label>
+                  <Input name="nom_prenom" placeholder="Jean Dupont" required maxLength={100} className={fieldClass} />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Établissement</label>
-                  <Input name="etablissement" placeholder="Salon Élégance" required className={fieldClass} />
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Adresse mail</label>
+                  <Input name="email" type="email" placeholder="jean.dupont@exemple.com" required maxLength={255} className={fieldClass} />
                 </div>
 
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Téléphone</label>
-                  <Input name="telephone" type="tel" placeholder="06 12 34 56 78" required className={fieldClass} />
+                  <Input name="telephone" type="tel" placeholder="06 12 34 56 78" required maxLength={30} className={fieldClass} />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Type de commerce</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Nom de l'entreprise</label>
+                  <Input name="entreprise" placeholder="Salon Élégance" required maxLength={150} className={fieldClass} />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Votre rôle dans l'entreprise</label>
+                  <Input name="role" placeholder="Gérant, Directeur, Responsable…" required maxLength={100} className={fieldClass} />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Secteur de l'entreprise</label>
                   <select
-                    name="type_commerce"
-                    value={type}
-                    onChange={(e) => setType(e.target.value)}
+                    name="secteur"
+                    value={secteur}
+                    onChange={(e) => setSecteur(e.target.value)}
                     required
-                    className="flex h-10 w-full rounded-xl border border-border/60 bg-secondary/60 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30 transition-colors"
+                    className={selectClass}
                   >
                     <option value="" disabled>Sélectionnez votre secteur</option>
                     <option value="Coiffeur">Coiffeur</option>
                     <option value="Toiletteur">Toiletteur</option>
                     <option value="Restauration">Restauration</option>
                     <option value="Bien-être">Bien-être</option>
+                    <option value="Santé">Santé</option>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Services">Services</option>
                     <option value="Autre">Autre</option>
                   </select>
                 </div>
 
-                {type === "Autre" && (
+                {secteur === "Autre" && (
                   <div className="animate-fade-in">
                     <label className="text-sm font-medium text-foreground mb-1.5 block">Précisez votre activité</label>
-                    <Textarea name="activite_autre" placeholder="Décrivez votre activité…" required className={fieldClass} />
+                    <Textarea name="secteur_autre" placeholder="Décrivez votre activité…" required maxLength={500} className={fieldClass} />
                   </div>
                 )}
+
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Site web entreprise <span className="text-muted-foreground font-normal">(laissez vide si vous n'en avez pas)</span>
+                  </label>
+                  <Input name="site_web" type="url" placeholder="https://…" maxLength={255} className={fieldClass} />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Taille de l'entreprise</label>
+                  <select
+                    name="taille_entreprise"
+                    value={taille}
+                    onChange={(e) => setTaille(e.target.value)}
+                    required
+                    className={selectClass}
+                  >
+                    <option value="" disabled>Sélectionnez la taille</option>
+                    <option value="Moins de 10">Moins de 10</option>
+                    <option value="10-50">10 - 50</option>
+                    <option value="50-100">50 - 100</option>
+                    <option value="100-500">100 - 500</option>
+                    <option value="Plus de 500">Plus de 500</option>
+                  </select>
+                </div>
 
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Je suis intéressé par</label>
@@ -133,7 +175,7 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                     value={interest}
                     onChange={(e) => setInterest(e.target.value)}
                     required
-                    className="flex h-10 w-full rounded-xl border border-border/60 bg-secondary/60 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30 transition-colors"
+                    className={selectClass}
                   >
                     <option value="" disabled>Choisissez une option</option>
                     {options.map((opt) => (
@@ -150,6 +192,7 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                     name="message"
                     placeholder="Décrivez brièvement votre projet ou vos défis actuels..."
                     rows={4}
+                    maxLength={1000}
                     className={fieldClass}
                   />
                 </div>
