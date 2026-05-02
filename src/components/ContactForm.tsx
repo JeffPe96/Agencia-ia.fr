@@ -117,31 +117,16 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
 
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Secteur de l'entreprise</label>
-                  <select
+                  <Input
                     name="secteur"
                     value={secteur}
                     onChange={(e) => setSecteur(e.target.value)}
+                    placeholder="Ex : Coiffure, Restauration, Santé…"
                     required
-                    className={selectClass}
-                  >
-                    <option value="" disabled>Sélectionnez votre secteur</option>
-                    <option value="Coiffeur">Coiffeur</option>
-                    <option value="Toiletteur">Toiletteur</option>
-                    <option value="Restauration">Restauration</option>
-                    <option value="Bien-être">Bien-être</option>
-                    <option value="Santé">Santé</option>
-                    <option value="Commerce">Commerce</option>
-                    <option value="Services">Services</option>
-                    <option value="Autre">Autre</option>
-                  </select>
+                    maxLength={150}
+                    className={fieldClass}
+                  />
                 </div>
-
-                {secteur === "Autre" && (
-                  <div className="animate-fade-in">
-                    <label className="text-sm font-medium text-foreground mb-1.5 block">Précisez votre activité</label>
-                    <Textarea name="secteur_autre" placeholder="Décrivez votre activité…" required maxLength={500} className={fieldClass} />
-                  </div>
-                )}
 
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">
