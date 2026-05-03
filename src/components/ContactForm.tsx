@@ -157,7 +157,9 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Adresse mail</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Adresse mail <span className="text-destructive">*</span>
+                  </label>
                   <Input
                     name="email"
                     type="email"
@@ -169,7 +171,6 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                     value={email}
                     onChange={handleEmailChange}
                     onBlur={handleEmailBlur}
-                    pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
                     aria-invalid={!!emailError}
                     aria-describedby={emailError ? "email-error" : undefined}
                     className={`${fieldClass} ${emailError ? "border-destructive focus-visible:border-destructive focus-visible:ring-destructive/30" : ""}`}
@@ -182,22 +183,30 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Téléphone</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Téléphone <span className="text-destructive">*</span>
+                  </label>
                   <Input name="telephone" type="tel" placeholder="06 12 34 56 78" required maxLength={30} className={fieldClass} />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Nom de l'entreprise</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Nom de l'entreprise <span className="text-destructive">*</span>
+                  </label>
                   <Input name="entreprise" placeholder="Salon Élégance" required maxLength={150} className={fieldClass} />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Votre rôle dans l'entreprise</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Votre rôle dans l'entreprise <span className="text-destructive">*</span>
+                  </label>
                   <Input name="role" placeholder="Gérant, Directeur, Responsable…" required maxLength={100} className={fieldClass} />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Secteur de l'entreprise</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Secteur de l'entreprise <span className="text-destructive">*</span>
+                  </label>
                   <Input
                     name="secteur"
                     value={secteur}
@@ -211,13 +220,15 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
 
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">
-                    Site web entreprise <span className="text-muted-foreground font-normal">(laissez vide si vous n'en avez pas)</span>
+                    Site web entreprise <span className="text-muted-foreground font-normal">(facultatif — laissez vide si vous n'en avez pas)</span>
                   </label>
                   <Input name="site_web" type="url" placeholder="https://…" maxLength={255} className={fieldClass} />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Taille de l'entreprise</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Taille de l'entreprise <span className="text-destructive">*</span>
+                  </label>
                   <select
                     name="taille_entreprise"
                     value={taille}
@@ -235,7 +246,9 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Je suis intéressé par</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Je suis intéressé par <span className="text-destructive">*</span>
+                  </label>
                   <select
                     name="interet"
                     value={interest}
@@ -252,7 +265,7 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
 
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">
-                    Message / Besoins spécifiques
+                    Message / Besoins spécifiques <span className="text-muted-foreground font-normal">(facultatif)</span>
                   </label>
                   <Textarea
                     name="message"
@@ -262,6 +275,15 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                     className={fieldClass}
                   />
                 </div>
+
+                {formError && (
+                  <div
+                    role="alert"
+                    className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+                  >
+                    {formError}
+                  </div>
+                )}
 
                 <button
                   type="submit"
