@@ -115,11 +115,18 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
             ) : (
               <form
                 onSubmit={handleSubmit}
+                noValidate
                 className="service-card group space-y-5"
                 style={{ ["--card-glow" as string]: "hsl(217 91% 53% / 0.3)" }}
               >
+                <p className="text-xs text-muted-foreground -mt-1">
+                  Les champs marqués d'un <span className="text-destructive font-semibold">*</span> sont obligatoires pour l'envoi du message.
+                </p>
+
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Nom / Prénom</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">
+                    Nom / Prénom <span className="text-destructive">*</span>
+                  </label>
                   <Input name="nom_prenom" placeholder="Jean Dupont" required maxLength={100} className={fieldClass} />
                 </div>
 
