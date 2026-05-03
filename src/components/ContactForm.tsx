@@ -37,12 +37,40 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
   const [secteur, setSecteur] = useState("");
   const [taille, setTaille] = useState("");
   const [interest, setInterest] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const options = interestOptions[formContext];
 
+  // RFC 5322 simplifié : local@domaine.tld
+  const EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+  const validateEmail = (value: string) => {
+    const trimmed = value.trim();
+    if (!trimmed) return "L'adresse mail est requise.";
+    if (trimmed.length > 255) return "L'adresse mail est trop longue.";
+    if (!EMAIL_REGEX.test(trimmed)) return "Veuillez saisir une adresse mail valide (ex : nom@domaine.com).";
+    return "";
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (emailError) setEmailError(validateEmail(value));
+  };
+
+  const handleEmailBlur = () => {
+    setEmailError(validateEmail(email));
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const error = validateEmail(email);
+    if (error) {
+      setEmailError(error);
+      return;
+    }
     const form = e.currentTarget;
     try {
       const res = await fetch("https://formspree.io/f/mpqoopyb", {
@@ -97,7 +125,27 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
 
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Adresse mail</label>
-                  <Input name="email" type="email" placeholder="jean.dupont@exemple.com" required maxLength={255} className={fieldClass} />
+                  <Input
+                    name="email"
+                    type="email"
+                    inputMode="email"
+                    autoComplete="email"
+                    placeholder="jean.dupont@exemple.com"
+                    required
+                    maxLength={255}
+                    value={email}
+                    onChange={handleEmailChange}
+                    onBlur={handleEmailBlur}
+                    pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
+                    aria-invalid={!!emailError}
+                    aria-describedby={emailError ? "email-error" : undefined}
+                    className={`${fieldClass} ${emailError ? "border-destructive focus-visible:border-destructive focus-visible:ring-destructive/30" : ""}`}
+                  />
+                  {emailError && (
+                    <p id="email-error" className="mt-1.5 text-xs text-destructive">
+                      {emailError}
+                    </p>
+                  )}
                 </div>
 
                 <div>
