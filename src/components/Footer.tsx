@@ -142,6 +142,21 @@ const Footer = () => {
                   <MapPin size={16} className="mt-0.5 shrink-0 text-primary/80" />
                   <span>Annecy, France</span>
                 </li>
+                <li className="flex items-start gap-3 text-white/60">
+                  <Clock size={16} className="mt-0.5 shrink-0 text-primary/80" />
+                  <span className="flex flex-col">
+                    <span>
+                      Local time :{" "}
+                      <span
+                        className="text-white font-medium tabular-nums"
+                        aria-live="polite"
+                      >
+                        {localTime}
+                      </span>
+                    </span>
+                    <span className="text-[11px] text-white/40">Annecy · CET/CEST</span>
+                  </span>
+                </li>
               </ul>
             </div>
           </div>
