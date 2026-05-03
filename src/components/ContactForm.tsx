@@ -39,17 +39,19 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
   const [interest, setInterest] = useState("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [formError, setFormError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const options = interestOptions[formContext];
 
-  // RFC 5322 simplifié : local@domaine.tld
-  const EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  // Validation stricte : local@domaine.tld (TLD 2+ lettres, pas de double point)
+  const EMAIL_REGEX = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
 
   const validateEmail = (value: string) => {
     const trimmed = value.trim();
     if (!trimmed) return "L'adresse mail est requise.";
     if (trimmed.length > 255) return "L'adresse mail est trop longue.";
+    if (trimmed.includes("..")) return "Veuillez saisir une adresse mail valide (ex : nom@domaine.com).";
     if (!EMAIL_REGEX.test(trimmed)) return "Veuillez saisir une adresse mail valide (ex : nom@domaine.com).";
     return "";
   };
@@ -66,21 +68,45 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormError("");
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    const requiredFields: { name: string; label: string }[] = [
+      { name: "nom_prenom", label: "Nom / Prénom" },
+      { name: "email", label: "Adresse mail" },
+      { name: "telephone", label: "Téléphone" },
+      { name: "entreprise", label: "Nom de l'entreprise" },
+      { name: "role", label: "Votre rôle dans l'entreprise" },
+      { name: "secteur", label: "Secteur de l'entreprise" },
+      { name: "taille_entreprise", label: "Taille de l'entreprise" },
+      { name: "interet", label: "Je suis intéressé par" },
+    ];
+
+    const missing = requiredFields.filter((f) => !String(fd.get(f.name) ?? "").trim());
+    if (missing.length > 0) {
+      setFormError(`Merci de remplir tous les champs obligatoires : ${missing.map((m) => m.label).join(", ")}.`);
+      return;
+    }
+
     const error = validateEmail(email);
     if (error) {
       setEmailError(error);
+      setFormError("Veuillez corriger l'adresse mail avant d'envoyer.");
       return;
     }
-    const form = e.currentTarget;
+
     try {
       const res = await fetch("https://formspree.io/f/mpqoopyb", {
         method: "POST",
-        body: new FormData(form),
+        body: fd,
         headers: { Accept: "application/json" },
       });
       if (res.ok) setSubmitted(true);
+      else setFormError("Une erreur est survenue lors de l'envoi. Merci de réessayer.");
     } catch {
-      // silent fail
+      setFormError("Une erreur est survenue lors de l'envoi. Merci de réessayer.");
     }
   };
 
