@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AgencIALogo from "./AgencIALogo";
+
+const TIME_ZONE = "Europe/Paris";
+
+const formatLocalTime = (date: Date) =>
+  new Intl.DateTimeFormat("fr-FR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: TIME_ZONE,
+  }).format(date);
 
 const scrollToId = (id: string) => {
   const el = document.getElementById(id);
@@ -23,6 +33,14 @@ const agence = [
 const Footer = () => {
   const [mentionsOpen, setMentionsOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [localTime, setLocalTime] = useState(() => formatLocalTime(new Date()));
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setLocalTime(formatLocalTime(new Date()));
+    }, 30_000);
+    return () => window.clearInterval(id);
+  }, []);
 
   return (
     <footer className="relative mt-20">
@@ -123,6 +141,21 @@ const Footer = () => {
                 <li className="flex items-start gap-3 text-white/60">
                   <MapPin size={16} className="mt-0.5 shrink-0 text-primary/80" />
                   <span>Annecy, France</span>
+                </li>
+                <li className="flex items-start gap-3 text-white/60">
+                  <Clock size={16} className="mt-0.5 shrink-0 text-primary/80" />
+                  <span className="flex flex-col">
+                    <span>
+                      Local time :{" "}
+                      <span
+                        className="text-white font-medium tabular-nums"
+                        aria-live="polite"
+                      >
+                        {localTime}
+                      </span>
+                    </span>
+                    <span className="text-[11px] text-white/40">Annecy · CET/CEST</span>
+                  </span>
                 </li>
               </ul>
             </div>
