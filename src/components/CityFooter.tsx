@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+import { MapPin, Globe2 } from "lucide-react";
 
 const CityFooter = () => {
   return (
@@ -15,11 +15,19 @@ const CityFooter = () => {
             </span>
           </div>
           <p className="text-base sm:text-lg text-white/80 leading-relaxed font-light">
-            Basés à <span className="text-white font-medium">Annecy</span>, nous accompagnons les entreprises
-            sur tout le <span className="text-white font-medium">bassin Genevois</span>, la
-            <span className="text-white font-medium"> Haute-Savoie</span> et la
-            <span className="text-white font-medium"> Suisse romande</span>.
+            Basés à <span className="text-white font-medium">Annecy</span>, mais cela ne nous empêche pas
+            de vous rencontrer pour un <span className="text-white font-medium">audit gratuit</span> ou
+            le <span className="text-white font-medium">déploiement de votre Agent Vocal</span> ou de
+            votre <span className="text-white font-medium">site web</span>.
           </p>
+          <p className="mt-4 text-sm sm:text-base text-white/60 leading-relaxed font-light">
+            Tout est faisable <span className="text-white/90 font-medium">à distance</span> :
+            AgencIA s'occupe de tout, de A à Z, où que vous soyez.
+          </p>
+          <div className="mt-6 inline-flex items-center gap-2 text-xs text-white/50">
+            <Globe2 size={14} className="text-primary/80" aria-hidden="true" />
+            <span>France · Suisse romande · Europe</span>
+          </div>
         </div>
       </div>
     </section>
