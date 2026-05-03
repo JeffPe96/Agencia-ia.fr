@@ -33,6 +33,14 @@ const agence = [
 const Footer = () => {
   const [mentionsOpen, setMentionsOpen] = useState(false);
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [localTime, setLocalTime] = useState(() => formatLocalTime(new Date()));
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setLocalTime(formatLocalTime(new Date()));
+    }, 30_000);
+    return () => window.clearInterval(id);
+  }, []);
 
   return (
     <footer className="relative mt-20">
