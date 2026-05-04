@@ -1,13 +1,17 @@
+import { useState, useMemo } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
 import ScrollReveal from "./ScrollReveal";
-import { Mic, Calendar, Brain, Languages, Lock, PhoneForwarded, UserSearch, Zap, MessageCircle } from "lucide-react";
+import { Mic, Calendar, Brain, Languages, Lock, PhoneForwarded, UserSearch, Zap, MessageCircle, Search, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { navigateToHomeContact } from "@/lib/navigateToContact";
+
+const KEYWORDS = ["Simplicité", "Prix", "Installation", "Sécurité", "Langues"];
 
 const items = [
   {
