@@ -50,6 +50,15 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
   const [captcha, setCaptcha] = useState(() => generateCaptcha());
   const [captchaInput, setCaptchaInput] = useState("");
   const [captchaError, setCaptchaError] = useState("");
+  const captchaRef = useRef<HTMLInputElement>(null);
+
+  const focusCaptcha = () => {
+    requestAnimationFrame(() => {
+      captchaRef.current?.focus();
+      captchaRef.current?.select();
+      captchaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  };
 
   const refreshCaptcha = () => {
     setCaptcha(generateCaptcha());
