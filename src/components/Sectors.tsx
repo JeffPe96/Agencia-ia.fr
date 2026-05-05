@@ -38,8 +38,8 @@ const sectors: Sector[] = [
   {
     id: "coiffure",
     icon: Scissors,
-    label: "Salons de Coiffure",
-    title: "Salons de Coiffure & Beauté",
+    label: "Salons de coiffures/Beauté",
+    title: "Salons de coiffures/Beauté",
     text:
       "Libérez-vous de la prise de rendez-vous. Notre Agent IA qualifie les demandes, gère votre calendrier en temps réel et relance vos clients automatiquement pour réduire les rendez-vous manqués.",
     accent: "from-[#00BFFF] to-[#3a7bd5]",
@@ -67,8 +67,8 @@ const sectors: Sector[] = [
   {
     id: "toilettage",
     icon: Dog,
-    label: "Cliniques Vétérinaires",
-    title: "Vétérinaires & Toilettage",
+    label: "Toilettage / Vétérinaires",
+    title: "Toilettage / Vétérinaires",
     text:
       "Une gestion fluide pour vos clients à quatre pattes. L'Agent IA identifie le type de soin nécessaire et optimise vos créneaux pour maximiser votre journée sans stress.",
     accent: "from-[#7b5cff] to-[#00BFFF]",
