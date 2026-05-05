@@ -112,6 +112,14 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
       return;
     }
 
+    const expected = String(captcha.answer);
+    if (captchaInput.trim() !== expected) {
+      setCaptchaError("Réponse incorrecte. Merci de réessayer.");
+      setFormError("Veuillez valider le captcha avant d'envoyer.");
+      return;
+    }
+    setCaptchaError("");
+
     try {
       const res = await fetch("https://formspree.io/f/mpqoopyb", {
         method: "POST",
