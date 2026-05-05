@@ -339,6 +339,7 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                       {captcha.a} + {captcha.b} = ?
                     </div>
                     <Input
+                      ref={captchaRef}
                       name="captcha"
                       type="text"
                       inputMode="numeric"
