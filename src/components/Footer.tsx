@@ -169,15 +169,61 @@ const Footer = () => {
                 <DialogTrigger asChild>
                   <button className="hover:text-white transition-colors">Mentions Légales</button>
                 </DialogTrigger>
-                <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto bg-[hsl(220_25%_8%)] border-white/10 text-white/80">
+                <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-[hsl(220_25%_8%)] border-white/10 text-white/80">
                   <DialogHeader>
-                    <DialogTitle className="text-white">Mentions légales</DialogTitle>
+                    <DialogTitle className="text-white">Mentions Légales & RGPD — AgencIA</DialogTitle>
                   </DialogHeader>
-                  <div className="text-sm text-white/70 space-y-3 leading-relaxed">
-                    <p><strong className="text-white">Éditeur :</strong> AgencIA (En attente d'immatriculation).</p>
-                    <p><strong className="text-white">Directeur de la publication :</strong> Jefferson DE LA CRUZ.</p>
-                    <p><strong className="text-white">Hébergement :</strong> Vercel.</p>
-                    <p><strong className="text-white">Propriété intellectuelle :</strong> Tous les contenus (textes, logos, images) sont la propriété exclusive d'AgencIA. Toute reproduction est interdite sans accord préalable.</p>
+                  <div className="text-sm text-white/70 space-y-5 leading-relaxed">
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">1. Informations sur l'Éditeur</h3>
+                      <p>Le site <span className="text-white">agencia-ia.fr</span> est édité par :</p>
+                      <ul className="space-y-1 pl-1">
+                        <li><strong className="text-white">Nom — Prénom :</strong> DE LA CRUZ Jefferson</li>
+                        <li><strong className="text-white">Forme juridique :</strong> Auto-entrepreneur (en cours d'immatriculation)</li>
+                        <li><strong className="text-white">Enseigne :</strong> AgencIA</li>
+                        <li><strong className="text-white">Adresse :</strong> Annecy, France</li>
+                        <li><strong className="text-white">E-mail :</strong> contact@agencia-ia.fr</li>
+                        <li><strong className="text-white">Directeur de publication :</strong> Jefferson DE LA CRUZ</li>
+                      </ul>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">2. Hébergement</h3>
+                      <p>Le site est hébergé par :</p>
+                      <ul className="space-y-1 pl-1">
+                        <li><strong className="text-white">Hébergeur :</strong> Vercel Inc.</li>
+                        <li><strong className="text-white">Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.</li>
+                      </ul>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">3. Propriété Intellectuelle</h3>
+                      <p>Tout le contenu présent sur ce site (textes, logos, graphismes, vidéos) est la propriété exclusive de AgencIA, sauf mention contraire. Toute reproduction, même partielle, est strictement interdite sans accord écrit préalable.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">4. Protection des Données (RGPD)</h3>
+                      <p>AgencIA s'engage à ce que la collecte et le traitement de vos données soient conformes au Règlement Général sur la Protection des Données (RGPD).</p>
+                      <p><strong className="text-white">Données collectées :</strong> Via l'agent vocal Maïna ou les formulaires, nous collectons : votre nom, le nom de votre animal, votre numéro de téléphone et votre localité.</p>
+                      <p><strong className="text-white">Finalité :</strong> Prise de rendez-vous et envoi de SMS de confirmation.</p>
+                      <p><strong className="text-white">Sécurité (Captcha) :</strong> Afin de protéger nos formulaires contre les abus et le spam, nous utilisons un système de CAPTCHA. Ce service peut collecter des données techniques (ex : adresse IP) pour vérifier que l'utilisateur est humain.</p>
+                      <p><strong className="text-white">Conservation & Droits :</strong> Vos données sont conservées pendant 2 ans. Vous disposez d'un droit d'accès, de rectification et de suppression en écrivant à : <span className="text-white">contact@agencia-ia.fr</span>.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">5. Cookies</h3>
+                      <p>Le site agencia-ia.fr n'utilise aucun cookie de traçage, de profilage ou de publicité. Seuls des éléments techniques strictement nécessaires au fonctionnement du site peuvent être utilisés.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">6. Responsabilité</h3>
+                      <p>AgencIA s'efforce de fournir des informations exactes mais ne saurait être tenue pour responsable en cas d'omission. L'utilisation du site se fait sous la seule responsabilité de l'utilisateur.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">7. Litiges</h3>
+                      <p>Les présentes conditions sont régies par les lois françaises. En cas de contestation, les tribunaux français seront seuls compétents.</p>
+                    </section>
                   </div>
                   <div className="pt-2">
                     <button
