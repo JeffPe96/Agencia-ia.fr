@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, RefreshCw, ShieldCheck } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ScrollReveal from "./ScrollReveal";
+
+const generateCaptcha = () => {
+  const a = Math.floor(Math.random() * 9) + 1;
+  const b = Math.floor(Math.random() * 9) + 1;
+  return { a, b, answer: a + b };
+};
 
 interface ContactFormProps {
   formContext?: "vocal" | "web" | "global";
