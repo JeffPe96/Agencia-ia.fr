@@ -299,6 +299,48 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                   />
                 </div>
 
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block flex items-center gap-1.5">
+                    <ShieldCheck size={14} className="text-primary" />
+                    Vérification anti-robot <span className="text-destructive">*</span>
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="select-none rounded-xl border border-border/60 bg-secondary/60 px-4 py-2 text-base font-semibold tracking-wider text-foreground tabular-nums"
+                      aria-label={`Captcha : combien font ${captcha.a} plus ${captcha.b} ?`}
+                    >
+                      {captcha.a} + {captcha.b} = ?
+                    </div>
+                    <Input
+                      name="captcha"
+                      type="text"
+                      inputMode="numeric"
+                      autoComplete="off"
+                      placeholder="Réponse"
+                      value={captchaInput}
+                      onChange={(e) => {
+                        setCaptchaInput(e.target.value);
+                        if (captchaError) setCaptchaError("");
+                      }}
+                      maxLength={3}
+                      required
+                      aria-invalid={!!captchaError}
+                      className={`${fieldClass} max-w-[120px] ${captchaError ? "border-destructive focus-visible:border-destructive focus-visible:ring-destructive/30" : ""}`}
+                    />
+                    <button
+                      type="button"
+                      onClick={refreshCaptcha}
+                      aria-label="Générer un nouveau captcha"
+                      className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/60 bg-secondary/60 text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors"
+                    >
+                      <RefreshCw size={16} />
+                    </button>
+                  </div>
+                  {captchaError && (
+                    <p className="mt-1.5 text-xs text-destructive">{captchaError}</p>
+                  )}
+                </div>
+
                 {formError && (
                   <div
                     role="alert"
