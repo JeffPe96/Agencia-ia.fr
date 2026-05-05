@@ -47,6 +47,15 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
   const [emailError, setEmailError] = useState("");
   const [formError, setFormError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [captcha, setCaptcha] = useState(() => generateCaptcha());
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captchaError, setCaptchaError] = useState("");
+
+  const refreshCaptcha = () => {
+    setCaptcha(generateCaptcha());
+    setCaptchaInput("");
+    setCaptchaError("");
+  };
 
   const options = interestOptions[formContext];
 
