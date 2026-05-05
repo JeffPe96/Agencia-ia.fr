@@ -122,9 +122,25 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
     }
 
     const expected = String(captcha.answer);
-    if (captchaInput.trim() !== expected) {
-      setCaptchaError("Réponse incorrecte. Merci de réessayer.");
-      setFormError("Veuillez valider le captcha avant d'envoyer.");
+    const userAnswer = captchaInput.trim();
+    if (!userAnswer) {
+      setCaptchaError("Merci de répondre à la question anti-robot avant d'envoyer.");
+      setFormError(`Vérification anti-robot manquante : indiquez le résultat de ${captcha.a} + ${captcha.b}.`);
+      refreshCaptcha();
+      focusCaptcha();
+      return;
+    }
+    if (!/^-?\d+$/.test(userAnswer)) {
+      setCaptchaError("Merci d'entrer un nombre entier (ex : 7).");
+      setFormError("La réponse au captcha doit être un nombre entier.");
+      focusCaptcha();
+      return;
+    }
+    if (userAnswer !== expected) {
+      setCaptchaError(`Réponse incorrecte. ${captcha.a} + ${captcha.b} ne fait pas ${userAnswer}. Une nouvelle question vient d'être générée.`);
+      setFormError("La vérification anti-robot a échoué. Merci de répondre à la nouvelle question ci-dessous.");
+      refreshCaptcha();
+      focusCaptcha();
       return;
     }
     setCaptchaError("");
