@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Send, RefreshCw, ShieldCheck } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -50,6 +50,15 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
   const [captcha, setCaptcha] = useState(() => generateCaptcha());
   const [captchaInput, setCaptchaInput] = useState("");
   const [captchaError, setCaptchaError] = useState("");
+  const captchaRef = useRef<HTMLInputElement>(null);
+
+  const focusCaptcha = () => {
+    requestAnimationFrame(() => {
+      captchaRef.current?.focus();
+      captchaRef.current?.select();
+      captchaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  };
 
   const refreshCaptcha = () => {
     setCaptcha(generateCaptcha());
@@ -113,9 +122,27 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
     }
 
     const expected = String(captcha.answer);
-    if (captchaInput.trim() !== expected) {
-      setCaptchaError("Réponse incorrecte. Merci de réessayer.");
-      setFormError("Veuillez valider le captcha avant d'envoyer.");
+    const userAnswer = captchaInput.trim();
+    if (!userAnswer) {
+      setCaptcha(generateCaptcha());
+      setCaptchaInput("");
+      setCaptchaError("Merci de répondre à la question anti-robot avant d'envoyer. Une nouvelle question vient d'être générée.");
+      setFormError(`Vérification anti-robot manquante. Merci de répondre à la nouvelle question ci-dessous.`);
+      focusCaptcha();
+      return;
+    }
+    if (!/^-?\d+$/.test(userAnswer)) {
+      setCaptchaError(`Merci d'entrer uniquement un nombre entier (ex : 7). Vous avez saisi : « ${userAnswer} ».`);
+      setFormError("La réponse au captcha doit être un nombre entier, sans lettres ni espaces.");
+      focusCaptcha();
+      return;
+    }
+    if (userAnswer !== expected) {
+      setCaptcha(generateCaptcha());
+      setCaptchaInput("");
+      setCaptchaError(`Réponse incorrecte : ${captcha.a} + ${captcha.b} ne fait pas ${userAnswer}. Une nouvelle question vient d'être générée — merci de la résoudre.`);
+      setFormError("La vérification anti-robot a échoué. Merci de répondre à la nouvelle question ci-dessous.");
+      focusCaptcha();
       return;
     }
     setCaptchaError("");
@@ -312,6 +339,7 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
                       {captcha.a} + {captcha.b} = ?
                     </div>
                     <Input
+                      ref={captchaRef}
                       name="captcha"
                       type="text"
                       inputMode="numeric"
