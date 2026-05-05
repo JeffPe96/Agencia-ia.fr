@@ -124,22 +124,24 @@ const ContactForm = ({ formContext = "global" }: ContactFormProps) => {
     const expected = String(captcha.answer);
     const userAnswer = captchaInput.trim();
     if (!userAnswer) {
-      setCaptchaError("Merci de répondre à la question anti-robot avant d'envoyer.");
-      setFormError(`Vérification anti-robot manquante : indiquez le résultat de ${captcha.a} + ${captcha.b}.`);
-      refreshCaptcha();
+      setCaptcha(generateCaptcha());
+      setCaptchaInput("");
+      setCaptchaError("Merci de répondre à la question anti-robot avant d'envoyer. Une nouvelle question vient d'être générée.");
+      setFormError(`Vérification anti-robot manquante. Merci de répondre à la nouvelle question ci-dessous.`);
       focusCaptcha();
       return;
     }
     if (!/^-?\d+$/.test(userAnswer)) {
-      setCaptchaError("Merci d'entrer un nombre entier (ex : 7).");
-      setFormError("La réponse au captcha doit être un nombre entier.");
+      setCaptchaError(`Merci d'entrer uniquement un nombre entier (ex : 7). Vous avez saisi : « ${userAnswer} ».`);
+      setFormError("La réponse au captcha doit être un nombre entier, sans lettres ni espaces.");
       focusCaptcha();
       return;
     }
     if (userAnswer !== expected) {
-      setCaptchaError(`Réponse incorrecte. ${captcha.a} + ${captcha.b} ne fait pas ${userAnswer}. Une nouvelle question vient d'être générée.`);
+      setCaptcha(generateCaptcha());
+      setCaptchaInput("");
+      setCaptchaError(`Réponse incorrecte : ${captcha.a} + ${captcha.b} ne fait pas ${userAnswer}. Une nouvelle question vient d'être générée — merci de la résoudre.`);
       setFormError("La vérification anti-robot a échoué. Merci de répondre à la nouvelle question ci-dessous.");
-      refreshCaptcha();
       focusCaptcha();
       return;
     }
