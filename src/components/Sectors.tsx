@@ -67,8 +67,8 @@ const sectors: Sector[] = [
   {
     id: "toilettage",
     icon: Dog,
-    label: "Cliniques Vétérinaires",
-    title: "Vétérinaires & Toilettage",
+    label: "Toilettage / Vétérinaires",
+    title: "Toilettage / Vétérinaires",
     text:
       "Une gestion fluide pour vos clients à quatre pattes. L'Agent IA identifie le type de soin nécessaire et optimise vos créneaux pour maximiser votre journée sans stress.",
     accent: "from-[#7b5cff] to-[#00BFFF]",
