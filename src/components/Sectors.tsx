@@ -238,7 +238,8 @@ const Sectors = () => {
 
             {/* Card */}
             <div
-              className="sector-card group relative animate-fade-in"
+              className="sector-card group relative animate-fade-in transition-all duration-500 ease-out"
+              style={{ animation: "fade-in 0.5s ease-out, scale-in 0.4s ease-out" }}
               key={current.id}
             >
               <div className="web-feature-glow" aria-hidden="true" />
