@@ -240,15 +240,54 @@ const Footer = () => {
                 <DialogTrigger asChild>
                   <button className="hover:text-white transition-colors">Confidentialité</button>
                 </DialogTrigger>
-                <DialogContent className="max-w-lg max-h-[80vh] overflow-y-auto bg-[hsl(220_25%_8%)] border-white/10 text-white/80">
+                <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-[hsl(220_25%_8%)] border-white/10 text-white/80">
                   <DialogHeader>
-                    <DialogTitle className="text-white">Politique de confidentialité (RGPD)</DialogTitle>
+                    <DialogTitle className="text-white">Politique de Confidentialité (RGPD) — AgencIA</DialogTitle>
                   </DialogHeader>
-                  <div className="text-sm text-white/70 space-y-3 leading-relaxed">
-                    <p><strong className="text-white">Collecte des données :</strong> Les informations collectées via le formulaire de contact (nom, email, établissement) sont utilisées exclusivement pour répondre à vos demandes de démo.</p>
-                    <p><strong className="text-white">Conservation :</strong> Vos données sont conservées pendant une durée maximale de 3 ans.</p>
-                    <p><strong className="text-white">Droits :</strong> Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en nous contactant via le formulaire de contact.</p>
-                    <p><strong className="text-white">Cookies :</strong> Ce site utilise uniquement des cookies techniques nécessaires au bon fonctionnement de l'interface et à l'analyse de trafic anonyme.</p>
+                  <div className="text-sm text-white/70 space-y-5 leading-relaxed">
+                    <section className="space-y-1.5">
+                      <p>AgencIA, représentée par Jefferson DE LA CRUZ (Annecy, France), accorde une importance particulière à la protection de vos données personnelles. La présente politique détaille la manière dont vos informations sont collectées, utilisées et protégées, conformément au Règlement Général sur la Protection des Données (RGPD).</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">1. Responsable du traitement</h3>
+                      <p>Le responsable du traitement des données est <strong className="text-white">Jefferson DE LA CRUZ</strong>, éditeur du site <span className="text-white">agencia-ia.fr</span>. Pour toute question, vous pouvez nous écrire à : <span className="text-white">contact@agencia-ia.fr</span>.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">2. Données collectées</h3>
+                      <p>Via l'agent vocal Maïna, le formulaire de contact ou les demandes de démo, nous pouvons collecter : votre <strong className="text-white">nom</strong>, le <strong className="text-white">nom de votre animal</strong>, votre <strong className="text-white">numéro de téléphone</strong>, votre <strong className="text-white">e-mail</strong>, votre <strong className="text-white">localité</strong> et le nom de votre <strong className="text-white">établissement</strong>.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">3. Finalités du traitement</h3>
+                      <p>Vos données sont utilisées exclusivement pour : la prise de rendez-vous, l'envoi de SMS de confirmation, le traitement de vos demandes de démo et la communication relative à nos services. Aucune donnée n'est revendue ni utilisée à des fins publicitaires.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">4. Sécurité & CAPTCHA</h3>
+                      <p>Afin de protéger nos formulaires contre les abus et le spam, nous utilisons un système de CAPTCHA. Ce service peut collecter des données techniques (ex : adresse IP) pour vérifier que l'utilisateur est humain. Vos données sont stockées de manière sécurisée et accessibles uniquement aux personnes habilitées.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">5. Conservation des données</h3>
+                      <p>Vos données sont conservées pendant une durée maximale de <strong className="text-white">2 ans</strong> à compter du dernier contact, puis automatiquement supprimées de nos systèmes.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">6. Vos droits</h3>
+                      <p>Conformément au RGPD, vous disposez d'un droit d'<strong className="text-white">accès</strong>, de <strong className="text-white">rectification</strong>, de <strong className="text-white">suppression</strong>, de <strong className="text-white">portabilité</strong> et d'<strong className="text-white">opposition</strong> au traitement de vos données. Pour exercer ces droits, écrivez-nous à : <span className="text-white">contact@agencia-ia.fr</span>.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">7. Cookies</h3>
+                      <p>Le site agencia-ia.fr <strong className="text-white">n'utilise aucun cookie</strong> de traçage, de profilage ou de publicité. Seuls des éléments techniques strictement nécessaires au fonctionnement du site peuvent être utilisés.</p>
+                    </section>
+
+                    <section className="space-y-1.5">
+                      <h3 className="text-white font-semibold">8. Hébergement des données</h3>
+                      <p>Les données transitant par le site sont hébergées par <strong className="text-white">Vercel Inc.</strong> (440 N Barranca Ave #4133, Covina, CA 91723, États-Unis), dans le respect des standards de sécurité applicables aux transferts internationaux de données.</p>
+                    </section>
                   </div>
                   <div className="pt-2">
                     <button
