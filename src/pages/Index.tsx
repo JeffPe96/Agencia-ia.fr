@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import ServicesGrid from "@/components/ServicesGrid";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import OnboardingSteps from "@/components/OnboardingSteps";
+import Sectors from "@/components/Sectors";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import CityFooter from "@/components/CityFooter";
@@ -20,6 +21,7 @@ const Index = () => (
       <ServicesGrid />
       <WhyChooseUs />
       <OnboardingSteps />
+      <Sectors />
       <ContactForm />
       <CityFooter />
       <Footer />
