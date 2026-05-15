@@ -13,7 +13,7 @@ const reasons: Reason[] = [
   {
     icon: Zap,
     title: "Gain de Temps",
-    desc: "Libérez-vous de 90% des tâches répétitives. Concentrez-vous sur votre cœur de métier pendant que l'IA gère le reste.",
+    desc: "Libérez-vous des appels répétitifs. Concentrez-vous sur votre cœur de métier pendant que l'IA gère la prise de rendez-vous.",
     gradient: "from-[#00d2ff] to-[#3a7bd5]",
     glow: "hsl(190 80% 50% / 0.35)",
   },
@@ -34,7 +34,7 @@ const reasons: Reason[] = [
   {
     icon: TrendingUp,
     title: "Évolutivité",
-    desc: "Des solutions qui grandissent avec vous. De la simple FAQ à l'automatisation complète de vos ventes.",
+    desc: "Des solutions qui grandissent avec vous. De la simple prise de rendez-vous à l'automatisation complète de votre relation client.",
     gradient: "from-[#6c5ce7] to-[#00d2ff]",
     glow: "hsl(260 60% 65% / 0.35)",
   },
