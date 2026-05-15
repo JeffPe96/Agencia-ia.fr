@@ -204,7 +204,7 @@ const Footer = () => {
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">4. Protection des Données (RGPD)</h3>
                       <p>AgencIA s'engage à ce que la collecte et le traitement de vos données soient conformes au Règlement Général sur la Protection des Données (RGPD).</p>
-                      <p><strong className="text-white">Données collectées :</strong> Via l'agent vocal Maïna ou les formulaires, nous collectons : votre nom, le nom de votre animal, votre numéro de téléphone et votre localité.</p>
+                      <p><strong className="text-white">Données collectées : Via nos formulaires et services, nous collectons : votre nom, votre numéro de téléphone, votre adresse e-mail et le nom de votre entreprise.</p>
                       <p><strong className="text-white">Finalité :</strong> Prise de rendez-vous et envoi de SMS de confirmation.</p>
                       <p><strong className="text-white">Sécurité (Captcha) :</strong> Afin de protéger nos formulaires contre les abus et le spam, nous utilisons un système de CAPTCHA. Ce service peut collecter des données techniques (ex : adresse IP) pour vérifier que l'utilisateur est humain.</p>
                       <p><strong className="text-white">Conservation & Droits :</strong> Vos données sont conservées pendant 2 ans. Vous disposez d'un droit d'accès, de rectification et de suppression en écrivant à : <span className="text-white">contact@agencia-ia.fr</span>.</p>
@@ -256,7 +256,7 @@ const Footer = () => {
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">2. Données collectées</h3>
-                      <p>Via l'agent vocal Maïna, le formulaire de contact ou les demandes de démo, nous pouvons collecter : votre <strong className="text-white">nom</strong>, le <strong className="text-white">nom de votre animal</strong>, votre <strong className="text-white">numéro de téléphone</strong>, votre <strong className="text-white">e-mail</strong>, votre <strong className="text-white">localité</strong> et le nom de votre <strong className="text-white">établissement</strong>.</p>
+                      <p>Via nos formulaires et demandes de démo, nous pouvons collecter : votre nom, votre numéro de téléphone, votre e-mail, votre localité et le nom de votre établissement.</p>
                     </section>
 
                     <section className="space-y-1.5">
