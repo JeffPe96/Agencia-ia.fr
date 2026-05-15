@@ -58,29 +58,24 @@ const AnnecyHero = () => {
         </defs>
       </svg>
 
-      {/* Single background image (sky, mountains, houses, lake) - covers entire hero */}
+      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-        }}
+        style={{ backgroundImage: `url(${heroImage})` }}
       />
 
-      {/* Subtle water shimmer overlay - tinted gradient only, NO image duplication */}
+      {/* Water shimmer overlay */}
       <div
         className="absolute left-0 right-0 bottom-0 h-[28%] pointer-events-none"
         style={{
-          background:
-            "linear-gradient(to bottom, transparent, hsl(210 60% 75% / 0.08) 40%, hsl(210 70% 70% / 0.12))",
-          maskImage:
-            "radial-gradient(ellipse 70% 100% at 50% 100%, black 30%, transparent 90%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 70% 100% at 50% 100%, black 30%, transparent 90%)",
+          background: "linear-gradient(to bottom, transparent, hsl(210 60% 75% / 0.08) 40%, hsl(210 70% 70% / 0.12))",
+          maskImage: "radial-gradient(ellipse 70% 100% at 50% 100%, black 30%, transparent 90%)",
+          WebkitMaskImage: "radial-gradient(ellipse 70% 100% at 50% 100%, black 30%, transparent 90%)",
           filter: "url(#waterDistort)",
         }}
       />
 
-      {/* Ripple overlays - span the entire Hero */}
+      {/* Ripple overlays */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {ripples.map((r) => (
           <span
@@ -98,38 +93,39 @@ const AnnecyHero = () => {
         ))}
       </div>
 
-      {/* Smooth seam between sky and water */}
+      {/* Seam between sky and water */}
       <div
         className="absolute inset-x-0 top-[50%] h-[10%] pointer-events-none"
-        style={{
-          background: "linear-gradient(to bottom, transparent, hsl(220 40% 70% / 0.15), transparent)",
-        }}
+        style={{ background: "linear-gradient(to bottom, transparent, hsl(220 40% 70% / 0.15), transparent)" }}
       />
 
-      {/* Title + reflection - perfectly centered */}
+      {/* Title + subtitle */}
       <div id="main" className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-4">
         <div className="relative" style={{ animation: "title-float 6s ease-in-out infinite" }}>
-          <h1 className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none" style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}>
+          <h1
+            className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none"
+            style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}
+          >
             <span className="sr-only">AgencIA — Automatisation IA & Agents Vocaux à Annecy et Genève</span>
             <span aria-hidden="true">
-            {TITLE.split("").map((letter, i) => {
-              const isIA = i >= TITLE.length - 2;
-              return (
-                <span
-                  key={i}
-                  className={`inline-block transition-all duration-500 ${
-                    i < titleVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
-                  } ${isIA ? "text-[#3B82F6]" : "text-[hsl(215,20%,75%)]"}`}
-                  style={{
-                    transitionDelay: `${i * 60}ms`,
-                    fontWeight: isIA ? 800 : 650,
-                    textShadow: isIA ? "0 0 40px rgba(59, 130, 246, 0.35)" : undefined,
-                  }}
-                >
-                  {letter}
-                </span>
-              );
-            })}
+              {TITLE.split("").map((letter, i) => {
+                const isIA = i >= TITLE.length - 2;
+                return (
+                  <span
+                    key={i}
+                    className={`inline-block transition-all duration-500 ${
+                      i < titleVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
+                    } ${isIA ? "text-[#3B82F6]" : "text-[hsl(215,20%,75%)]"}`}
+                    style={{
+                      transitionDelay: `${i * 60}ms`,
+                      fontWeight: isIA ? 800 : 650,
+                      textShadow: isIA ? "0 0 40px rgba(59, 130, 246, 0.35)" : undefined,
+                    }}
+                  >
+                    {letter}
+                  </span>
+                );
+              })}
             </span>
           </h1>
 
@@ -145,7 +141,10 @@ const AnnecyHero = () => {
             }}
             aria-hidden="true"
           >
-            <h1 className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none" style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}>
+            <h1
+              className="text-5xl sm:text-7xl lg:text-[10rem] tracking-tight text-center leading-none"
+              style={{ letterSpacing: "-0.02em", fontFamily: "'Inter', system-ui, sans-serif" }}
+            >
               {TITLE.split("").map((letter, i) => {
                 const isIA = i >= TITLE.length - 2;
                 return (
@@ -162,12 +161,13 @@ const AnnecyHero = () => {
           </div>
         </div>
 
+        {/* NOUVEAU SOUS-TITRE */}
         <p
           className={`mt-3 sm:mt-8 text-xs sm:text-xl text-white/90 font-light max-w-2xl mx-auto text-center drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] transition-all duration-700 ${
             showSubtitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
           }`}
         >
-          L'Intelligence Artificielle au service de votre croissance.
+          Ne perdez plus jamais un appel client. Votre agent vocal IA prend les rendez-vous à votre place.
         </p>
       </div>
 
@@ -179,12 +179,11 @@ const AnnecyHero = () => {
         </div>
       </div>
 
-      {/* Waterfall fade — image extends naturally into the dark background of the rest of the site */}
+      {/* Waterfall fade */}
       <div
         className="absolute inset-x-0 bottom-0 h-[40%] pointer-events-none"
         style={{
-          background:
-            "linear-gradient(to bottom, transparent 0%, hsl(220 30% 6% / 0.4) 50%, hsl(220 30% 6% / 0.95) 90%, hsl(220 30% 6%) 100%)",
+          background: "linear-gradient(to bottom, transparent 0%, hsl(220 30% 6% / 0.4) 50%, hsl(220 30% 6% / 0.95) 90%, hsl(220 30% 6%) 100%)",
         }}
       />
     </div>
@@ -204,7 +203,6 @@ const HeroSection = () => {
           100% { width: 220px; height: 220px; opacity: 0; border-width: 0.5px; }
         }
       `}</style>
-
       <AnnecyHero />
     </section>
   );
