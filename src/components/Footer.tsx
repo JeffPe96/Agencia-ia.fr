@@ -19,7 +19,6 @@ const scrollToId = (id: string) => {
   if (el) el.scrollIntoView({ behavior: "smooth" });
 };
 
-
 const solutions: { label: string; to: string; scrollTo?: string }[] = [
   { label: "Vocal AgencIA", to: "/vocal" },
   { label: "Web AgencIA", to: "/web" },
@@ -44,7 +43,6 @@ const Footer = () => {
 
   return (
     <footer className="relative mt-20">
-      {/* Top gradient divider */}
       <div
         className="h-px w-full"
         style={{
@@ -55,7 +53,6 @@ const Footer = () => {
       />
 
       <div className="relative bg-[hsl(220_25%_8%)] text-white/80 overflow-hidden">
-        {/* Subtle dot pattern */}
         <div
           className="absolute inset-0 pointer-events-none opacity-40"
           style={{
@@ -67,9 +64,7 @@ const Footer = () => {
         />
 
         <div className="container mx-auto px-4 py-16 relative">
-          {/* Main grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
-            {/* Brand */}
             <div>
               <Link
                 to="/"
@@ -83,7 +78,6 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Solutions */}
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-5">
                 Solutions
@@ -103,7 +97,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Agence */}
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-5">
                 Agence
@@ -123,7 +116,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact */}
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-5">
                 Contact
@@ -147,10 +139,7 @@ const Footer = () => {
                   <span className="flex flex-col">
                     <span>
                       Local time :{" "}
-                      <span
-                        className="text-white font-medium tabular-nums"
-                        aria-live="polite"
-                      >
+                      <span className="text-white font-medium tabular-nums" aria-live="polite">
                         {localTime}
                       </span>
                     </span>
@@ -161,7 +150,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Bottom bar */}
           <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
             <p>© {new Date().getFullYear()} AgencIA — Tous droits réservés.</p>
             <div className="flex items-center gap-6">
@@ -204,8 +192,8 @@ const Footer = () => {
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">4. Protection des Données (RGPD)</h3>
                       <p>AgencIA s'engage à ce que la collecte et le traitement de vos données soient conformes au Règlement Général sur la Protection des Données (RGPD).</p>
-                      <p><strong className="text-white">Données collectées : Via nos formulaires et services, nous collectons : votre nom, votre numéro de téléphone, votre adresse e-mail et le nom de votre entreprise.</p>
-                      <p><strong className="text-white">Finalité :</strong> Prise de rendez-vous et envoi de SMS de confirmation.</p>
+                      <p><strong className="text-white">Données collectées :</strong> Via nos formulaires et services, nous collectons : votre nom, votre numéro de téléphone, votre adresse e-mail et le nom de votre entreprise.</p>
+                      <p><strong className="text-white">Finalité :</strong> Traitement de vos demandes de démo et communication relative à nos services.</p>
                       <p><strong className="text-white">Sécurité (Captcha) :</strong> Afin de protéger nos formulaires contre les abus et le spam, nous utilisons un système de CAPTCHA. Ce service peut collecter des données techniques (ex : adresse IP) pour vérifier que l'utilisateur est humain.</p>
                       <p><strong className="text-white">Conservation & Droits :</strong> Vos données sont conservées pendant 2 ans. Vous disposez d'un droit d'accès, de rectification et de suppression en écrivant à : <span className="text-white">contact@agencia-ia.fr</span>.</p>
                     </section>
@@ -246,47 +234,47 @@ const Footer = () => {
                   </DialogHeader>
                   <div className="text-sm text-white/70 space-y-5 leading-relaxed">
                     <section className="space-y-1.5">
-                      <p>AgencIA, représentée par Jefferson DE LA CRUZ (Annecy, France), accorde une importance particulière à la protection de vos données personnelles. La présente politique détaille la manière dont vos informations sont collectées, utilisées et protégées, conformément au Règlement Général sur la Protection des Données (RGPD).</p>
+                      <p>AgencIA, représentée par Jefferson DE LA CRUZ (Annecy, France), accorde une importance particulière à la protection de vos données personnelles.</p>
                     </section>
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">1. Responsable du traitement</h3>
-                      <p>Le responsable du traitement des données est <strong className="text-white">Jefferson DE LA CRUZ</strong>, éditeur du site <span className="text-white">agencia-ia.fr</span>. Pour toute question, vous pouvez nous écrire à : <span className="text-white">contact@agencia-ia.fr</span>.</p>
+                      <p>Le responsable du traitement des données est <strong className="text-white">Jefferson DE LA CRUZ</strong>, éditeur du site <span className="text-white">agencia-ia.fr</span>. Pour toute question : <span className="text-white">contact@agencia-ia.fr</span>.</p>
                     </section>
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">2. Données collectées</h3>
-                      <p>Via nos formulaires et demandes de démo, nous pouvons collecter : votre nom, votre numéro de téléphone, votre e-mail, votre localité et le nom de votre établissement.</p>
+                      <p>Via nos formulaires et demandes de démo, nous pouvons collecter : votre <strong className="text-white">nom</strong>, votre <strong className="text-white">numéro de téléphone</strong>, votre <strong className="text-white">e-mail</strong>, votre <strong className="text-white">localité</strong> et le nom de votre <strong className="text-white">établissement</strong>.</p>
                     </section>
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">3. Finalités du traitement</h3>
-                      <p>Vos données sont utilisées exclusivement pour : la prise de rendez-vous, l'envoi de SMS de confirmation, le traitement de vos demandes de démo et la communication relative à nos services. Aucune donnée n'est revendue ni utilisée à des fins publicitaires.</p>
+                      <p>Vos données sont utilisées exclusivement pour le traitement de vos demandes de démo et la communication relative à nos services. Aucune donnée n'est revendue ni utilisée à des fins publicitaires.</p>
                     </section>
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">4. Sécurité & CAPTCHA</h3>
-                      <p>Afin de protéger nos formulaires contre les abus et le spam, nous utilisons un système de CAPTCHA. Ce service peut collecter des données techniques (ex : adresse IP) pour vérifier que l'utilisateur est humain. Vos données sont stockées de manière sécurisée et accessibles uniquement aux personnes habilitées.</p>
+                      <p>Nos formulaires utilisent un système de CAPTCHA pour se protéger contre les abus. Vos données sont stockées de manière sécurisée et accessibles uniquement aux personnes habilitées.</p>
                     </section>
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">5. Conservation des données</h3>
-                      <p>Vos données sont conservées pendant une durée maximale de <strong className="text-white">2 ans</strong> à compter du dernier contact, puis automatiquement supprimées de nos systèmes.</p>
+                      <p>Vos données sont conservées pendant une durée maximale de <strong className="text-white">2 ans</strong> à compter du dernier contact, puis automatiquement supprimées.</p>
                     </section>
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">6. Vos droits</h3>
-                      <p>Conformément au RGPD, vous disposez d'un droit d'<strong className="text-white">accès</strong>, de <strong className="text-white">rectification</strong>, de <strong className="text-white">suppression</strong>, de <strong className="text-white">portabilité</strong> et d'<strong className="text-white">opposition</strong> au traitement de vos données. Pour exercer ces droits, écrivez-nous à : <span className="text-white">contact@agencia-ia.fr</span>.</p>
+                      <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de suppression, de portabilité et d'opposition. Écrivez-nous à : <span className="text-white">contact@agencia-ia.fr</span>.</p>
                     </section>
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">7. Cookies</h3>
-                      <p>Le site agencia-ia.fr <strong className="text-white">n'utilise aucun cookie</strong> de traçage, de profilage ou de publicité. Seuls des éléments techniques strictement nécessaires au fonctionnement du site peuvent être utilisés.</p>
+                      <p>Le site agencia-ia.fr <strong className="text-white">n'utilise aucun cookie</strong> de traçage, de profilage ou de publicité.</p>
                     </section>
 
                     <section className="space-y-1.5">
                       <h3 className="text-white font-semibold">8. Hébergement des données</h3>
-                      <p>Les données transitant par le site sont hébergées par <strong className="text-white">Vercel Inc.</strong> (440 N Barranca Ave #4133, Covina, CA 91723, États-Unis), dans le respect des standards de sécurité applicables aux transferts internationaux de données.</p>
+                      <p>Les données transitant par le site sont hébergées par <strong className="text-white">Vercel Inc.</strong> (440 N Barranca Ave #4133, Covina, CA 91723, États-Unis).</p>
                     </section>
                   </div>
                   <div className="pt-2">
