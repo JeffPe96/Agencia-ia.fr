@@ -10,13 +10,13 @@ type Service = {
 const services: Service[] = [
   {
     icon: PhoneForwarded,
-    title: "Vocal AgencIA — Agent Vocal IA 24/7",
-    desc: "Notre produit phare. Une voix naturelle qui répond à vos appels, qualifie vos leads et fixe vos rendez-vous, jour et nuit, sans intervention humaine.",
+    title: "Agent Vocal IA 24/7",
+    desc: "Une voix naturelle qui répond à vos appels, qualifie vos leads et fixe vos rendez-vous — jour et nuit, sans intervention humaine.",
   },
   {
     icon: MonitorCheck,
-    title: "Web AgencIA — Sites Haute Performance",
-    desc: "Votre vitrine digitale, conçue pour convertir. Sites rapides, optimisés pour le référencement et pensés pour transformer chaque visiteur en client.",
+    title: "Sites Haute Performance",
+    desc: "Votre vitrine digitale conçue pour convertir. Rapide, optimisée SEO, pensée pour transformer chaque visiteur en client.",
   },
 ];
 
