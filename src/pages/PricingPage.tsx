@@ -5,6 +5,8 @@ import GlobalSparkles from "@/components/GlobalSparkles";
 import Navbar from "@/components/Navbar";
 import ScrollReveal from "@/components/ScrollReveal";
 import Footer from "@/components/Footer";
+import { useNavigate } from "react-router-dom";
+import { navigateToHomeContact } from "@/lib/navigateToContact";
 
 type Plan = {
   name: string;
@@ -100,12 +102,9 @@ const accentClasses: Record<Plan["accent"], { iconBg: string; iconText: string; 
   },
 };
 
-const scrollToContact = () => {
-  const el = document.getElementById("pricing-contact");
-  el?.scrollIntoView({ behavior: "smooth" });
-};
-
 const PricingPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <AnimatedBackground />
@@ -154,16 +153,13 @@ const PricingPage = () => {
                         </div>
                       )}
 
-                      {/* Icon */}
                       <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border ${a.iconBg}`}>
                         <Icon size={24} className={a.iconText} />
                       </div>
 
-                      {/* Title */}
                       <h3 className="text-xl font-bold text-foreground mb-1.5">{plan.name}</h3>
                       <p className="text-sm text-muted-foreground mb-7">{plan.tagline}</p>
 
-                      {/* Price block */}
                       <div className="mb-6 pb-6 border-b border-border/60">
                         <p className={`text-[10px] font-semibold uppercase tracking-[0.18em] mb-1.5 ${a.tag}`}>
                           {plan.setupLabel}
@@ -197,7 +193,6 @@ const PricingPage = () => {
                         )}
                       </div>
 
-                      {/* Features */}
                       <ul className="space-y-3 mb-6 flex-1">
                         {plan.features.map((f) => (
                           <li key={f} className="flex items-start gap-2.5 text-sm text-foreground/80">
@@ -207,7 +202,6 @@ const PricingPage = () => {
                         ))}
                       </ul>
 
-                      {/* Note */}
                       {plan.note && (
                         <div className="mb-6 flex items-start gap-2 p-3 rounded-xl bg-secondary/70 border border-border/50">
                           <Info size={14} className="text-muted-foreground mt-0.5 shrink-0" />
@@ -215,9 +209,8 @@ const PricingPage = () => {
                         </div>
                       )}
 
-                      {/* CTA */}
                       <button
-                        onClick={scrollToContact}
+                        onClick={() => navigateToHomeContact(navigate)}
                         className="btn-primary-neu w-full text-sm py-3.5"
                       >
                         Contactez-nous
@@ -254,7 +247,6 @@ const PricingPage = () => {
                               <span
                                 key={s}
                                 className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-[9px] sm:text-[10px] font-semibold uppercase tracking-wide leading-none whitespace-nowrap ${b.className}`}
-                                title={b.label}
                               >
                                 <BIcon size={9} className="shrink-0" />
                                 {b.label}
@@ -278,21 +270,19 @@ const PricingPage = () => {
               </div>
             </ScrollReveal>
 
-            {/* CONTACT ANCHOR + DISCLAIMER */}
+            {/* CTA FINAL */}
             <ScrollReveal delay={400}>
-              <div id="pricing-contact" className="mt-20 max-w-2xl mx-auto text-center">
+              <div className="mt-20 max-w-2xl mx-auto text-center">
                 <div className="inline-flex flex-col sm:flex-row items-center gap-4 px-8 py-6 rounded-3xl bg-card/70 backdrop-blur-xl border border-border/60 shadow-soft">
                   <p className="text-sm text-foreground/80">
                     Besoin d'un devis personnalisé ? Discutons de votre projet.
                   </p>
-                  <a
-                    href="https://wa.me/33000000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => navigateToHomeContact(navigate)}
                     className="btn-primary-neu text-sm px-6 py-2.5 whitespace-nowrap"
                   >
-                    Contactez-nous
-                  </a>
+                    Nous contacter
+                  </button>
                 </div>
                 <p className="text-xs text-muted-foreground mt-6 italic">
                   *Tous les tarifs sont HT. Devis détaillé gratuit et sans engagement.
